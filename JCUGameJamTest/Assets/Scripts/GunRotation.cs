@@ -16,11 +16,16 @@ public class GunRotation : MonoBehaviour
 
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;
+    [SerializeField] private GameObject firingPoint;
+    [SerializeField] private GameObject Bullet;
+   
+    private InputManager inputManager;
     private Vector2 mousePos;
     // Use this for initialization
     void Start()
     {
         mainCamera = Camera.main;
+        inputManager = player.GetComponent<InputManager>();
     }
 
     // Update is called once per frame
@@ -31,6 +36,10 @@ public class GunRotation : MonoBehaviour
         mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         MouseLookat();
         FollowMouse();
+        if (inputManager.isMouseClicked)
+        {
+            fireBullet();
+        }
     }
 
     private void MouseLookat()
@@ -69,6 +78,12 @@ public class GunRotation : MonoBehaviour
     {
         Vector2 difference = mousePos - (Vector2) transform.position;
         return difference;
+    }
+
+    void fireBullet()
+    {
+       GameObject spawnBullet = Instantiate(Bullet, firingPoint.transform.position, firingPoint.transform.rotation);
+       spawnBullet.GetComponent<Rigidbody2D>().AddForce(spawnBullet.transform.forward * 1000f);
     }
 
 
