@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AI_Behaviour : MonoBehaviour, IInput {
-    public enum AISTATE { IDLE, CHASING, ATTACK, DIE };
-    public AISTATE currenState = AISTATE.IDLE;
+    private enum AISTATE { IDLE, CHASING, ATTACK, DIE };
+    [SerializeField] private AISTATE currenState = AISTATE.IDLE;
 
     [SerializeField]
     private Transform target;
     [SerializeField]
     private float engageRange = 4;
-
-    public bool IsFire { get; private set; }
+ 
     [SerializeField]
     private float fireCooldown = 1;
     private float currentFireCooldown = 0;
 
+    public bool IsFire { get; private set; }
     public Vector2 LookDirection { get; private set; }
 
 	// Update is called once per frame

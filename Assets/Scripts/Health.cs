@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour {    
-    public int m_health;
+    [SerializeField] private int m_health;
 
     private void Start()
     {
-        GameManager.instance.allPlayers.Add(gameObject);
+        GameManager.instance.AddPlayersToList(gameObject);
     }
 
     public void TakeDamage()

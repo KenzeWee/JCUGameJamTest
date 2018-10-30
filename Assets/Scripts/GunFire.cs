@@ -7,7 +7,7 @@ public class GunFire : MonoBehaviour {
     [SerializeField] private GenericProjectile projectile;
     [SerializeField] private float fireForce = 10f;
 
-    public GameObject player;
+    [SerializeField] private GameObject player;
     private IInput inputManager;
 
     // Use this for initialization

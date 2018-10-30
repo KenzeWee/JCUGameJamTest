@@ -5,8 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
-    public List<GameObject> allPlayers = new List<GameObject>();
-    public List<GameObject> KnockedOutPlayers = new List<GameObject>();
+    [SerializeField] private List<GameObject> allPlayers = new List<GameObject>();
+    [SerializeField] private List<GameObject> KnockedOutPlayers = new List<GameObject>();
+
+    public DynamicCamera cameraScript { private get; set; }
 
     private void Awake()
     {
@@ -18,15 +20,22 @@ public class GameManager : MonoBehaviour {
         if (!KnockedOutPlayers.Contains(Player))
         {
             KnockedOutPlayers.Add(Player);
+            cameraScript.RemovePlayerFromList(Player);
             CheckWin();
         }
     }
 
-    public void CheckWin()
+    private void CheckWin()
     {
         if(KnockedOutPlayers.Count >= allPlayers.Count - 1)
         {
             print("win");
         }
+    }
+
+    public void AddPlayersToList (GameObject Player)
+    {
+        if (!allPlayers.Contains(Player))
+            allPlayers.Add(Player);
     }
 }

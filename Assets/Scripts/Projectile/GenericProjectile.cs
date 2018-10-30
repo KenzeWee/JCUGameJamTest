@@ -29,9 +29,11 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile
     protected virtual void OnCollisionEnter2D(Collision2D col)
     {
         collisionBehaviour();
-        if (col.collider.GetComponent<Health>())
+
+        Health hp = col.gameObject.GetComponent<Health>();
+        if (hp)
         {
-            col.collider.GetComponent<Health>().TakeDamage();
+            hp.TakeDamage();
         }
     }
 }

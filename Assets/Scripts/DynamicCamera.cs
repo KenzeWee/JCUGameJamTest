@@ -18,15 +18,15 @@ public class DynamicCamera : MonoBehaviour {
     [SerializeField] private float upperBoundary = 30.0f;
     [SerializeField] private float lowerBoundary = 5.0f;
 
-    [SerializeField] private float maxOrth;
-    [SerializeField] private float minOrth;
+    [SerializeField] private float maxOrth = 12;
+    [SerializeField] private float minOrth = 6;
 
     [SerializeField] private float orthBuffer = 0.0f;
 
     private float largestDistance;
 
     private float orthRatio;
-    private float distRatio;
+    //private float distRatio;
 
     private float orthSize;
     private float diff;
@@ -39,8 +39,10 @@ public class DynamicCamera : MonoBehaviour {
 
         targetPos = transform.position;
 
-        orthRatio = (maxOrth - minOrth) / 100;
-        distRatio = (largestDistance - lowerBoundary) / 100;
+        orthRatio = minOrth / maxOrth;
+        //distRatio = lowerBoundary / upperBoundary;
+
+        GameManager.instance.cameraScript = this;
     }
 
     private void Update()
@@ -68,8 +70,6 @@ public class DynamicCamera : MonoBehaviour {
 
     void CalcZoom()
     {
-        orthSize = maxOrth;
-
         getMaxDistance();
 
         if (largestDistance > upperBoundary)
@@ -82,7 +82,7 @@ public class DynamicCamera : MonoBehaviour {
         }
         else
         {
-            diff = (largestDistance - lowerBoundary) / distRatio;
+            diff = largestDistance - lowerBoundary;
             orthDiff = diff * orthRatio;
             orthSize = minOrth + orthDiff + orthBuffer;
         }
