@@ -277,7 +277,7 @@ MonoBehaviour:
   lowerBoundary: 5
   maxOrth: 12
   minOrth: 6
-  orthBuffer: 0
+  orthBuffer: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11.49
+  orthographic size: 12.13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1522591243}
   gun: {fileID: 84827819}
-  minDistance: 0
+  minDistance: 0.2
   maxDistance: 1.5
 --- !u!114 &969845082
 MonoBehaviour:
@@ -543,7 +543,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!23 &1522591246
 MeshRenderer:
   m_ObjectHideFlags: 0

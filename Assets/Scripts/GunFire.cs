@@ -7,10 +7,12 @@ public class GunFire : MonoBehaviour {
     [SerializeField] private GenericProjectile projectile;
     [SerializeField] private float fireForce = 10f;
 
+    public GameObject player;
     private IInput inputManager;
+
     // Use this for initialization
     void Start () {
-        inputManager = transform.parent.GetComponent<IInput>();
+        inputManager = player.GetComponent<IInput>();
 	}
 	
 	// Update is called once per frame
