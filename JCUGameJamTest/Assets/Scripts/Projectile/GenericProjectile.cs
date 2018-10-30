@@ -18,6 +18,12 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile
     protected virtual void Awake()
     {
         projRB = GetComponent<Rigidbody2D>();
+
+        //set projectile to bullet layer
+        //than ignore the gun layer 
+        //so bullet doesnt blow up on gun
+        gameObject.layer = 9;
+        Physics2D.IgnoreLayerCollision(8, 9);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D col)
