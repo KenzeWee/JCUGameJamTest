@@ -23,4 +23,23 @@ public static class StaticFunctions
         Vector3 upliftForce = Vector2.up * explosionForce * upliftWearoff;
         body.AddForce(upliftForce);
     }
+
+    /*--------------------- Find Game Objects By Layer ------------------------------*/
+    public static List<GameObject> FindGameObjectsByLayer(int layerToSearch)
+    {
+        GameObject[] go = Object.FindObjectsOfType<GameObject>();
+        List<GameObject> listToReturn = new List<GameObject>();
+        foreach (GameObject gameObj in go)
+        {
+            if (gameObj.layer == layerToSearch)
+                listToReturn.Add(gameObj);
+        }
+        return listToReturn;
+    }
+
+    /*------------------- Vector3 ------------------*/
+    public static Vector3 With (this Vector3 originalVec, float? x = null, float? y = null, float? z = null)
+    {
+        return new Vector3(x ?? originalVec.x, y ?? originalVec.y, z ?? originalVec.z);
+    }
 }
