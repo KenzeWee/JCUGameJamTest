@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour {    
     public int m_health;
+
+    private void Start()
+    {
+        GameManager.instance.allPlayers.Add(gameObject);
+    }
 
     public void TakeDamage()
     {
@@ -11,7 +16,8 @@ public class Health : MonoBehaviour {
 
         if(m_health <= 0)
         {
-            //gameObject.SetActive(false);
+            GameManager.instance.KnockOut(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
