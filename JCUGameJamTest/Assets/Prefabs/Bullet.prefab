@@ -145,5 +145,5 @@ MonoBehaviour:
   fireForce: 15
   lifeTime: 5
   explosionRadius: 2.5
-  explosionForce: 500
-  drawDebugSphere: 1
+  explosionForce: 2000
+  drawDebugSphere: 0

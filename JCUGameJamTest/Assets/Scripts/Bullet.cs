@@ -10,11 +10,6 @@ public class Bullet : GenericProjectile {
 
     [SerializeField] private bool drawDebugSphere = false;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     public override void Fire()
     {
         projRB.AddForce(transform.right * FireForce, ForceMode2D.Impulse);
