@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour, IInput {
-    public bool IsFire { get; set; }
-    public Vector2 LookDirection { get; set; }
-    //public Vector2 LookDirection { get; private set; }
+    public bool IsFire { get; private set; }
+    public Vector2 LookDirection { get; private set; }
+
     private Camera mainCam;
 
     private void Start()

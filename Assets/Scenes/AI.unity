@@ -940,7 +940,6 @@ GameObject:
   - component: {fileID: 1052333325}
   - component: {fileID: 1052333324}
   - component: {fileID: 1052333329}
-  - component: {fileID: 1052333323}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -948,19 +947,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1052333323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1052333322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8219c9c30591061499b048364317c317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currenState: 1
-  target: {fileID: 1522591248}
 --- !u!61 &1052333324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1070,10 +1056,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1052333322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e237435e48e841045acaebea8aea914c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2561e172d1868d64684eeb2a76b29ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 3
+  currenState: 0
+  target: {fileID: 0}
 --- !u!1 &1374931392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,7 +1369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e237435e48e841045acaebea8aea914c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 3
 --- !u!1 &1534709428
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_Behaviour : InputManager {
+public class AI_Behaviour : MonoBehaviour, IInput {
     public enum AISTATE { IDLE, CHASING, AIM, ATTACK, DIE };
     public AISTATE currenState = AISTATE.IDLE;
 
     [SerializeField]
-    private Transform target; 
+    private Transform target;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    public bool IsFire { get; private set; }
+
+    public Vector2 LookDirection { get; private set; }
+
 	// Update is called once per frame
 	void Update () {
         //Isfire
