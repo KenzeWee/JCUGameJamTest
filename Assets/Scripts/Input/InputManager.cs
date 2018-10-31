@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour, IInput
 {
     public bool IsFire { get; private set; }
-    public Vector2 LookDirection { get; private set; }
+    public Vector2 CursorPos { get; private set; }
 
     private Camera mainCam;
 
@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour, IInput
     void UpdateInput()
     {
         IsFire = Input.GetButtonDown("Fire1");
-        LookDirection = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        CursorPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void GameEnd()

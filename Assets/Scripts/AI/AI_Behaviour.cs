@@ -18,7 +18,7 @@ public class AI_Behaviour : MonoBehaviour, IAIInput
     private float currentFireCooldown = 0;
 
     public bool IsFire { get; private set; }
-    public Vector2 LookDirection { get; private set; }
+    public Vector2 CursorPos { get; private set; }
 
     private bool isGameRunning = true;
 
@@ -76,7 +76,7 @@ public class AI_Behaviour : MonoBehaviour, IAIInput
     {
         Vector2 direction = transform.position + (target.position + Vector3.up * Vector3.Magnitude(transform.position - target.position) * 0.1f - transform.position).normalized;
 
-        LookDirection = direction;
+        CursorPos = direction;
     }
 
     void MoveTo()
@@ -93,7 +93,7 @@ public class AI_Behaviour : MonoBehaviour, IAIInput
         }
         Fire();
 
-        LookDirection = direction;
+        CursorPos = direction;
     }
 
     void Chase()
