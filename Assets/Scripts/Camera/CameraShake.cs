@@ -43,7 +43,7 @@ public class CameraShake : MonoBehaviour
 
         do
         {
-            cameraAxis.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            cameraAxis.localPosition = originalPos + Random.insideUnitSphere * shakeAmount * (fireForce/maxForce);
 
             shakeDuration -= Time.deltaTime * decreaseFactor;
             yield return null;
