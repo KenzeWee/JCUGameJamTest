@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour, IInput {
+public class InputManager : MonoBehaviour, IInput
+{
     public bool IsFire { get; private set; }
     public Vector2 LookDirection { get; private set; }
 
     private Camera mainCam;
 
-    private bool isGameRunning = true; 
+    private bool isGameRunning = true;
 
     private void Start()
     {

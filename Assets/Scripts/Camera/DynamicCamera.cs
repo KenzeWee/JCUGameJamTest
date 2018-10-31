@@ -13,6 +13,7 @@ public class DynamicCamera : MonoBehaviour
     [SerializeField] private float panSpeed = 5f;
     [SerializeField] private float zoomSpeed = 2f;
 
+    [SerializeField] private Transform movementAxis;
     private Vector3 targetPos;
 
     //prevent camera from moving/zooming in and out too much 
@@ -70,7 +71,7 @@ public class DynamicCamera : MonoBehaviour
         {
             targetPos = centre / count;
             targetPos = targetPos.With(z: -10);
-            transform.position = Vector3.Lerp(transform.position, targetPos, panSpeed * Time.deltaTime);
+            movementAxis.position = Vector3.Lerp(transform.position, targetPos, panSpeed * Time.deltaTime);
         }
     }
 

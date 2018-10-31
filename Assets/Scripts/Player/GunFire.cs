@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class GunFire : MonoBehaviour {
     [SerializeField] private GenericProjectile projectile;
 
     [SerializeField] private GameObject player;
+
+    public delegate void OnGunFired(float force);
+    public event OnGunFired onGunFiredEvent;
 
     private IInput inputManager;
 
@@ -27,5 +31,6 @@ public class GunFire : MonoBehaviour {
     {
         GenericProjectile projFired = Instantiate(projectile.gameObject, firingPoint.position, firingPoint.rotation).GetComponent<GenericProjectile>();
         projFired.Fire();
+        onGunFiredEvent(projFired.FireForce);
     }
 }

@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour {
 
     private List<Entity> ListOfPlayers = new List<Entity>();
 
+    [SerializeField] private GameObject winScreen;
 
     private void Awake()
     {
         Instance = this;
+        winScreen.SetActive(false);
     }
 
     private void CheckWin()
@@ -26,6 +28,9 @@ public class GameManager : MonoBehaviour {
         {
             if (onGameEndEvent != null)
                 onGameEndEvent();
+
+            if (winScreen != null)
+                winScreen.SetActive(true);
 
             print("win");
         }
