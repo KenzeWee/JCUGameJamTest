@@ -1,41 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour {
-    public static GameManager instance;
+    public static GameManager Instance;
 
-    [SerializeField] private List<GameObject> allPlayers = new List<GameObject>();
-    [SerializeField] private List<GameObject> KnockedOutPlayers = new List<GameObject>();
+    public delegate void OnPlayerKnockOut();
+    public event OnPlayerKnockOut onPlayerKnockedOutEvent;
 
-    public DynamicCamera cameraScript { private get; set; }
+    public delegate void OnGameEnd();
+    public event OnGameEnd onGameEndEvent;
+
+    private List<Entity> ListOfPlayers = new List<Entity>();
+
 
     private void Awake()
     {
-        instance = this;
-    }
-
-    public void KnockOut(GameObject Player)
-    {
-        if (!KnockedOutPlayers.Contains(Player))
-        {
-            KnockedOutPlayers.Add(Player);
-            cameraScript.RemovePlayerFromList(Player);
-            CheckWin();
-        }
+        Instance = this;
     }
 
     private void CheckWin()
     {
-        if(KnockedOutPlayers.Count >= allPlayers.Count - 1)
+        if (ListOfPlayers.Count <= 1)
         {
+            if (onGameEndEvent != null)
+                onGameEndEvent();
+
             print("win");
         }
     }
 
-    public void AddPlayersToList (GameObject Player)
+    public void KnockOut(Entity Player)
     {
-        if (!allPlayers.Contains(Player))
-            allPlayers.Add(Player);
+        if (ListOfPlayers.Contains(Player))
+        {
+            ListOfPlayers.Remove(Player);
+
+            if (onPlayerKnockedOutEvent != null)
+                onPlayerKnockedOutEvent();
+
+            CheckWin();
+        }
+    }
+
+    public void AddPlayersToList (Entity Player)
+    {
+        if (!ListOfPlayers.Contains(Player))
+            ListOfPlayers.Add(Player);
+    }
+
+    public List<Entity> GetListOfPlayers()
+    {
+        return ListOfPlayers;
     }
 }

@@ -42,4 +42,10 @@ public static class StaticFunctions
     {
         return new Vector3(x ?? originalVec.x, y ?? originalVec.y, z ?? originalVec.z);
     }
+
+    /*---------------------List------------------------*/
+    public static T RandomObject<T> (this List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
+    }
 }

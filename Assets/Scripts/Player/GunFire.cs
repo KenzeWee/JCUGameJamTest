@@ -5,9 +5,9 @@ using UnityEngine;
 public class GunFire : MonoBehaviour {
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GenericProjectile projectile;
-    [SerializeField] private float fireForce = 10f;
 
     [SerializeField] private GameObject player;
+
     private IInput inputManager;
 
     // Use this for initialization

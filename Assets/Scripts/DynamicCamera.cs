@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamicCamera : MonoBehaviour {
+public class DynamicCamera : MonoBehaviour
+{
     private Camera cam;
 
     //Find all players in scene (includes AI?)
-    private List<GameObject> players;
+    private List<Entity> players;
 
     //Camera movement speed variables
     [SerializeField] private float panSpeed = 5f;
@@ -35,18 +36,20 @@ public class DynamicCamera : MonoBehaviour {
     private void Start()
     {
         cam = GetComponent<Camera>();
-        players = StaticFunctions.FindGameObjectsByLayer(10);
 
         targetPos = transform.position;
 
         orthRatio = minOrth / maxOrth;
         //distRatio = lowerBoundary / upperBoundary;
 
-        GameManager.instance.cameraScript = this;
+        GameManager.Instance.onPlayerKnockedOutEvent += UpdateListOfPlayers;
     }
 
     private void Update()
     {
+        if (players == null)
+            UpdateListOfPlayers();
+
         CalcPos();
         CalcZoom();
     }
@@ -63,9 +66,12 @@ public class DynamicCamera : MonoBehaviour {
             count++;
         }
 
-        targetPos = centre / count;
-        targetPos = targetPos.With(z: -10);
-        transform.position = Vector3.Lerp(transform.position, targetPos, panSpeed * Time.deltaTime);
+        if (count != 0)
+        {
+            targetPos = centre / count;
+            targetPos = targetPos.With(z: -10);
+            transform.position = Vector3.Lerp(transform.position, targetPos, panSpeed * Time.deltaTime);
+        }
     }
 
     void CalcZoom()
@@ -108,16 +114,8 @@ public class DynamicCamera : MonoBehaviour {
         }
     }
 
-    /* ------------------------- public functions ---------------------------*/
-    public void RemovePlayerFromList (GameObject playerToRemove)
+    void UpdateListOfPlayers()
     {
-        if (players.Contains(playerToRemove))
-            players.Remove(playerToRemove);
-    }
-
-    public void AddPlayerToList (GameObject playerToAdd)
-    {
-        if (!players.Contains(playerToAdd))
-            players.Add(playerToAdd);
+        players = GameManager.Instance.GetListOfPlayers();
     }
 }

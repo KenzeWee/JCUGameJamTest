@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_Behaviour : MonoBehaviour, IInput {
+public class AI_Behaviour : MonoBehaviour, IAIInput
+{
     private enum AISTATE { IDLE, CHASING, ATTACK, DIE };
     [SerializeField] private AISTATE currenState = AISTATE.IDLE;
 
     [SerializeField]
     private Transform target;
+
     [SerializeField]
     private float engageRange = 4;
- 
+
     [SerializeField]
     private float fireCooldown = 1;
     private float currentFireCooldown = 0;
@@ -18,20 +20,24 @@ public class AI_Behaviour : MonoBehaviour, IInput {
     public bool IsFire { get; private set; }
     public Vector2 LookDirection { get; private set; }
 
-	// Update is called once per frame
-	void Update () {
-        //Isfire
+    private bool isGameRunning = true;
 
-        //LookDirection 
-        RunState();
-        RunFireCD();
+    // Update is called once per frame
+    void Update()
+    {
+        if (isGameRunning)
+        {
+            RunState();
+            RunFireCD();
+        }
     }
 
     private void RunState()
     {
-        switch (currenState) {
+        switch (currenState)
+        {
             case AISTATE.IDLE:
-
+                Idle();
                 break;
 
             case AISTATE.CHASING:
@@ -49,10 +55,18 @@ public class AI_Behaviour : MonoBehaviour, IInput {
         }
     }
 
+    void Idle()
+    {
+        if (target == null)
+            target = GameManager.Instance.GetListOfPlayers().RandomObject().transform;
+
+        currenState = AISTATE.CHASING;
+    }
+
     private void RunFireCD()
     {
         //if curr fire cooldown is more than 0, cannot fire anything.
-        if(currentFireCooldown > 0)
+        if (currentFireCooldown > 0)
         {
             currentFireCooldown -= Time.deltaTime;
         }
@@ -72,7 +86,8 @@ public class AI_Behaviour : MonoBehaviour, IInput {
         if (target.position.x > transform.position.x)
         {
             direction += Vector2.down - Vector2.right;
-        }else if(target.position.x < transform.position.x)
+        }
+        else if (target.position.x < transform.position.x)
         {
             direction += Vector2.down + Vector2.right;
         }
@@ -86,7 +101,7 @@ public class AI_Behaviour : MonoBehaviour, IInput {
         int layer = LayerMask.NameToLayer("GunColliderLayer");
         layer = ~layer;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + (target.position - transform.position).normalized, target.position - transform.position,layer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + (target.position - transform.position).normalized, target.position - transform.position, layer);
 
         if (checkEngageRange(hit.collider.transform))
         {
@@ -111,17 +126,18 @@ public class AI_Behaviour : MonoBehaviour, IInput {
         }
     }
 
-    bool checkEngageRange(Transform targetTrans) {
+    bool checkEngageRange(Transform targetTrans)
+    {
         if (targetTrans.GetComponent<Health>() && Vector3.Magnitude(transform.position - target.position) < engageRange)
         {
             return true;
         }
         return false;
     }
-    
+
     private void Fire()
     {
-        if(currentFireCooldown <= 0)
+        if (currentFireCooldown <= 0)
         {
             IsFire = true;
             currentFireCooldown = fireCooldown;
@@ -133,5 +149,25 @@ public class AI_Behaviour : MonoBehaviour, IInput {
     {
         yield return new WaitForSeconds(0);
         IsFire = false;
+    }
+
+    public void PlayerKnockOutCheck()
+    {
+        if (target != null)
+        {
+            if (!GameManager.Instance.GetListOfPlayers().Contains(target.gameObject.GetComponent<Entity>()))
+            {
+                target = null;
+                currenState = AISTATE.IDLE;
+            }
+        }
+
+        currenState = AISTATE.IDLE;
+    }
+
+    public void GameEnd()
+    {
+        isGameRunning = false;
+        //other game end resets etc
     }
 }
