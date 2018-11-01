@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunFire : MonoBehaviour {
+    [SerializeField] private Animator animator;
+    [SerializeField] private float cooldown = 0.5f;
+    private bool OnCooldown = false;
+
     [SerializeField] private Transform firingPoint;
     public Transform FiringPoint { get { return firingPoint; } }
 
@@ -26,9 +30,10 @@ public class GunFire : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (inputManager.IsFire)
+		if (inputManager.IsFire && !OnCooldown)
         {
             FireProjectile();
+            StartCoroutine(FireCoolDown(cooldown));
         }
 	}
 
@@ -37,5 +42,14 @@ public class GunFire : MonoBehaviour {
         GenericProjectile projFired = Instantiate(projectile.gameObject, firingPoint.position, firingPoint.rotation).GetComponent<GenericProjectile>();
         projFired.Fire();
         onGunFiredEvent(projFired.FireForce);
+    }
+
+    IEnumerator FireCoolDown (float cooldown)
+    {
+        OnCooldown = true;
+        animator.SetBool("IsFiring", true);
+        yield return new WaitForSeconds(cooldown);
+        OnCooldown = false;
+        animator.SetBool("IsFiring", false);
     }
 }
