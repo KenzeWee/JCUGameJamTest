@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] private Transform cameraAxis;
-    Vector3 originalPos;
+    Vector3 originalPos = new Vector3();
 
     [SerializeField] private float shakeDuration = 1.0f;
     private float shakeDurationOrignal;

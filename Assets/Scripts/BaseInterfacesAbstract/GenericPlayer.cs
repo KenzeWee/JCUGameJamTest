@@ -11,13 +11,18 @@ using UnityEngine;
 [RequireComponent(typeof(IDamagable))]
 public abstract class GenericPlayer<T> : Entity where T : IInput
 {
-    protected IDamagable HP;
-    protected T inputManager { get; set; }
+    public IDamagable HP { get; private set; }
+    public T inputManager { get; private set; }
+    public GunFire GunFire { get; private set; }
+    public GunRotation GunRotation { get; private set; }
 
     protected virtual void Start()
     {
         HP = GetComponent<IDamagable>();
         inputManager = GetComponent<T>();
+
+        GunFire = GetComponentInChildren<GunFire>();
+        GunRotation = GetComponentInChildren<GunRotation>();
 
         //Set layer to player
         gameObject.layer = 10;
@@ -32,5 +37,14 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
     protected override void UnsuscribeToEvents()
     {
         HP.onDieEvent -= UnsuscribeToEvents;
+    }
+
+    protected virtual void OnTriggerEnter2D (Collider2D other)
+    {
+        IPickUp pickUp = other.gameObject.GetComponent<IPickUp>();
+        if (pickUp != null)
+        {
+            pickUp.PickUpBehaviour(this);
+        }
     }
 }

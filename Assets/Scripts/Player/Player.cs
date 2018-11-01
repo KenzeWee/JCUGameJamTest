@@ -3,5 +3,5 @@
 [RequireComponent(typeof(InputManager))]
 public class Player : GenericPlayer<InputManager>
 {
-    //Player stuff
+    //Player stuff 
 }

@@ -13,9 +13,9 @@ public class Health : MonoBehaviour, IDamagable {
         GameManager.Instance.AddPlayersToList(gameObject.GetComponent<Entity>());
     }
 
-    public void TakeDamage(int amount)
+    public void ChangeHealth(int amount)
     {
-        m_health -= amount;
+        m_health += amount;
 
         if(m_health <= 0)
         {

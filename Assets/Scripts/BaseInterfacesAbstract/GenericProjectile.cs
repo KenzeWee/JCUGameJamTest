@@ -11,7 +11,7 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile
     [SerializeField] private float fireForce = 30f;
     public float FireForce { get { return fireForce; } }
 
-    [SerializeField] protected int Damage = 1;
+    [SerializeField] protected int damage = 1;
 
     protected Rigidbody2D projRB;
 
@@ -36,7 +36,7 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile
         Health hp = col.gameObject.GetComponent<Health>();
         if (hp)
         {
-            hp.TakeDamage(Damage);
+            hp.ChangeHealth(-damage);
         }
     }
 }

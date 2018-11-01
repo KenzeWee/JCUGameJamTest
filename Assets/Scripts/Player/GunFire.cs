@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class GunFire : MonoBehaviour {
     [SerializeField] private Transform firingPoint;
+
     [SerializeField] private GenericProjectile projectile;
+    private GenericProjectile defaultProjectile;
+    public GenericProjectile SetProjectile { set { projectile = value; } }
 
     [SerializeField] private GameObject player;
 
@@ -17,6 +20,7 @@ public class GunFire : MonoBehaviour {
     // Use this for initialization
     void Start () {
         inputManager = player.GetComponent<IInput>();
+        defaultProjectile = projectile;
 	}
 	
 	// Update is called once per frame

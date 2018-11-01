@@ -2,6 +2,6 @@
 
 public interface IDamagable { 
     int HP { get; }
-    void TakeDamage(int amount);
+    void ChangeHealth(int amount);
     event OnDie onDieEvent;
 }
