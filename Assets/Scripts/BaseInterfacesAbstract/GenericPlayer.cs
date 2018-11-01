@@ -26,8 +26,10 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
 
         //Set layer to player
         gameObject.layer = 10;
+        GameManager.Instance.AddPlayersToList(this);
 
         HP.onDieEvent += UnsuscribeToEvents;
+        HP.onDieEvent += KnockOutPlayer;
         SuscribeToEvents();
     }
 
@@ -36,7 +38,13 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
 
     protected override void UnsuscribeToEvents()
     {
+        HP.onDieEvent -= KnockOutPlayer;
         HP.onDieEvent -= UnsuscribeToEvents;
+    }
+
+    private void KnockOutPlayer()
+    {
+        GameManager.Instance.KnockOut(this);
     }
 
     protected virtual void OnTriggerEnter2D (Collider2D other)

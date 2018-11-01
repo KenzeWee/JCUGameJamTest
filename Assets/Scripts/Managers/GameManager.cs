@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void KnockOut(Entity Player)
+    public void KnockOut<T> (GenericPlayer<T> Player) where T: IInput
     {
         if (ListOfPlayers.Contains(Player))
         {
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void AddPlayersToList (Entity Player)
+    public void AddPlayersToList<T> (GenericPlayer<T> Player) where T: IInput
     {
         if (!ListOfPlayers.Contains(Player))
             ListOfPlayers.Add(Player);

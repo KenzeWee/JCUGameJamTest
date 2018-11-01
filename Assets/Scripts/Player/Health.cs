@@ -8,11 +8,6 @@ public class Health : MonoBehaviour, IDamagable {
 
     public event OnDie onDieEvent;
 
-    private void Start()
-    {
-        GameManager.Instance.AddPlayersToList(gameObject.GetComponent<Entity>());
-    }
-
     public void ChangeHealth(int amount)
     {
         m_health += amount;
@@ -25,7 +20,7 @@ public class Health : MonoBehaviour, IDamagable {
 
     private void Update()
     {
-        if (transform.position.y < -15)
+        if (transform.position.y < -15 || transform.position.y > 13)
         {
             Die();
         }
@@ -33,8 +28,6 @@ public class Health : MonoBehaviour, IDamagable {
 
     void Die()
     {
-        GameManager.Instance.KnockOut(gameObject.GetComponent<Entity>());
-
         if (onDieEvent != null)
             onDieEvent();
         gameObject.SetActive(false);
