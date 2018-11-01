@@ -9,8 +9,6 @@ public class InputManager : MonoBehaviour, IInput
 
     private Camera mainCam;
 
-    private bool isGameRunning = true;
-
     private void Start()
     {
         mainCam = Camera.main;
@@ -19,7 +17,7 @@ public class InputManager : MonoBehaviour, IInput
     // Update is called once per frame
     void Update()
     {
-        if (isGameRunning)
+        if (GameManager.Instance.IsGameRunning)
             UpdateInput();
     }
 
@@ -27,10 +25,5 @@ public class InputManager : MonoBehaviour, IInput
     {
         IsFire = Input.GetButtonDown("Fire1");
         CursorPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-    }
-
-    public void GameEnd()
-    {
-        isGameRunning = false;
     }
 }

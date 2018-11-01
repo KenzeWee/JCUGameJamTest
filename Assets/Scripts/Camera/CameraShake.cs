@@ -14,7 +14,7 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float maxForce = 30.0f;
 
 
-    [SerializeField] private float shakeAmount = 0.5f;
+    [SerializeField] private float maxShakeAmount = 2f;
     [SerializeField] private float decreaseFactor = 1.0f;
 
     private Coroutine shakeEvent;
@@ -43,7 +43,7 @@ public class CameraShake : MonoBehaviour
 
         do
         {
-            cameraAxis.localPosition = originalPos + Random.insideUnitSphere * shakeAmount * (fireForce/maxForce);
+            cameraAxis.localPosition = originalPos + Random.insideUnitSphere * maxShakeAmount * (fireForce/maxForce);
 
             shakeDuration -= Time.deltaTime * decreaseFactor;
             yield return null;

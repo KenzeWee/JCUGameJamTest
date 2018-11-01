@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_Behaviour : MonoBehaviour, IAIInput
+public class AI_Behaviour : MonoBehaviour, IInput
 {
     private enum AISTATE { IDLE, CHASING, ATTACK, DIE };
     [SerializeField] private AISTATE currenState = AISTATE.IDLE;
@@ -20,12 +20,10 @@ public class AI_Behaviour : MonoBehaviour, IAIInput
     public bool IsFire { get; private set; }
     public Vector2 CursorPos { get; private set; }
 
-    private bool isGameRunning = true;
-
     // Update is called once per frame
     void Update()
     {
-        if (isGameRunning)
+        if (GameManager.Instance.IsGameRunning)
         {
             RunState();
             RunFireCD();
@@ -163,11 +161,5 @@ public class AI_Behaviour : MonoBehaviour, IAIInput
         }
 
         currenState = AISTATE.IDLE;
-    }
-
-    public void GameEnd()
-    {
-        isGameRunning = false;
-        //other game end resets etc
     }
 }

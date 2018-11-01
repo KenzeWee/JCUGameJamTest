@@ -913,7 +913,7 @@ MonoBehaviour:
   cameraAxis: {fileID: 635618198}
   shakeDuration: 0.2
   maxForce: 30
-  shakeAmount: 0.3
+  maxShakeAmount: 1
   decreaseFactor: 1
 --- !u!1 &535120141
 GameObject:
