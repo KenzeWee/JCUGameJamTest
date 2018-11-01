@@ -18,6 +18,7 @@ public class AI_Behaviour : MonoBehaviour, IInput
     private float currentFireCooldown = 0;
 
     public bool IsFire { get; private set; }
+    public bool ChangePivot { get; private set; }
     public Vector2 CursorPos { get; private set; }
 
     // Update is called once per frame

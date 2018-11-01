@@ -11,6 +11,7 @@ public class GunRotation : MonoBehaviour
     //move gun only towards mouse not the whole pivot
     [SerializeField] private Transform rotatingObj;
 
+    [SerializeField] private GunGroundCheck m_GroundCheck;
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;
 
@@ -29,7 +30,13 @@ public class GunRotation : MonoBehaviour
         //global variable cause used throughout the script
         MouseLookat();
         FollowMouse();
+
+        // If RMB is down and gun is touching floor
+        if (inputManager.ChangePivot && m_GroundCheck.isGrounded)
+            SwitchPivot();
     }
+
+    private Vector3 desiredPos;
 
     private void MouseLookat()
     {
@@ -37,8 +44,7 @@ public class GunRotation : MonoBehaviour
         Vector2 diff = inputManager.CursorPos - (Vector2)transform.position;
         diff.Normalize();
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
-        //GetComponent<Rigidbody2D>().AddTorque(10 * 1);
+        rotatingObj.parent.rotation = Quaternion.Euler(0f, 0f, rot_z);
     }
 
     private void FollowMouse()
@@ -53,5 +59,12 @@ public class GunRotation : MonoBehaviour
         {
             rotatingObj.transform.position = Vector2.MoveTowards(rotatingObj.transform.position, inputManager.CursorPos, Time.deltaTime * 2);
         }
+    }
+
+    private void SwitchPivot()
+    {
+        Transform temp = pivotingObj;
+        pivotingObj = rotatingObj;
+        rotatingObj = temp;
     }
 }
