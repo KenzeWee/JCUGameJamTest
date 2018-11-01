@@ -16,6 +16,9 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
     public GunFire GunFire { get; private set; }
     public GunRotation GunRotation { get; private set; }
 
+    private Rigidbody2D rb;
+    [SerializeField] private float knockbackFactor = 25f;
+
     protected virtual void Start()
     {
         HP = GetComponent<IDamagable>();
@@ -23,6 +26,8 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
 
         GunFire = GetComponentInChildren<GunFire>();
         GunRotation = GetComponentInChildren<GunRotation>();
+
+        rb = GetComponent<Rigidbody2D>();
 
         //Set layer to player
         gameObject.layer = 10;
@@ -34,10 +39,13 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
     }
 
     protected override void SuscribeToEvents()
-    {   }
+    {
+        GunFire.onGunFiredEvent += Knockback;
+    }
 
     protected override void UnsuscribeToEvents()
     {
+        GunFire.onGunFiredEvent += Knockback;
         HP.onDieEvent -= KnockOutPlayer;
         HP.onDieEvent -= UnsuscribeToEvents;
     }
@@ -54,5 +62,10 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
         {
             pickUp.PickUpBehaviour(this);
         }
+    }
+
+    protected virtual void Knockback (float fireForce)
+    {
+        rb.AddForce(-GunFire.FiringPoint.right * (fireForce) * knockbackFactor, ForceMode2D.Impulse);
     }
 }

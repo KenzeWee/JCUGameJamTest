@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
             if (winScreen != null)
                 winScreen.SetActive(true);
 
-            print("win");
+            //print("win");
             IsGameRunning = false;
         }
     }

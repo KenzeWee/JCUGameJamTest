@@ -5,6 +5,7 @@ public class AI : GenericPlayer<AI_Behaviour>
 {
     protected override void SuscribeToEvents()
     {
+        base.SuscribeToEvents();
         GameManager.Instance.onPlayerKnockedOutEvent += inputManager.PlayerKnockOutCheck;
     }
 

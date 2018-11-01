@@ -422,8 +422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05c7895acf525448865da25282a4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 682435338}
-  gun: {fileID: 1176372179}
+  pivotingObj: {fileID: 0}
+  rotatingObj: {fileID: 0}
   minDistance: 0
   maxDistance: 1.5
 --- !u!1 &218957716
@@ -539,8 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05c7895acf525448865da25282a4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1740237666}
-  gun: {fileID: 626331342}
+  pivotingObj: {fileID: 1740237673}
+  rotatingObj: {fileID: 626331343}
   minDistance: 0
   maxDistance: 1.5
 --- !u!1 &255978448
@@ -569,7 +569,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356332171
 GameObject:
@@ -809,7 +809,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421433454
 GameObject:
@@ -994,8 +994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05c7895acf525448865da25282a4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1052333322}
-  gun: {fileID: 1766561186}
+  pivotingObj: {fileID: 1052333328}
+  rotatingObj: {fileID: 1766561187}
   minDistance: 0
   maxDistance: 1.5
 --- !u!1 &501167796
@@ -1361,8 +1361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05c7895acf525448865da25282a4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 623991707}
-  gun: {fileID: 218957716}
+  pivotingObj: {fileID: 623991714}
+  rotatingObj: {fileID: 218957717}
   minDistance: 0
   maxDistance: 1.5
 --- !u!1 &623991707
@@ -1386,7 +1386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &623991708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,7 +1513,7 @@ Transform:
   m_Children:
   - {fileID: 575633454}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &623991715
 MonoBehaviour:
@@ -1632,7 +1632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &682435339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1767,7 @@ Transform:
   m_Children:
   - {fileID: 132832618}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769984533
 GameObject:
@@ -2010,8 +2010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05c7895acf525448865da25282a4527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1522591243}
-  gun: {fileID: 84827819}
+  pivotingObj: {fileID: 1522591248}
+  rotatingObj: {fileID: 84827820}
   minDistance: 0
   maxDistance: 1.5
 --- !u!114 &969845082
@@ -2079,7 +2079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1052333323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,7 +2191,7 @@ Transform:
   m_Children:
   - {fileID: 497978501}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1052333329
 MonoBehaviour:
@@ -3157,7 +3157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1740237667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3284,7 +3284,7 @@ Transform:
   m_Children:
   - {fileID: 220140542}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1740237674
 MonoBehaviour:
@@ -3638,7 +3638,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2038088339
 GameObject:

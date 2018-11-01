@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GunFire : MonoBehaviour {
     [SerializeField] private Transform firingPoint;
+    public Transform FiringPoint { get { return firingPoint; } }
 
     [SerializeField] private GenericProjectile projectile;
     private GenericProjectile defaultProjectile;
