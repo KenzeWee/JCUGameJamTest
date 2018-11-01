@@ -16,6 +16,7 @@ public class GunRotation : MonoBehaviour
     [SerializeField] private float maxDistance;
 
     private IInput inputManager;
+    private bool isPivotingWithGun = false;
 
     // Use this for initialization
     void Start()
@@ -32,8 +33,16 @@ public class GunRotation : MonoBehaviour
         FollowMouse();
 
         // If RMB is down and gun is touching floor
-        if (inputManager.ChangePivot && m_GroundCheck.isGrounded)
+        if (inputManager.ChangePivot && m_GroundCheck.isGrounded && !isPivotingWithGun)
+        {
+            isPivotingWithGun = true;
             SwitchPivot();
+        }
+        else if (isPivotingWithGun && !inputManager.ChangePivot)
+        {
+            isPivotingWithGun = false;
+            SwitchPivot();
+        }
     }
 
     private Vector3 desiredPos;
@@ -44,7 +53,10 @@ public class GunRotation : MonoBehaviour
         Vector2 diff = inputManager.CursorPos - (Vector2)transform.position;
         diff.Normalize();
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        rotatingObj.parent.rotation = Quaternion.Euler(0f, 0f, rot_z);
+
+        // Rotation code needs to change due to this
+        if (rotatingObj.parent != null)
+            rotatingObj.parent.rotation = Quaternion.Euler(0f, 0f, rot_z);
     }
 
     private void FollowMouse()
