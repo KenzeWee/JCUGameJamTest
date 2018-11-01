@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour, IInput
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.IsGameRunning)
+        if (GameManager.Instance == null || GameManager.Instance.IsGameRunning)
             UpdateInput();
     }
 

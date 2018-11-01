@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GunRotation : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private Transform pivotingObj;
 
     //Seperated gun's center to the middle (pivot point)
     //rotate around player center
     //move gun only towards mouse not the whole pivot
-    [SerializeField] private GameObject gun;
+    [SerializeField] private Transform rotatingObj;
 
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;
@@ -19,7 +19,7 @@ public class GunRotation : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        inputManager = player.GetComponent<IInput>();
+        inputManager = pivotingObj.GetComponent<IInput>();
     }
 
     // Update is called once per frame
@@ -33,24 +33,25 @@ public class GunRotation : MonoBehaviour
 
     private void MouseLookat()
     {
-        //rotate based on pivot point (this script's gameobject)
+        //rotate based on pivot point(this script's gameobject)
         Vector2 diff = inputManager.CursorPos - (Vector2)transform.position;
         diff.Normalize();
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+        //GetComponent<Rigidbody2D>().AddTorque(10 * 1);
     }
 
     private void FollowMouse()
     {
         //Get Distance between mouse and player
-        float distance = Vector2.Distance(inputManager.CursorPos, player.transform.position); 
+        float distance = Vector2.Distance(inputManager.CursorPos, pivotingObj.position); 
         //Debug.Log(distance + " " + (distance > minDistance && distance < maxDistance));
 
         //if distance is within bounds
         //move gun towards mouse with the max distance move clamped
-        if (distance > minDistance && distance < maxDistance)
+        if ((distance > minDistance && distance < maxDistance) || (distance > maxDistance && Vector2.Distance(pivotingObj.position, rotatingObj.position) < maxDistance))
         {
-            gun.transform.position = Vector2.MoveTowards(gun.transform.position, inputManager.CursorPos, maxDistance-minDistance);
+            rotatingObj.transform.position = Vector2.MoveTowards(rotatingObj.transform.position, inputManager.CursorPos, Time.deltaTime * 2);
         }
     }
 }
