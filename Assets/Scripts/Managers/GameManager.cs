@@ -42,20 +42,27 @@ public class GameManager : MonoBehaviour {
         if (IsGameRunning) {
             roundTimer -= Time.deltaTime;
 
-            if (currentLevelID == levels.Count - 1) {
-                IsGameRunning = false;
-                CheckWin ();
-                Debug.Log ("Game End");
-            } else if (gameState == GameState.InLevel && roundTimer <= 0) {
-                gameState = GameState.PlaneArriving;
-                StartCoroutine (ExecutePlaneEvent ());
+            if (roundTimer <= 0)
+            {
+                if (currentLevelID == levels.Count - 1)
+                {
+                    IsGameRunning = false;
+                    CheckWin();
+                    Debug.Log("Game End");
+                }
+                else if (gameState == GameState.InLevel)
+                {
+                    gameState = GameState.PlaneArriving;
+                    StartCoroutine(ExecutePlaneEvent());
+                }
             }
         }
     }
 
     private IEnumerator ExecutePlaneEvent () {
-        Debug.Log ("a");
         // Spawn plane
+        plane.transform.position = new Vector3(-50, 5, 0);
+        plane.gameObject.SetActive(true);
         float timer = PlaneArrivingTime;
         float distanceDelta = 50 / PlaneArrivingTime;
         do {
@@ -106,10 +113,11 @@ public class GameManager : MonoBehaviour {
         // Move plane out of the screen
         do {
             timer -= Time.deltaTime;
-            plane.transform.position -= new Vector3 (distanceDelta * Time.deltaTime, 0, 0);
+            plane.transform.position += new Vector3 (distanceDelta * Time.deltaTime, 0, 0);
             yield return null;
         }
-        while (plane.transform.position.x > -50);
+        while (plane.transform.position.x < 50);
+        plane.gameObject.SetActive(false);
 
         // At the next level
         gameState = GameState.InLevel;
