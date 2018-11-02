@@ -6,17 +6,32 @@ using UnityEngine;
 public class MarioFireball : GenericProjectile {
 	private Rigidbody2D rb;
 	private Vector2 velocity;
-
+	[SerializeField] private AudioSO explosionSound;
 	[SerializeField] private int maxBounce = 5;
 	private int bounceCounter = 0;
 	[SerializeField] private float explosionRadius = 2f;
 	[SerializeField] private float explosionForce = 10f;
 	[SerializeField] private bool drawDebugSphere = false;
+
 	protected override void Awake () {
 		base.Awake ();
 
 		rb = GetComponent<Rigidbody2D> ();
 		velocity = transform.right * FireForce;
+
+		if (explosionSound)
+			explosionSound = explosionSound.Initialize (gameObject);
+	}
+
+	protected override void Update () {
+		if (bounceCounter >= maxBounce) {
+			gameObject.Explode (explosionForce, transform.position, explosionRadius);
+
+			if (explosionSound)
+				explosionSound.Play ();
+
+			Destroy (gameObject, 0.02f);
+		}
 	}
 
 	public override void Fire () {
@@ -24,25 +39,16 @@ public class MarioFireball : GenericProjectile {
 		Destroy (gameObject, Lifetime);
 	}
 
-	protected override void collisionBehaviour () {
-		if (bounceCounter >= maxBounce) {
-			gameObject.Explode (explosionForce, transform.position, explosionRadius);
-			Destroy (gameObject);
-		}
-	}
-	
-	protected override void OnCollisionEnter2D (Collision2D other) {
-		base.OnCollisionEnter2D (other);
-
+	protected override void collisionBehaviour (Collision2D col) {
 		bounceCounter++;
-		if (other.gameObject.layer == 10) {
+		if (col.gameObject.layer == 10) {
 			gameObject.Explode (explosionForce, transform.position, explosionRadius);
-			Destroy (gameObject);
-		}
-	}
 
-	void OnDestroy () {
-		gameObject.Explode (explosionForce, transform.position, explosionRadius);
+			if (explosionSound)
+				explosionSound.Play ();
+
+			Destroy (gameObject, 0.02f);
+		}
 	}
 
 	private void OnDrawGizmos () {

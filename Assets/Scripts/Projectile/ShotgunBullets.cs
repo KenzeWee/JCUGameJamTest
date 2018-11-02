@@ -12,7 +12,7 @@ public class ShotgunBullets : GenericProjectile {
         }
     }
 
-    protected override void collisionBehaviour()
+    protected override void collisionBehaviour(Collision2D col)
     {
         //Pellets will handle, this is just the handler
     }

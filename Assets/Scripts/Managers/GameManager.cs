@@ -69,9 +69,10 @@ public class GameManager : MonoBehaviour
         // Plane is now stopping at level
         gameState = GameState.PlaneIdle;
         yield return new WaitForSeconds(PlaneIdleTime);
-
+        levels[currentLevelID].StartCoroutine(levels[currentLevelID].LevelBreak());
         // Plane is now moving to next level
         gameState = GameState.PlaneLeaving;
+
         timer = planeTravelTime/2;
 
         // Move NEXT level to the plane location/center of screen

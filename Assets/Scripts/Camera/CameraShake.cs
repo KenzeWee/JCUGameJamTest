@@ -28,7 +28,7 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    void Shake (float fireForce)
+    public void Shake (float fireForce)
     {
         if (shakeEvent == null)
         {
