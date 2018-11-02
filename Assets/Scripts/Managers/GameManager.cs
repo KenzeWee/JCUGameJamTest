@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
     // LevelManager
     [SerializeField] private List<GameObject> gameLevels = new List<GameObject>();
-    private float roundTimer = 40;
+    public float roundTimer = 40;
     private bool hasPortalSpawned = false;
     private int currentLevelID = 0;
 

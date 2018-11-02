@@ -17,6 +17,5 @@ public class PlayerInfoGUI : MonoBehaviour {
     void UpdateHealth()
     {
         GUI_PlayerHealth.fillAmount = ((float)m_player.CurrentHP / 10f) ;
-        print(((float)m_player.CurrentHP / 10f) );
     }
 }
