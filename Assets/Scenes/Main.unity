@@ -1632,7 +1632,10 @@ MonoBehaviour:
   PlaneArrivingTime: 0
   PlaneIdleTime: 0
   planeTravelTime: 0
-  levels: []
+  levels:
+  - {fileID: 1476463373}
+  - {fileID: 535055735}
+  - {fileID: 641304920}
 --- !u!4 &374393467
 Transform:
   m_ObjectHideFlags: 0
@@ -4287,7 +4290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &684578639
 Transform:
   m_ObjectHideFlags: 0
@@ -13856,7 +13859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1476463372
 Transform:
   m_ObjectHideFlags: 0

@@ -163,4 +163,25 @@ public class GameManager : MonoBehaviour
     {
         return ListOfPlayers;
     }
+
+    public void SpawnAllPlayer()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            ListOfPlayers[i].gameObject.SetActive(true);
+            ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID].respawnPoints[i].position;
+        }
+    }
+
+    public void RunPlayerSpawnCoroutine(GameObject playerObj)
+    {
+        StartCoroutine(SpawnPlayerRandom(playerObj));
+    }
+
+    private IEnumerator SpawnPlayerRandom(GameObject playerObj)
+    {
+        yield return new WaitForSeconds(2);
+        playerObj.SetActive(true);
+        playerObj.transform.position = levels[currentLevelID].respawnPoints[Random.Range(0,4)].position;
+    }
 }
