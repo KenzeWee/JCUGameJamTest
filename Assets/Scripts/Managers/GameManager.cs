@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 
     private List<Entity> ListOfPlayers = new List<Entity>();
 
+    [SerializeField] private ParticleSystem fireworks;
     [SerializeField] private GameObject winScreen;
     public bool IsGameRunning { get; private set; }
 
@@ -34,6 +35,12 @@ public class GameManager : MonoBehaviour {
             if (winScreen != null)
                 winScreen.SetActive(true);
 
+            if (ListOfPlayers.Count == 1)
+            {
+                fireworks.gameObject.transform.parent = ListOfPlayers[0].transform;
+                fireworks.gameObject.transform.position = ListOfPlayers[0].transform.position;
+                fireworks.Play();
+            }
             //print("win");
             IsGameRunning = false;
         }

@@ -13,6 +13,9 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile
 
     [SerializeField] protected int damage = 1;
 
+    /*----------------Animations--------------*/
+    [SerializeField] protected Animator impactAnimation;
+
     public abstract void Fire();
     protected abstract void collisionBehaviour();
 
@@ -28,6 +31,9 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile
     protected virtual void OnCollisionEnter2D(Collision2D col)
     {
         collisionBehaviour();
+
+        if (impactAnimation)
+            impactAnimation.SetBool(0, true);
 
         Health hp = col.gameObject.GetComponent<Health>();
         if (hp)
