@@ -8,7 +8,8 @@ public abstract class GenericLevel : MonoBehaviour {
     [SerializeField] private GameObject levelBreakGroup;
     [SerializeField] private float lowestHeight = -15f, highestHeight = 9, fallSpeed = 10;
     private List<GameObject> levelObjects = new List<GameObject>();
-
+    [SerializeField] private bool infiniteScrolling = false;
+    public bool InfiniteScrolling { get { return infiniteScrolling; } }
 
 	protected virtual void Awake() {
 		if (!levelBreakGroup) throw new ArgumentNullException ("Need to assign level break group");

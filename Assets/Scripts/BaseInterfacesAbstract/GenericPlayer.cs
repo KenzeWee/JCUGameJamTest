@@ -99,4 +99,10 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         yield return new WaitForSeconds (cooldown);
         impactAnimation.SetBool ("Impact", false);
     }
+
+    protected virtual void Update () {
+        if (transform.position.y < -15 || transform.position.y > 13) {
+            HealthScript.ChangeHealth(-10000);
+        }
+    }
 }

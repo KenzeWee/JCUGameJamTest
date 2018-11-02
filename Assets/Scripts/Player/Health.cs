@@ -21,12 +21,6 @@ public class Health : MonoBehaviour, IDamagable {
         }
     }
 
-    private void Update () {
-        if (transform.position.y < -15 || transform.position.y > 13) {
-            Die ();
-        }
-    }
-
     void Die () {
         if (onDieEvent != null)
             onDieEvent ();
