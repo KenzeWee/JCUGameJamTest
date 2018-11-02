@@ -2317,6 +2317,7 @@ MonoBehaviour:
   maxOrth: 10
   minOrth: 6
   orthBuffer: 0
+  movingPlatform: {fileID: 1145408214}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
