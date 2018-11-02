@@ -11,10 +11,11 @@ using UnityEngine;
 [RequireComponent(typeof(IDamagable))]
 public abstract class GenericPlayer<T> : Entity where T : IInput
 {
-    public IDamagable HP { get; private set; }
+    public IDamagable HealthScript { get; private set; }
     public T inputManager { get; private set; }
     public GunFire GunFire { get; private set; }
     public GunRotation GunRotation { get; private set; }
+    [SerializeField] private PlayerVariable playerVariable;
 
     private Rigidbody2D rb;
     [SerializeField] private float knockbackFactor = 25f;
@@ -24,7 +25,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
 
     protected virtual void Start()
     {
-        HP = GetComponent<IDamagable>();
+        HealthScript = GetComponent<IDamagable>();
         inputManager = GetComponent<T>();
 
         GunFire = GetComponentInChildren<GunFire>();
@@ -37,8 +38,8 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
         Physics2D.IgnoreLayerCollision(8, 10);
         GameManager.Instance.AddPlayersToList(this);
 
-        HP.onDieEvent += UnsuscribeToEvents;
-        HP.onDieEvent += KnockOutPlayer;
+        HealthScript.onDieEvent += UnsuscribeToEvents;
+        HealthScript.onDieEvent += KnockOutPlayer;
         SuscribeToEvents();
     }
 
@@ -50,12 +51,13 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
     protected override void UnsuscribeToEvents()
     {
         GunFire.onGunFiredEvent += Knockback;
-        HP.onDieEvent -= KnockOutPlayer;
-        HP.onDieEvent -= UnsuscribeToEvents;
+        HealthScript.onDieEvent -= KnockOutPlayer;
+        HealthScript.onDieEvent -= UnsuscribeToEvents;
     }
 
     private void KnockOutPlayer()
     {
+        ++playerVariable.CurrentScore;
         GameManager.Instance.KnockOut(this);
     }
 
@@ -66,7 +68,6 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
         {
             pickUp.PickUpBehaviour(this);
         }
-
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D other)

@@ -7,7 +7,7 @@ public class HealthPickUp : GenericPickUpType<int>
     public override void PickUpBehaviour<TPlayerType>(GenericPlayer<TPlayerType> player)
     {
         //Does something when picked up
-        player.HP.ChangeHealth(PickUpItem);
+        player.HealthScript.ChangeHealth(PickUpItem);
         gameObject.SetActive(false);
     }
 }
