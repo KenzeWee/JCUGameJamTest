@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamicCamera : MonoBehaviour
-{
+public class DynamicCamera : MonoBehaviour {
     private Camera cam;
 
     //Find all players in scene (includes AI?)
-    private List<Entity> players;
+    private List<GameObject> objectsToTrack;
 
     //Camera movement speed variables
     [SerializeField] private float panSpeed = 5f;
@@ -33,10 +32,10 @@ public class DynamicCamera : MonoBehaviour
     private float orthSize;
     private float diff;
     private float orthDiff;
+    [SerializeField] private GameObject movingPlatform;
 
-    private void Start()
-    {
-        cam = GetComponent<Camera>();
+    private void Start () {
+        cam = GetComponent<Camera> ();
 
         targetPos = transform.position;
 
@@ -46,77 +45,85 @@ public class DynamicCamera : MonoBehaviour
         GameManager.Instance.onPlayerKnockedOutEvent += UpdateListOfPlayers;
     }
 
-    private void Update()
-    {
-        if (players == null)
-            UpdateListOfPlayers();
+    private void Update () {
+        if (objectsToTrack == null)
+            UpdateListOfPlayers ();
 
-        CalcPos();
-        CalcZoom();
+        CheckForMovingPlatform ();
+
+        CalcPos ();
+        CalcZoom ();
     }
 
     /*-------------------------- Camera Pan and Zoom Calculations ------------------------------*/
-    void CalcPos()
-    {
+    void CalcPos () {
         Vector3 centre = Vector3.zero;
         float count = 0f;
 
-        for (int i = 0; i < players.Count; i++)
-        {
-            centre += players[i].transform.position;
+        for (int i = 0; i < objectsToTrack.Count; i++) {
+            centre += objectsToTrack[i].transform.position;
             count++;
         }
 
-        if (count != 0)
-        {
+        if (count != 0) {
             targetPos = centre / count;
-            targetPos = targetPos.With(z: -10);
-            movementAxis.position = Vector3.Lerp(transform.position, targetPos, panSpeed * Time.deltaTime);
+            targetPos = targetPos.With (z: -10);
+            movementAxis.position = Vector3.Lerp (transform.position, targetPos, panSpeed * Time.deltaTime);
         }
     }
 
-    void CalcZoom()
-    {
-        getMaxDistance();
+    void CalcZoom () {
+        getMaxDistance ();
 
-        if (largestDistance > upperBoundary)
-        {
+        if (largestDistance > upperBoundary) {
             orthSize = maxOrth;
-        }
-        else if (largestDistance < lowerBoundary)
-        {
+        } else if (largestDistance < lowerBoundary) {
             orthSize = minOrth;
-        }
-        else
-        {
+        } else {
             diff = largestDistance - lowerBoundary;
             orthDiff = diff * orthRatio;
             orthSize = minOrth + orthDiff + orthBuffer;
         }
 
-        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, orthSize, zoomSpeed * Time.deltaTime);
+        cam.orthographicSize = Mathf.Lerp (cam.orthographicSize, orthSize, zoomSpeed * Time.deltaTime);
     }
 
-    void getMaxDistance()
-    {
+    void getMaxDistance () {
         largestDistance = 0.0f;
 
-        for (int i = 0; i < players.Count; i++)
-        {
-            for (int b = 0; b < players.Count; b++)
-            {
-                float dist = Vector2.Distance(players[b].transform.position, players[i].transform.position);
+        for (int i = 0; i < objectsToTrack.Count; i++) {
+            for (int b = 0; b < objectsToTrack.Count; b++) {
+                float dist = Vector2.Distance (objectsToTrack[b].transform.position, objectsToTrack[i].transform.position);
 
-                if (dist > largestDistance)
-                {
+                if (dist > largestDistance) {
                     largestDistance = dist;
                 }
             }
         }
     }
 
-    void UpdateListOfPlayers()
-    {
-        players = GameManager.Instance.GetListOfPlayers();
+    void CheckForMovingPlatform () {
+        if (objectsToTrack != null) {
+            if (movingPlatform.activeSelf && !objectsToTrack.Contains (movingPlatform)) {
+                objectsToTrack.Add (movingPlatform);
+            }
+
+            if (!movingPlatform.activeSelf && objectsToTrack.Contains (movingPlatform)) {
+                objectsToTrack.Remove (movingPlatform);
+            }
+        }
+    }
+
+    void UpdateListOfPlayers () {
+        List<Entity> temp = GameManager.Instance.GetListOfPlayers ();
+
+        if (objectsToTrack != null)
+            objectsToTrack.Clear ();
+
+        objectsToTrack = new List<GameObject> ();
+
+        foreach (Entity player in temp) {
+            objectsToTrack.Add (player.gameObject);
+        }
     }
 }
