@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb174e26a6dc711448c33806f20ef9f2, type: 3}
-  m_Name: FiringSound
+  m_Name: ExplosionSound
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 55a48c1f47804c549a769253de8dbdcd, type: 3}
+  audioClip: {fileID: 8300000, guid: 0e5dc060e6d97cb4890c30b38c292bbe, type: 3}
   volume: 1
   Loop: 0
   UseOriginal: 1
   startTime: 0
   endTime: 0
   Spartial: 0
-  audioMixer: {fileID: 243370639617825500, guid: b5faf823ed3bebb4d9bc129354653d6f,
+  audioMixer: {fileID: 243529829971852946, guid: b5faf823ed3bebb4d9bc129354653d6f,
     type: 2}
   fadeOut: 0
-  fadeTime: 0
+  fadeTime: 0.6

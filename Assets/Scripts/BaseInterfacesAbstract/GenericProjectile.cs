@@ -21,7 +21,7 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
     [SerializeField] protected Animator impactAnimation;
 
     public abstract void Fire ();
-    protected abstract void collisionBehaviour ();
+    protected abstract void collisionBehaviour (Collision2D col);
 
     protected virtual void Awake () {
         //set projectile to bullet layer
@@ -41,10 +41,10 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
     }
 
     protected virtual void OnCollisionEnter2D (Collision2D col) {
-        collisionBehaviour ();
+        collisionBehaviour (col);
 
         if (impactAnimation)
-            impactAnimation.SetBool (0, true);
+            impactAnimation.SetBool ("Impact", true);
 
         Health hp = col.gameObject.GetComponent<Health> ();
         if (hp) {
