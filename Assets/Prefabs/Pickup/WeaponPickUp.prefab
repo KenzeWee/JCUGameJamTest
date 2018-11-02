@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4085524730668168}
   - component: {fileID: 33909418618263952}
   - component: {fileID: 23519060799889848}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4368200673153076}
   - component: {fileID: 58573361924425064}
   - component: {fileID: 114296274811106246}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

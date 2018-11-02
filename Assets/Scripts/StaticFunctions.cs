@@ -2,63 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class StaticFunctions
-{
+public static class StaticFunctions {
     /*------------------------RIGIDBODY2D--------------------------*/
-    public static void AddExplosionForce(this Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius)
-    {
+    public static void AddExplosionForce (this Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius) {
         var dir = (body.transform.position - explosionPosition);
         float wearoff = 1 - (dir.magnitude / explosionRadius);
-        body.AddForce(dir.normalized * (wearoff <= 0f ? 0f : explosionForce) * wearoff, ForceMode2D.Impulse);
+        body.AddForce (dir.normalized * (wearoff <= 0f ? 0f : explosionForce) * wearoff, ForceMode2D.Impulse);
     }
 
-    public static void AddExplosionForce(this Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius, float upliftModifier)
-    {
+    public static void AddExplosionForce (this Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius, float upliftModifier) {
         var dir = (body.transform.position - explosionPosition);
         float wearoff = 1 - (dir.magnitude / explosionRadius);
         Vector3 baseForce = dir.normalized * (wearoff <= 0f ? 0f : explosionForce) * wearoff;
-        body.AddForce(baseForce);
+        body.AddForce (baseForce);
 
         float upliftWearoff = 1 - upliftModifier / explosionRadius;
         Vector3 upliftForce = Vector2.up * explosionForce * upliftWearoff;
-        body.AddForce(upliftForce);
+        body.AddForce (upliftForce);
     }
 
-    public static void Explode (this GameObject source, float explosionForce, Vector3 explosionPosition, float explosionRadius)
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(source.transform.position, explosionRadius);
+    public static void Explode (this GameObject source, float explosionForce, Vector3 explosionPosition, float explosionRadius) {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll (source.transform.position, explosionRadius);
 
-        foreach (Collider2D col in colliders)
-        {
-            Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
+        foreach (Collider2D col in colliders) {
+            Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D> ();
 
             if (rb != null)
-                rb.AddExplosionForce(explosionForce, source.transform.position, explosionRadius);
+                rb.AddExplosionForce (explosionForce, source.transform.position, explosionRadius);
         }
     }
 
     /*--------------------- Find Game Objects By Layer ------------------------------*/
-    public static List<GameObject> FindGameObjectsByLayer(int layerToSearch)
-    {
-        GameObject[] go = Object.FindObjectsOfType<GameObject>();
-        List<GameObject> listToReturn = new List<GameObject>();
-        foreach (GameObject gameObj in go)
-        {
+    public static List<GameObject> FindGameObjectsByLayer (int layerToSearch) {
+        GameObject[] go = Object.FindObjectsOfType<GameObject> ();
+        List<GameObject> listToReturn = new List<GameObject> ();
+        foreach (GameObject gameObj in go) {
             if (gameObj.layer == layerToSearch)
-                listToReturn.Add(gameObj);
+                listToReturn.Add (gameObj);
         }
         return listToReturn;
     }
 
     /*------------------- Vector3 ------------------*/
-    public static Vector3 With (this Vector3 originalVec, float? x = null, float? y = null, float? z = null)
-    {
-        return new Vector3(x ?? originalVec.x, y ?? originalVec.y, z ?? originalVec.z);
+    public static Vector3 With (this Vector3 originalVec, float? x = null, float? y = null, float? z = null) {
+        return new Vector3 (x ?? originalVec.x, y ?? originalVec.y, z ?? originalVec.z);
     }
 
     /*---------------------List------------------------*/
-    public static T RandomObject<T> (this List<T> list)
-    {
-        return list[Random.Range(0, list.Count)];
+    public static T RandomObject<T> (this List<T> list) {
+        return list[Random.Range (0, list.Count)];
+    }
+
+    /// <summary>
+    /// Shuffles the list randomly
+    /// </summary>
+    public static List<T> RandomizeList<T> (this List<T> list) {
+        for (int i = 0; i < list.Count; i++) {
+            T temp = list[i];
+            int randomIndex = Random.Range (i, list.Count);
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
+
+        return list;
     }
 }

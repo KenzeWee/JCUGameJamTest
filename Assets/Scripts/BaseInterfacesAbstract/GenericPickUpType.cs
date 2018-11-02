@@ -21,6 +21,10 @@ public abstract class GenericPickUpType<T> : MonoBehaviour, IPickUp {
     //What this pickup does when its picked up
     //e.g. replenish health
     public abstract void PickUpBehaviour<TPlayerType> (GenericPlayer<TPlayerType> player) where TPlayerType : IInput;
+
+    protected virtual void Awake() {
+        gameObject.layer = 11;
+    }
     protected virtual void Respawn () {
         timeTillRespawn -= Time.deltaTime;
         if (timeTillRespawn <= 0) {

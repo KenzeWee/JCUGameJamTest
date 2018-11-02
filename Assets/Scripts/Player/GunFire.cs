@@ -16,39 +16,37 @@ public class GunFire : MonoBehaviour {
 
     [SerializeField] private GameObject player;
 
-    public delegate void OnGunFired(float force);
+    public delegate void OnGunFired (float force);
     public event OnGunFired onGunFiredEvent;
 
     private IInput inputManager;
 
     // Use this for initialization
     void Start () {
-        inputManager = player.GetComponent<IInput>();
+        inputManager = player.GetComponent<IInput> ();
         defaultProjectile = projectile;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (inputManager.IsFire && !OnCooldown)
-        {
-            FireProjectile();
-            StartCoroutine(FireCoolDown(projectile.Cooldown));
-        }
-	}
-
-    void FireProjectile ()
-    {
-        GenericProjectile projFired = Instantiate(projectile.gameObject, firingPoint.position, firingPoint.rotation).GetComponent<GenericProjectile>();
-        projFired.Fire();
-        onGunFiredEvent(projFired.FireForce);
     }
 
-    IEnumerator FireCoolDown (float cooldown)
-    {
+    // Update is called once per frame
+    void Update () {
+        if (inputManager.IsFire && !OnCooldown) {
+            FireProjectile ();
+            StartCoroutine (FireCoolDown (projectile.Cooldown));
+        }
+    }
+
+    void FireProjectile () {
+        GenericProjectile projFired = Instantiate (projectile.gameObject, firingPoint.position, firingPoint.rotation).GetComponent<GenericProjectile> ();
+        projFired.Fire ();
+        projFired.FireSound.Play();
+        onGunFiredEvent (projFired.FireForce);
+    }
+
+    IEnumerator FireCoolDown (float cooldown) {
         OnCooldown = true;
-        animator.SetBool("IsFiring", true);
-        yield return new WaitForSeconds(cooldown);
+        animator.SetBool ("IsFiring", true);
+        yield return new WaitForSeconds (cooldown);
         OnCooldown = false;
-        animator.SetBool("IsFiring", false);
+        animator.SetBool ("IsFiring", false);
     }
 }

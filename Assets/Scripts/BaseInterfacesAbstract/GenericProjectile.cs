@@ -14,6 +14,8 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
     public float Lifetime { get { return lifeTime; } }
 
     [SerializeField] protected int damage = 1;
+    [SerializeField] private AudioSO fireSound;
+    public AudioSO FireSound { get { return fireSound; } }
 
     /*----------------Animations--------------*/
     [SerializeField] protected Animator impactAnimation;
@@ -27,6 +29,15 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
         //so bullet doesnt blow up on gun
         gameObject.layer = 9;
         Physics2D.IgnoreLayerCollision (8, 9);
+        Physics2D.IgnoreLayerCollision (9, 11);
+
+        if (fireSound)
+            fireSound = fireSound.Initialize (gameObject);
+    }
+
+    protected virtual void Update() {
+        if (fireSound)
+            fireSound.Update();
     }
 
     protected virtual void OnCollisionEnter2D (Collision2D col) {
