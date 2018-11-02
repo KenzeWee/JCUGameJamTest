@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour {
 
     // LevelManager
     [SerializeField] private List<GameObject> gameLevels = new List<GameObject>();
-    private float roundTimer = 30;
+    private float roundTimer = 40;
+    private bool hasPortalSpawned = false;
     private int currentLevelID = 0;
 
     private void Awake()
@@ -35,27 +36,39 @@ public class GameManager : MonoBehaviour {
         if (!IsGameRunning)
         {
             roundTimer -= Time.deltaTime;
+            if (!hasPortalSpawned && roundTimer <= 10)
+            {
+                SpawnPortal();
+            }
+
             if (roundTimer <= 0)
             {
-                IsGameRunning = false;
                 StartCoroutine(TransistionToNextLevel());
+                IsGameRunning = false;
             }
         }
     }
 
+    private void SpawnPortal()
+    {
+        hasPortalSpawned = true;
+        // Spawn portal here
+    }
+
     private IEnumerator TransistionToNextLevel()
     {
+        // Transistion animation and stuff goes here
+        yield return new WaitForSeconds(3);
+
         // Disable former level and enable next level
         gameLevels[currentLevelID].SetActive(false);
         ++currentLevelID;
         gameLevels[currentLevelID].SetActive(true);
 
-        // Transistion animation and stuff goes here
-        yield return new WaitForSeconds(3);
-
         // Start the level again
         IsGameRunning = true;
-        roundTimer = 30;
+        hasPortalSpawned = false;
+        roundTimer = 40;
     }
 
     private void CheckWin()
