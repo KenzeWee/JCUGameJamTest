@@ -140,18 +140,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void KnockOut<T>(GenericPlayer<T> Player) where T : IInput
-    //{
-    //    if (ListOfPlayers.Contains(Player))
-    //    {
-    //        ListOfPlayers.Remove(Player);
+    public void KnockOut<T>(GenericPlayer<T> Player) where T : IInput
+    {
+       if (ListOfPlayers.Contains(Player))
+       {
+           ListOfPlayers.Remove(Player);
 
-    //        if (onPlayerKnockedOutEvent != null)
-    //            onPlayerKnockedOutEvent();
+           if (onPlayerKnockedOutEvent != null)
+               onPlayerKnockedOutEvent();
 
-    //        // CheckWin();
-    //    }
-    //}
+           // CheckWin();
+       }
+    }
 
     public void AddPlayersToList<T>(GenericPlayer<T> Player) where T : IInput
     {

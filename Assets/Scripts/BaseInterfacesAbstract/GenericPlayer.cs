@@ -23,7 +23,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
     /*----------Animations--------------*/
     [SerializeField] private Animator impactAnimation;
 
-    protected virtual void Start () {
+    protected virtual void Awake() {
         HealthScript = GetComponent<IDamagable> ();
         inputManager = GetComponent<T> ();
 
@@ -35,26 +35,28 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         //Set layer to player
         gameObject.layer = 10;
         Physics2D.IgnoreLayerCollision (8, 10);
-        GameManager.Instance.AddPlayersToList (this);
+    }
 
-        HealthScript.onDieEvent += UnsuscribeToEvents;
-        HealthScript.onDieEvent += KnockOutPlayer;
+    void OnEnable () {
+        GameManager.Instance.AddPlayersToList (this);
         SuscribeToEvents ();
     }
 
     protected override void SuscribeToEvents () {
         GunFire.onGunFiredEvent += Knockback;
+        HealthScript.onDieEvent += UnsuscribeToEvents;
+        HealthScript.onDieEvent += KnockOutPlayer;
     }
 
     protected override void UnsuscribeToEvents () {
-        GunFire.onGunFiredEvent += Knockback;
+        GunFire.onGunFiredEvent -= Knockback;
         HealthScript.onDieEvent -= KnockOutPlayer;
         HealthScript.onDieEvent -= UnsuscribeToEvents;
     }
 
     private void KnockOutPlayer () {
         ++playerVariable.CurrentScore;
-        //GameManager.Instance.KnockOut (this);
+        GameManager.Instance.KnockOut (this);
     }
 
     protected virtual void OnTriggerEnter2D (Collider2D other) {
