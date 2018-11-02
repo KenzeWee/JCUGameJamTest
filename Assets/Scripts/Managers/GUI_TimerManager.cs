@@ -13,15 +13,15 @@ public class GUI_TimerManager : MonoBehaviour {
 
     void UpdateTimerImage()
     {
-        if (GameManager.Instance.roundTimer > 10)
+        if (GameManager.Instance.RoundTimer > 10)
         {
             TimerImage.color = Color.green;
         }
-        else if (GameManager.Instance.roundTimer <= 10)
+        else if (GameManager.Instance.RoundTimer <= 10)
         {
             TimerImage.color = Color.red;
         }
 
-        TimerImage.fillAmount = GameManager.Instance.roundTimer / 40;
+        TimerImage.fillAmount = GameManager.Instance.RoundTimer / 40;
     }
 }

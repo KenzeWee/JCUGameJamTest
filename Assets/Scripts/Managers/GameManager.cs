@@ -6,64 +6,58 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
-    public delegate void OnPlayerKnockOut();
+    public delegate void OnPlayerKnockOut ();
     public event OnPlayerKnockOut onPlayerKnockedOutEvent;
 
-    public delegate void OnGameEnd();
+    public delegate void OnGameEnd ();
     public event OnGameEnd onGameEndEvent;
 
-    private List<Entity> ListOfPlayers = new List<Entity>();
+    private List<Entity> ListOfPlayers = new List<Entity> ();
 
     [SerializeField] private ParticleSystem fireworks;
     [SerializeField] private GameObject winScreen;
     public bool IsGameRunning { get; private set; }
 
     // LevelManager
-    [SerializeField] private List<GameObject> gameLevels = new List<GameObject>();
-    public float roundTimer = 40;
+    [SerializeField] private List<GameObject> gameLevels = new List<GameObject> ();
+    [SerializeField] private float roundTimer = 40;
+    public float RoundTimer { get { return roundTimer; } }
     private bool hasPortalSpawned = false;
     private int currentLevelID = 0;
 
-    private void Awake()
-    {
+    private void Awake () {
         Instance = this;
-        winScreen.SetActive(false);
+        winScreen.SetActive (false);
         IsGameRunning = true;
     }
 
-    private void Update()
-    {
-        if (!IsGameRunning)
-        {
+    private void Update () {
+        if (!IsGameRunning) {
             roundTimer -= Time.deltaTime;
-            if (!hasPortalSpawned && roundTimer <= 10)
-            {
-                SpawnPortal();
+            if (!hasPortalSpawned && roundTimer <= 10) {
+                SpawnPortal ();
             }
 
-            if (roundTimer <= 0)
-            {
-                StartCoroutine(TransistionToNextLevel());
+            if (roundTimer <= 0) {
+                StartCoroutine (TransistionToNextLevel ());
                 IsGameRunning = false;
             }
         }
     }
 
-    private void SpawnPortal()
-    {
+    private void SpawnPortal () {
         hasPortalSpawned = true;
         // Spawn portal here
     }
 
-    private IEnumerator TransistionToNextLevel()
-    {
+    private IEnumerator TransistionToNextLevel () {
         // Transistion animation and stuff goes here
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds (3);
 
         // Disable former level and enable next level
-        gameLevels[currentLevelID].SetActive(false);
+        gameLevels[currentLevelID].SetActive (false);
         ++currentLevelID;
-        gameLevels[currentLevelID].SetActive(true);
+        gameLevels[currentLevelID].SetActive (true);
 
         // Start the level again
         IsGameRunning = true;
@@ -71,48 +65,41 @@ public class GameManager : MonoBehaviour {
         roundTimer = 40;
     }
 
-    private void CheckWin()
-    {
-        if (ListOfPlayers.Count <= 1)
-        {
+    private void CheckWin () {
+        if (ListOfPlayers.Count <= 1) {
             if (onGameEndEvent != null)
-                onGameEndEvent();
+                onGameEndEvent ();
 
             if (winScreen != null)
-                winScreen.SetActive(true);
+                winScreen.SetActive (true);
 
-            if (ListOfPlayers.Count == 1)
-            {
+            if (ListOfPlayers.Count == 1) {
                 fireworks.gameObject.transform.parent = ListOfPlayers[0].transform;
                 fireworks.gameObject.transform.position = ListOfPlayers[0].transform.position;
-                fireworks.Play();
+                fireworks.Play ();
             }
             //print("win");
             IsGameRunning = false;
         }
     }
 
-    public void KnockOut<T> (GenericPlayer<T> Player) where T: IInput
-    {
-        if (ListOfPlayers.Contains(Player))
-        {
-            ListOfPlayers.Remove(Player);
+    public void KnockOut<T> (GenericPlayer<T> Player) where T : IInput {
+        if (ListOfPlayers.Contains (Player)) {
+            ListOfPlayers.Remove (Player);
 
             if (onPlayerKnockedOutEvent != null)
-                onPlayerKnockedOutEvent();
+                onPlayerKnockedOutEvent ();
 
             // CheckWin();
         }
     }
 
-    public void AddPlayersToList<T> (GenericPlayer<T> Player) where T: IInput
-    {
-        if (!ListOfPlayers.Contains(Player))
-            ListOfPlayers.Add(Player);
+    public void AddPlayersToList<T> (GenericPlayer<T> Player) where T : IInput {
+        if (!ListOfPlayers.Contains (Player))
+            ListOfPlayers.Add (Player);
     }
 
-    public List<Entity> GetListOfPlayers()
-    {
+    public List<Entity> GetListOfPlayers () {
         return ListOfPlayers;
     }
 }
