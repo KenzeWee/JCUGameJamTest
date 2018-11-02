@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning { get; private set; }
 
     // LevelManager
-    [SerializeField] private List<GameObject> gameLevels = new List<GameObject>();
     [SerializeField] private GameManager plane;
     [SerializeField] private float levelFightTime, PlaneArrivingTime, PlaneIdleTime, planeTravelTime;
     private float roundTimer;
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
         winScreen.SetActive(false);
         IsGameRunning = true;
         roundTimer = levelFightTime;
-        gameLevels = gameLevels.RandomizeList();
+        levels = levels.RandomizeList();
     }
 
     private void Update()
@@ -87,9 +86,9 @@ public class GameManager : MonoBehaviour
         while (timer <= 0);
 
         // Disable former level and enable next level
-        gameLevels[currentLevelID].SetActive(false);
+        levels[currentLevelID].gameObject.SetActive(false);
         ++currentLevelID;
-        gameLevels[currentLevelID].SetActive(true);
+        levels[currentLevelID].gameObject.SetActive(true);
 
         // Move remaining distance
         timer = planeTravelTime / 2;
@@ -119,21 +118,6 @@ public class GameManager : MonoBehaviour
         roundTimer = levelFightTime;
     }
 
-    private IEnumerator TransistionToNextLevel()
-    {
-        // Transistion animation and stuff goes here
-        yield return new WaitForSeconds(3);
-
-        // Disable former level and enable next level
-        gameLevels[currentLevelID].SetActive(false);
-        ++currentLevelID;
-        gameLevels[currentLevelID].SetActive(true);
-
-        // Start the level again
-        IsGameRunning = true;
-        roundTimer = 40;
-    }
-
     private void CheckWin()
     {
         if (ListOfPlayers.Count <= 1)
@@ -155,18 +139,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void KnockOut<T>(GenericPlayer<T> Player) where T : IInput
-    {
-        if (ListOfPlayers.Contains(Player))
-        {
-            ListOfPlayers.Remove(Player);
+    //public void KnockOut<T>(GenericPlayer<T> Player) where T : IInput
+    //{
+    //    if (ListOfPlayers.Contains(Player))
+    //    {
+    //        ListOfPlayers.Remove(Player);
 
-            if (onPlayerKnockedOutEvent != null)
-                onPlayerKnockedOutEvent();
+    //        if (onPlayerKnockedOutEvent != null)
+    //            onPlayerKnockedOutEvent();
 
-            // CheckWin();
-        }
-    }
+    //        // CheckWin();
+    //    }
+    //}
 
     public void AddPlayersToList<T>(GenericPlayer<T> Player) where T : IInput
     {

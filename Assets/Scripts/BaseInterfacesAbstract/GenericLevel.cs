@@ -1,13 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class GenericLevel : MonoBehaviour {
 	[SerializeField] private List<Transform> respawnPoints = new List<Transform> ();
-	[SerializeField] private List<GameObject> levelObjects = new List<GameObject>();
+	[SerializeField] private GameObject levelBreakGroup;
+	private List<GameObject> levelObjects = new List<GameObject>();
 
 	protected virtual void Awake() {
-		foreach (Transform child in transform) {
+		if (!levelBreakGroup) throw new ArgumentNullException ("Need to assign level break group");
+		
+		foreach (Transform child in levelBreakGroup.transform) {
 			levelObjects.Add(child.gameObject);
 		}
 	}	

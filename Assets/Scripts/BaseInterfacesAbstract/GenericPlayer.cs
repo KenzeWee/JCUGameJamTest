@@ -54,7 +54,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
 
     private void KnockOutPlayer () {
         ++playerVariable.CurrentScore;
-        GameManager.Instance.KnockOut (this);
+        //GameManager.Instance.KnockOut (this);
     }
 
     protected virtual void OnTriggerEnter2D (Collider2D other) {
