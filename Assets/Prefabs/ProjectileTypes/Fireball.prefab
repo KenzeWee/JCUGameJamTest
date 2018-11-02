@@ -168,9 +168,10 @@ MonoBehaviour:
   lifeTime: 10
   damage: 3
   impactAnimation: {fileID: 0}
+  maxBounce: 5
   explosionRadius: 2
   explosionForce: 2000
-  drawDebugSphere: 0
+  drawDebugSphere: 1
 --- !u!198 &198851770017478362
 ParticleSystem:
   m_ObjectHideFlags: 1

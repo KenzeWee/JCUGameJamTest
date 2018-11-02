@@ -728,7 +728,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 220140541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 220140541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f05c7895acf525448865da25282a4527, type: 3}
   m_Name: 
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlType: 0
+  ControlType: 2
 --- !u!114 &485821340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8becac2603623d4ea16206e1a546e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: 2a0baba9bec1b524ea6b13a32ffcd326, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!61 &485821342
@@ -1863,7 +1864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &623991708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,6 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e17ca95e634f45970a7cd9b36e211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: c4808d782b3c4bc468f84c3eadcd4f0f, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!1 &626331342
@@ -2344,6 +2346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8becac2603623d4ea16206e1a546e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 0}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!61 &682435342
@@ -2495,7 +2498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlType: 0
+  ControlType: 1
 --- !u!114 &684578641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,6 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8becac2603623d4ea16206e1a546e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: c4808d782b3c4bc468f84c3eadcd4f0f, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!61 &684578643
@@ -3149,7 +3153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 627117359}
   firingPoint: {fileID: 1854748097}
-  projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
+  projectile: {fileID: 114796263668192706, guid: ca2a9280278c86d46ad063d51540587b,
     type: 2}
   player: {fileID: 1522591243}
 --- !u!1 &988604768
@@ -3260,7 +3264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1052333323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3401,6 +3405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e17ca95e634f45970a7cd9b36e211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: 08ec0087339e1ee4ab98830186393a7e, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!1 &1056528546
@@ -9464,6 +9469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8becac2603623d4ea16206e1a546e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!1 &1534709428
@@ -9713,7 +9719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlType: 0
+  ControlType: 3
 --- !u!114 &1578726786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9738,6 +9744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8becac2603623d4ea16206e1a546e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: 08ec0087339e1ee4ab98830186393a7e, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!61 &1578726788
@@ -10203,6 +10210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e17ca95e634f45970a7cd9b36e211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!61 &1684386960
@@ -10705,6 +10713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e17ca95e634f45970a7cd9b36e211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerVariable: {fileID: 11400000, guid: 2a0baba9bec1b524ea6b13a32ffcd326, type: 2}
   knockbackFactor: 25
   impactAnimation: {fileID: 0}
 --- !u!1 &1760004585
