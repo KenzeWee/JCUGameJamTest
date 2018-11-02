@@ -8,7 +8,6 @@ public class InputManager : MonoBehaviour, IInput
     public ControllerType ControlType;
     
     public bool IsFire { get; private set; }
-    public bool ChangePivot { get; private set; }
     public Vector2 CursorPos { get; private set; }
 
     private Camera mainCam;
@@ -33,7 +32,6 @@ public class InputManager : MonoBehaviour, IInput
             case ControllerType.KEYBOARD:
                 IsFire = Input.GetMouseButtonDown(0);
                 CursorPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-                ChangePivot = Input.GetMouseButton(1);
                 //print(IsFire);
                 break;
 
