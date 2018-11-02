@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning { get; private set; }
 
     // LevelManager
-    [SerializeField] private GameManager plane;
+    [SerializeField] private GenericLevel plane;
     [SerializeField] private float levelFightTime, PlaneArrivingTime, PlaneIdleTime, planeTravelTime;
     private float roundTimer;
     private int currentLevelID = 0;
@@ -162,5 +162,26 @@ public class GameManager : MonoBehaviour
     public List<Entity> GetListOfPlayers()
     {
         return ListOfPlayers;
+    }
+
+    public void SpawnAllPlayer()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            ListOfPlayers[i].gameObject.SetActive(true);
+            ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID].GetListOfRespawnPoints()[i].position;
+        }
+    }
+
+    public void RunPlayerSpawnCoroutine(GameObject playerObj)
+    {
+        StartCoroutine(SpawnPlayerRandom(playerObj));
+    }
+
+    private IEnumerator SpawnPlayerRandom(GameObject playerObj)
+    {
+        yield return new WaitForSeconds(2);
+        playerObj.SetActive(true);
+        playerObj.transform.position = levels[currentLevelID].GetListOfRespawnPoints()[Random.Range(0,4)].position;
     }
 }

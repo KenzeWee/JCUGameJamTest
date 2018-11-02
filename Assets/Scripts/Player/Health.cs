@@ -37,5 +37,12 @@ public class Health : MonoBehaviour, IDamagable {
         if (onDieEvent != null)
             onDieEvent();
         gameObject.SetActive(false);
+
+        Respawn();
+    }
+
+    public void Respawn()
+    {
+        GameManager.Instance.RunPlayerSpawnCoroutine(gameObject);
     }
 }
