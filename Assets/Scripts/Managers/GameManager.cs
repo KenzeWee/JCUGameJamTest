@@ -23,11 +23,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> gameLevels = new List<GameObject>();
     [SerializeField] private GameManager plane;
     [SerializeField] private float levelFightTime, PlaneArrivingTime, PlaneIdleTime, planeTravelTime;
-    public float roundTimer = 40;
+    private float roundTimer;
     private int currentLevelID = 0;
 
     private GameState gameState = GameState.InLevel;
     enum GameState { InLevel, PlaneArriving, PlaneIdle, PlaneLeaving, ReachedDestination };
+    [SerializeField] private List<GenericLevel> levels = new List<GenericLevel>();
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         winScreen.SetActive(false);
         IsGameRunning = true;
         roundTimer = levelFightTime;
+        gameLevels = gameLevels.RandomizeList();
     }
 
     private void Update()
@@ -48,10 +50,6 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.PlaneArriving;
                 StartCoroutine(ExecutePlaneEvent());
             }
-
-
-
-
         }
     }
 
@@ -75,12 +73,30 @@ public class GameManager : MonoBehaviour
 
         // Plane is now moving to next level
         gameState = GameState.PlaneLeaving;
-        timer = planeTravelTime;
+        timer = planeTravelTime/2;
 
         // Move NEXT level to the plane location/center of screen
         do
         {
             timer -= Time.deltaTime;
+
+            
+
+            yield return null;
+        }
+        while (timer <= 0);
+
+        // Disable former level and enable next level
+        gameLevels[currentLevelID].SetActive(false);
+        ++currentLevelID;
+        gameLevels[currentLevelID].SetActive(true);
+
+        // Move remaining distance
+        timer = planeTravelTime / 2;
+        do
+        {
+            timer -= Time.deltaTime;
+
 
             yield return null;
         }
@@ -98,6 +114,9 @@ public class GameManager : MonoBehaviour
         }
         while (plane.transform.position.x < 25);
 
+        // At the next level
+        gameState = GameState.InLevel;
+        roundTimer = levelFightTime;
     }
 
     private IEnumerator TransistionToNextLevel()
