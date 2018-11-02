@@ -4,24 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GUI_TimerManager : MonoBehaviour {
-    public Image TimerImage;
+    //public Image TimerImage;
 
-    private void Update()
-    {
-        UpdateTimerImage();
-    }
+    //private void Update()
+    //{
+    //    UpdateTimerImage();
+    //}
 
-    void UpdateTimerImage()
-    {
-        if (GameManager.Instance.RoundTimer > 10)
-        {
-            TimerImage.color = Color.green;
-        }
-        else if (GameManager.Instance.RoundTimer <= 10)
-        {
-            TimerImage.color = Color.red;
-        }
+    //void UpdateTimerImage()
+    //{
+    //    if (GameManager.Instance.RoundTimer > 10)
+    //    {
+    //        TimerImage.color = Color.green;
+    //    }
+    //    else if (GameManager.Instance.RoundTimer <= 10)
+    //    {
+    //        TimerImage.color = Color.red;
+    //    }
 
-        TimerImage.fillAmount = GameManager.Instance.RoundTimer / 40;
-    }
+    //    TimerImage.fillAmount = GameManager.Instance.RoundTimer / 40;
+    //}
 }
