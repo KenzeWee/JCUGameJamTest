@@ -21,4 +21,8 @@ public abstract class GenericLevel : MonoBehaviour {
 		return respawnPoints;
 		
 	}
+
+	public virtual void LevelBreak () {
+		//add level break stuff here
+	}
 }
