@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
         winScreen.SetActive(false);
         IsGameRunning = true;
         roundTimer = levelFightTime;

@@ -17,7 +17,7 @@ public abstract class GenericLevel : MonoBehaviour {
 			levelObjects.Add(child.gameObject);
 		}
 
-        StartCoroutine(LevelBreak());
+        //StartCoroutine(LevelBreak());
 	}	
 
 	public List<GameObject> GetListOfLevelObjects () {

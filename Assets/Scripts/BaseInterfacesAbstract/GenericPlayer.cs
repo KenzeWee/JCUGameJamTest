@@ -23,22 +23,34 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
     /*----------Animations--------------*/
     [SerializeField] private Animator impactAnimation;
 
-    protected virtual void Start() {
-        HealthScript = GetComponent<IDamagable> ();
-        inputManager = GetComponent<T> ();
-
-        GunFire = GetComponentInChildren<GunFire> ();
-        GunRotation = GetComponentInChildren<GunRotation> ();
-
-        rb = GetComponent<Rigidbody2D> ();
-
+    protected virtual void Start () {
         //Set layer to player
         gameObject.layer = 10;
         Physics2D.IgnoreLayerCollision (8, 10);
     }
 
     void OnEnable () {
-        GameManager.Instance.AddPlayersToList (this);
+        if (HealthScript == null)
+            HealthScript = GetComponent<IDamagable> ();
+
+        if (inputManager == null)
+            inputManager = GetComponent<T> ();
+
+        if (GunFire == null)
+            GunFire = GetComponentInChildren<GunFire> ();
+
+        if (GunRotation == null)
+            GunRotation = GetComponentInChildren<GunRotation> ();
+
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D> ();
+
+        if (GameManager.Instance == null) {
+            FindObjectOfType<GameManager> ().AddPlayersToList (this);
+        } else {
+            GameManager.Instance.AddPlayersToList (this);
+        }
+
         SuscribeToEvents ();
     }
 
