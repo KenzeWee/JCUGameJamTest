@@ -685,7 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 0}
   firingPoint: {fileID: 1957689771}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -804,7 +803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 715174530}
   firingPoint: {fileID: 425073275}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -869,6 +867,7 @@ GameObject:
   - component: {fileID: 356332175}
   - component: {fileID: 356332174}
   - component: {fileID: 356332173}
+  - component: {fileID: 356332176}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: platform
@@ -956,6 +955,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 356332171}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &356332176
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 356332171}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &365247377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,8 +1098,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireworks: {fileID: 1119623819}
   winScreen: {fileID: 1436705338}
-  gameLevels: []
-  roundTimer: 40
+  plane: {fileID: 0}
+  levelFightTime: 0
+  PlaneArrivingTime: 0
+  PlaneIdleTime: 0
+  planeTravelTime: 0
+  levels: []
 --- !u!4 &374393467
 Transform:
   m_ObjectHideFlags: 0
@@ -1105,6 +1128,7 @@ GameObject:
   - component: {fileID: 421433458}
   - component: {fileID: 421433457}
   - component: {fileID: 421433456}
+  - component: {fileID: 421433459}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: platform
@@ -1192,6 +1216,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 421433454}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &421433459
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421433454}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &425073274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,7 +1470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 960917405}
   firingPoint: {fileID: 1374931393}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -1666,6 +1709,7 @@ GameObject:
   - component: {fileID: 535120144}
   - component: {fileID: 535120143}
   - component: {fileID: 535120142}
+  - component: {fileID: 535120146}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: platform
@@ -1753,6 +1797,26 @@ Transform:
   m_Father: {fileID: 1476463372}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
+--- !u!50 &535120146
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 535120141}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &575633453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,7 +1859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 1056528548}
   firingPoint: {fileID: 1410479139}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -2863,6 +2926,11 @@ Prefab:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 58322449259989674, guid: ef9e715bbc3f7c749a5e712cf7c49bc3,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
   m_IsPrefabAsset: 0
@@ -2882,6 +2950,7 @@ GameObject:
   - component: {fileID: 910773992}
   - component: {fileID: 910773991}
   - component: {fileID: 910773990}
+  - component: {fileID: 910773993}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: platform
@@ -2969,6 +3038,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910773988}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &910773993
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910773988}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &938444013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,7 +3303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 11400000, guid: 762d2c4a47396ed40a4859474a1796a9, type: 2}
   animator: {fileID: 627117359}
   firingPoint: {fileID: 1854748097}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -8414,7 +8502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 1232616352}
   firingPoint: {fileID: 16398077}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -9146,7 +9233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 1504215202}
   firingPoint: {fileID: 1020379245}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -9175,6 +9261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1476463372}
+  - component: {fileID: 1476463373}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -9202,6 +9289,22 @@ Transform:
   m_Father: {fileID: 1170220789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1476463373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476463371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06a2f0c620bdfb41b7678174b19d4a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoints: []
+  levelBreakGroup: {fileID: 1476463371}
+  lowestHeight: -15
+  highestHeight: 9
+  fallSpeed: 10
 --- !u!1 &1504215200
 GameObject:
   m_ObjectHideFlags: 0
@@ -9571,6 +9674,7 @@ GameObject:
   - component: {fileID: 1534709431}
   - component: {fileID: 1534709430}
   - component: {fileID: 1534709429}
+  - component: {fileID: 1534709433}
   m_Layer: 0
   m_Name: Cube
   m_TagString: platform
@@ -9658,6 +9762,26 @@ Transform:
   m_Father: {fileID: 1476463372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1534709433
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1534709428}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1550981018
 GameObject:
   m_ObjectHideFlags: 0
@@ -10034,6 +10158,7 @@ GameObject:
   - component: {fileID: 1623156168}
   - component: {fileID: 1623156167}
   - component: {fileID: 1623156166}
+  - component: {fileID: 1623156169}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: platform
@@ -10121,6 +10246,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623156164}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &1623156169
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1623156164}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1684386955
 GameObject:
   m_ObjectHideFlags: 0
@@ -10833,7 +10978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 36557336}
   firingPoint: {fileID: 107467550}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -11154,7 +11298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f65a5d5b10d0c49a7ec947de8696be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunFireSound: {fileID: 0}
   animator: {fileID: 1228775736}
   firingPoint: {fileID: 1032185849}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
@@ -11287,6 +11430,7 @@ GameObject:
   - component: {fileID: 2038088343}
   - component: {fileID: 2038088342}
   - component: {fileID: 2038088341}
+  - component: {fileID: 2038088344}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: platform
@@ -11374,6 +11518,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2038088339}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &2038088344
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2038088339}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2041656324
 GameObject:
   m_ObjectHideFlags: 0
