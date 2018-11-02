@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
         winScreen.SetActive(false);
         IsGameRunning = true;
         roundTimer = levelFightTime;
-        levels = levels.RandomizeList();
+        //levels = levels.RandomizeList();
     }
 
     private void Update()
     {
-        if (!IsGameRunning)
+        if (IsGameRunning)
         {
             roundTimer -= Time.deltaTime;
 
@@ -57,55 +57,55 @@ public class GameManager : MonoBehaviour
     {
         // Spawn plane
         float timer = PlaneArrivingTime;
-
-        // Move plane to level
+        float distanceDelta = 31 / PlaneArrivingTime;
         do
         {
             timer -= Time.deltaTime;
-
+            plane.transform.position += new Vector3(distanceDelta * Time.deltaTime, 0, 0);
             yield return null;
         }
-        while (timer <= 0);
+        while (plane.transform.position.x <= 0);
 
         // Plane is now stopping at level
         gameState = GameState.PlaneIdle;
         yield return new WaitForSeconds(PlaneIdleTime);
-        levels[currentLevelID].StartCoroutine(levels[currentLevelID].LevelBreak());
+        //levels[currentLevelID].StartCoroutine(levels[currentLevelID].LevelBreak());
         // Plane is now moving to next level
         gameState = GameState.PlaneLeaving;
 
         timer = planeTravelTime/2;
 
         // Move NEXT level to the plane location/center of screen
+        distanceDelta = 100 / planeTravelTime;
         do
         {
             timer -= Time.deltaTime;
-
-            
-
+            levels[currentLevelID].transform.position -= new Vector3(distanceDelta * Time.deltaTime, 0, 0);
             yield return null;
         }
-        while (timer <= 0);
+        while (timer >= 0);
 
         // Disable former level and enable next level
         levels[currentLevelID].gameObject.SetActive(false);
         ++currentLevelID;
         levels[currentLevelID].gameObject.SetActive(true);
+        levels[currentLevelID].transform.position = new Vector3(50, 0, 0);
 
         // Move remaining distance
         timer = planeTravelTime / 2;
         do
         {
             timer -= Time.deltaTime;
-
+            levels[currentLevelID].transform.position -= new Vector3(distanceDelta * Time.deltaTime, 0, 0);
 
             yield return null;
         }
-        while (timer <= 0);
+        while (levels[currentLevelID].transform.position.x >= 0);
 
         // Reached the next level, plane is moving away
         gameState = GameState.ReachedDestination;
 
+        Debug.Log("Checkpoint");
         // Move plane out of the screen
         do
         {
