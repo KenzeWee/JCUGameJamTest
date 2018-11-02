@@ -10932,6 +10932,12 @@ Prefab:
       propertyPath: m_GravityScale
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114983977242765232, guid: 03f6a3ffba853554ab6a3bc84f5ce200,
+        type: 2}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 114796263668192706, guid: ca2a9280278c86d46ad063d51540587b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f6a3ffba853554ab6a3bc84f5ce200, type: 2}
   m_IsPrefabAsset: 0
@@ -10950,7 +10956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1145408215
 Transform:
   m_ObjectHideFlags: 0
