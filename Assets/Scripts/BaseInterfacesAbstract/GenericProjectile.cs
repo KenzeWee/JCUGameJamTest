@@ -8,6 +8,9 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile
     [SerializeField] private float fireForce = 30f;
     public float FireForce { get { return fireForce; } }
 
+    [SerializeField] private float cooldown;
+    public float Cooldown { get { return cooldown; } }
+
     [SerializeField] protected int damage = 1;
 
     public abstract void Fire();

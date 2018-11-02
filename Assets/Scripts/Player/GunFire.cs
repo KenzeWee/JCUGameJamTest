@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GunFire : MonoBehaviour {
     [SerializeField] private Animator animator;
-    [SerializeField] private float cooldown = 0.5f;
     private bool OnCooldown = false;
 
     [SerializeField] private Transform firingPoint;
@@ -33,7 +32,7 @@ public class GunFire : MonoBehaviour {
 		if (inputManager.IsFire && !OnCooldown)
         {
             FireProjectile();
-            StartCoroutine(FireCoolDown(cooldown));
+            StartCoroutine(FireCoolDown(projectile.Cooldown));
         }
 	}
 

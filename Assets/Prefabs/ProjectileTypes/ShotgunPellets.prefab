@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireForce: 30
+  cooldown: 0
   damage: 1
   lifeTime: 2
   explosionRadius: 0.95
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireForce: 30
+  cooldown: 0.6
   damage: 1
   pellets:
   - {fileID: 114682343383867084}
@@ -449,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireForce: 30
+  cooldown: 0
   damage: 1
   lifeTime: 2
   explosionRadius: 0.95
@@ -466,6 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireForce: 30
+  cooldown: 0
   damage: 1
   lifeTime: 2
   explosionRadius: 0.95
