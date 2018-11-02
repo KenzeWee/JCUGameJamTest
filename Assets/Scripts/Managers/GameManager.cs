@@ -3,103 +3,160 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public static GameManager Instance;
 
-    public delegate void OnPlayerKnockOut ();
+    public delegate void OnPlayerKnockOut();
     public event OnPlayerKnockOut onPlayerKnockedOutEvent;
 
-    public delegate void OnGameEnd ();
+    public delegate void OnGameEnd();
     public event OnGameEnd onGameEndEvent;
 
-    private List<Entity> ListOfPlayers = new List<Entity> ();
+    private List<Entity> ListOfPlayers = new List<Entity>();
 
     [SerializeField] private ParticleSystem fireworks;
     [SerializeField] private GameObject winScreen;
     public bool IsGameRunning { get; private set; }
 
     // LevelManager
-    [SerializeField] private List<GameObject> gameLevels = new List<GameObject> ();
-    [SerializeField] private float roundTimer = 40;
-    public float RoundTimer { get { return roundTimer; } }
-    private bool hasPortalSpawned = false;
+    [SerializeField] private List<GameObject> gameLevels = new List<GameObject>();
+    [SerializeField] private GameManager plane;
+    [SerializeField] private float levelFightTime, PlaneArrivingTime, PlaneIdleTime, planeTravelTime;
+    public float roundTimer = 40;
     private int currentLevelID = 0;
 
-    private void Awake () {
+    private GameState gameState = GameState.InLevel;
+    enum GameState { InLevel, PlaneArriving, PlaneIdle, PlaneLeaving, ReachedDestination };
+
+    private void Awake()
+    {
         Instance = this;
-        winScreen.SetActive (false);
+        winScreen.SetActive(false);
         IsGameRunning = true;
+        roundTimer = levelFightTime;
     }
 
-    private void Update () {
-        if (!IsGameRunning) {
+    private void Update()
+    {
+        if (!IsGameRunning)
+        {
             roundTimer -= Time.deltaTime;
-            if (!hasPortalSpawned && roundTimer <= 10) {
-                SpawnPortal ();
+
+            if (gameState == GameState.InLevel && roundTimer <= 0)
+            {
+                gameState = GameState.PlaneArriving;
+                StartCoroutine(ExecutePlaneEvent());
             }
 
-            if (roundTimer <= 0) {
-                StartCoroutine (TransistionToNextLevel ());
-                IsGameRunning = false;
-            }
+
+
+
         }
     }
 
-    private void SpawnPortal () {
-        hasPortalSpawned = true;
-        // Spawn portal here
+    private IEnumerator ExecutePlaneEvent()
+    {
+        // Spawn plane
+        float timer = PlaneArrivingTime;
+
+        // Move plane to level
+        do
+        {
+            timer -= Time.deltaTime;
+
+            yield return null;
+        }
+        while (timer <= 0);
+
+        // Plane is now stopping at level
+        gameState = GameState.PlaneIdle;
+        yield return new WaitForSeconds(PlaneIdleTime);
+
+        // Plane is now moving to next level
+        gameState = GameState.PlaneLeaving;
+        timer = planeTravelTime;
+
+        // Move NEXT level to the plane location/center of screen
+        do
+        {
+            timer -= Time.deltaTime;
+
+            yield return null;
+        }
+        while (timer <= 0);
+
+        // Reached the next level, plane is moving away
+        gameState = GameState.ReachedDestination;
+
+        // Move plane out of the screen
+        do
+        {
+            timer -= Time.deltaTime;
+
+            yield return null;
+        }
+        while (plane.transform.position.x < 25);
+
     }
 
-    private IEnumerator TransistionToNextLevel () {
+    private IEnumerator TransistionToNextLevel()
+    {
         // Transistion animation and stuff goes here
-        yield return new WaitForSeconds (3);
+        yield return new WaitForSeconds(3);
 
         // Disable former level and enable next level
-        gameLevels[currentLevelID].SetActive (false);
+        gameLevels[currentLevelID].SetActive(false);
         ++currentLevelID;
-        gameLevels[currentLevelID].SetActive (true);
+        gameLevels[currentLevelID].SetActive(true);
 
         // Start the level again
         IsGameRunning = true;
-        hasPortalSpawned = false;
         roundTimer = 40;
     }
 
-    private void CheckWin () {
-        if (ListOfPlayers.Count <= 1) {
+    private void CheckWin()
+    {
+        if (ListOfPlayers.Count <= 1)
+        {
             if (onGameEndEvent != null)
-                onGameEndEvent ();
+                onGameEndEvent();
 
             if (winScreen != null)
-                winScreen.SetActive (true);
+                winScreen.SetActive(true);
 
-            if (ListOfPlayers.Count == 1) {
+            if (ListOfPlayers.Count == 1)
+            {
                 fireworks.gameObject.transform.parent = ListOfPlayers[0].transform;
                 fireworks.gameObject.transform.position = ListOfPlayers[0].transform.position;
-                fireworks.Play ();
+                fireworks.Play();
             }
             //print("win");
             IsGameRunning = false;
         }
     }
 
-    public void KnockOut<T> (GenericPlayer<T> Player) where T : IInput {
-        if (ListOfPlayers.Contains (Player)) {
-            ListOfPlayers.Remove (Player);
+    public void KnockOut<T>(GenericPlayer<T> Player) where T : IInput
+    {
+        if (ListOfPlayers.Contains(Player))
+        {
+            ListOfPlayers.Remove(Player);
 
             if (onPlayerKnockedOutEvent != null)
-                onPlayerKnockedOutEvent ();
+                onPlayerKnockedOutEvent();
 
             // CheckWin();
         }
     }
 
-    public void AddPlayersToList<T> (GenericPlayer<T> Player) where T : IInput {
-        if (!ListOfPlayers.Contains (Player))
-            ListOfPlayers.Add (Player);
+    public void AddPlayersToList<T>(GenericPlayer<T> Player) where T : IInput
+    {
+        if (!ListOfPlayers.Contains(Player))
+            ListOfPlayers.Add(Player);
     }
 
-    public List<Entity> GetListOfPlayers () {
+    public List<Entity> GetListOfPlayers()
+    {
         return ListOfPlayers;
     }
 }
