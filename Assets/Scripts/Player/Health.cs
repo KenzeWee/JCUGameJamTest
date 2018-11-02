@@ -4,45 +4,38 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable {
     [SerializeField] private int maxHP = 10;
-    public int HP { get { return maxHP; } }
     [SerializeField] private PlayerVariable hpContainer;
+    public int HP { get { return hpContainer.CurrentHP; } private set { hpContainer.CurrentHP = value; } }
 
     public event OnDie onDieEvent;
 
-    private void Start()
-    {
-        hpContainer.CurrentHP = HP;
+    private void Start () {
+        HP = maxHP;
     }
 
-    public void ChangeHealth(int amount)
-    {
-        hpContainer.CurrentHP += amount;
+    public void ChangeHealth (int amount) {
+        HP += amount;
 
-        if(hpContainer.CurrentHP <= 0)
-        {
-            Die();
+        if (HP <= 0) {
+            Die ();
         }
     }
 
-    private void Update()
-    {
-        if (transform.position.y < -15 || transform.position.y > 13)
-        {
-            Die();
+    private void Update () {
+        if (transform.position.y < -15 || transform.position.y > 13) {
+            Die ();
         }
     }
 
-    void Die()
-    {
+    void Die () {
         if (onDieEvent != null)
-            onDieEvent();
-        gameObject.SetActive(false);
+            onDieEvent ();
+        gameObject.SetActive (false);
 
-        Respawn();
+        Respawn ();
     }
 
-    public void Respawn()
-    {
-        GameManager.Instance.RunPlayerSpawnCoroutine(gameObject);
+    public void Respawn () {
+        GameManager.Instance.RunPlayerSpawnCoroutine (gameObject);
     }
 }
