@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameRunning { get; private set; }
 
     // LevelManager
-    [SerializeField] private GameManager plane;
+    [SerializeField] private GenericLevel plane;
     [SerializeField] private float levelFightTime, PlaneArrivingTime, PlaneIdleTime, planeTravelTime;
     private float roundTimer;
     private int currentLevelID = 0;
