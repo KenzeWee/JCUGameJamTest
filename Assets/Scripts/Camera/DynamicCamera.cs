@@ -42,7 +42,7 @@ public class DynamicCamera : MonoBehaviour {
         orthRatio = minOrth / maxOrth;
         //distRatio = lowerBoundary / upperBoundary;
 
-        GameManager.Instance.onPlayerKnockedOutEvent += UpdateListOfPlayers;
+        GameManager.Instance.onListOfPlayerChangeEvent += UpdateListOfPlayers;
     }
 
     private void Update () {
@@ -115,7 +115,7 @@ public class DynamicCamera : MonoBehaviour {
     }
 
     void UpdateListOfPlayers () {
-        List<Entity> temp = GameManager.Instance.GetListOfPlayers ();
+        List<Entity> temp = GameManager.Instance.GetListOfActivePlayers ();
 
         if (objectsToTrack != null)
             objectsToTrack.Clear ();

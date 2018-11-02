@@ -30,7 +30,12 @@ public class MarioFireball : GenericProjectile {
 			if (explosionSound)
 				explosionSound.Play ();
 
-			Destroy (gameObject, 0.02f);
+			if (impactAnimation)
+				impactAnimation.SetBool ("Impact", true);
+
+			gameObject.GetComponent<Renderer> ().enabled = false;
+			gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+			Destroy (gameObject, 0.5f);
 		}
 	}
 
@@ -47,7 +52,13 @@ public class MarioFireball : GenericProjectile {
 			if (explosionSound)
 				explosionSound.Play ();
 
-			Destroy (gameObject, 0.02f);
+			if (impactAnimation)
+				impactAnimation.SetBool ("Impact", true);
+
+			gameObject.GetComponent<Renderer> ().enabled = false;
+			gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+
+			Destroy (gameObject, 0.5f);
 		}
 	}
 

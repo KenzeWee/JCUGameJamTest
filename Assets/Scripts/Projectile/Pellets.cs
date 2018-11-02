@@ -34,9 +34,12 @@ public class Pellets : GenericProjectile {
         if (explosionSound)
             explosionSound.Play ();
 
+        if (impactAnimation)
+            impactAnimation.SetBool ("Impact", true);
+
         gameObject.GetComponent<Renderer> ().enabled = false;
         gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-        Destroy (gameObject, 0.4f);
+        Destroy (gameObject, 0.5f);
     }
 
     private void OnDrawGizmos () {

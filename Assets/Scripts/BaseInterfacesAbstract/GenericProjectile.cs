@@ -43,9 +43,6 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
     protected virtual void OnCollisionEnter2D (Collision2D col) {
         collisionBehaviour (col);
 
-        if (impactAnimation)
-            impactAnimation.SetBool ("Impact", true);
-
         Health hp = col.gameObject.GetComponent<Health> ();
         if (hp) {
             hp.ChangeHealth (-damage);

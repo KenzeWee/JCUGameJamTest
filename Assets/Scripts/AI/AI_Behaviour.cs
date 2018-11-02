@@ -56,7 +56,7 @@ public class AI_Behaviour : MonoBehaviour, IInput
     void Idle()
     {
         if (target == null)
-            target = GameManager.Instance.GetListOfPlayers().RandomObject().transform;
+            target = GameManager.Instance.GetListOfActivePlayers().RandomObject().transform;
 
         currenState = AISTATE.CHASING;
     }
@@ -153,7 +153,7 @@ public class AI_Behaviour : MonoBehaviour, IInput
     {
         if (target != null)
         {
-            if (!GameManager.Instance.GetListOfPlayers().Contains(target.gameObject.GetComponent<Entity>()))
+            if (!GameManager.Instance.GetListOfActivePlayers().Contains(target.gameObject.GetComponent<Entity>()))
             {
                 target = null;
                 currenState = AISTATE.IDLE;

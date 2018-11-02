@@ -33,14 +33,17 @@ public class Bullet : GenericProjectile {
 
     protected override void collisionBehaviour (Collision2D col) {
         gameObject.Explode (explosionForce, transform.position, explosionRadius);
-        shakeCam.Shake(10);
+        shakeCam.Shake (10);
 
         if (explosionSound)
             explosionSound.Play ();
 
+        if (impactAnimation)
+            impactAnimation.SetBool ("Impact", true);
+
         gameObject.GetComponent<Renderer> ().enabled = false;
         gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-        Destroy (gameObject, 0.4f);
+        Destroy (gameObject, 0.5f);
     }
 
     private void OnDrawGizmos () {
