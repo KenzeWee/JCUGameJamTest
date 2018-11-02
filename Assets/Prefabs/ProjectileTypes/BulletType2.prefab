@@ -144,8 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireForce: 30
   cooldown: 0.3
+  lifeTime: 3
   damage: 2
-  lifeTime: 6
+  impactAnimation: {fileID: 0}
   explosionRadius: 2.55
   explosionForce: 3000
   drawDebugSphere: 1

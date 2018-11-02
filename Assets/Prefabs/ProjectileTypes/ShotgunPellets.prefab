@@ -416,8 +416,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireForce: 30
   cooldown: 0
+  lifeTime: 1.5
   damage: 1
-  lifeTime: 2
+  impactAnimation: {fileID: 0}
   explosionRadius: 0.95
   explosionForce: 1500
   drawDebugSphere: 1
@@ -434,7 +435,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireForce: 30
   cooldown: 0.6
+  lifeTime: 5
   damage: 1
+  impactAnimation: {fileID: 0}
   pellets:
   - {fileID: 114682343383867084}
   - {fileID: 114981113061923358}
@@ -452,8 +455,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireForce: 30
   cooldown: 0
+  lifeTime: 1.5
   damage: 1
-  lifeTime: 2
+  impactAnimation: {fileID: 0}
   explosionRadius: 0.95
   explosionForce: 1500
   drawDebugSphere: 1
@@ -470,8 +474,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireForce: 30
   cooldown: 0
+  lifeTime: 1.5
   damage: 1
-  lifeTime: 2
+  impactAnimation: {fileID: 0}
   explosionRadius: 0.95
   explosionForce: 1500
   drawDebugSphere: 1

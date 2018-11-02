@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pellets : GenericProjectile
 {
     private Rigidbody2D rb;
-    [SerializeField] private float lifeTime = 2f;
     [SerializeField] private float explosionRadius = 2f;
     [SerializeField] private float explosionForce = 10f;
     [SerializeField] private bool drawDebugSphere = false;
@@ -19,7 +18,7 @@ public class Pellets : GenericProjectile
     public override void Fire()
     {
         rb.AddForce(transform.right * FireForce, ForceMode2D.Impulse);
-        Destroy(gameObject, lifeTime);
+        Destroy(gameObject, Lifetime);
     }
 
     protected override void collisionBehaviour()

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : GenericProjectile {
-
-    [SerializeField] private float lifeTime = 5f;
     [SerializeField] private float explosionRadius = 2f;
     [SerializeField] private float explosionForce = 10f;
 
@@ -20,7 +18,7 @@ public class Bullet : GenericProjectile {
     public override void Fire()
     {
         projRB.AddForce(transform.right * FireForce, ForceMode2D.Impulse);
-        Destroy(gameObject, lifeTime);
+        Destroy(gameObject, Lifetime);
     }
 
     protected override void collisionBehaviour()
