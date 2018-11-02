@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IDamagable {    
-    [SerializeField] private int m_health;
-    public int HP { get { return m_health; } }
+public class Health : MonoBehaviour, IDamagable {
+    [SerializeField] private int maxHP = 10;
+    public int HP { get { return maxHP; } }
+    [SerializeField] private HealthVariable hpContainer;
 
     public event OnDie onDieEvent;
 
+    private void Start()
+    {
+        hpContainer.CurrentHP = HP;
+    }
+
     public void ChangeHealth(int amount)
     {
-        m_health += amount;
+        hpContainer.CurrentHP += amount;
 
-        if(m_health <= 0)
+        if(hpContainer.CurrentHP <= 0)
         {
             Die();
         }
