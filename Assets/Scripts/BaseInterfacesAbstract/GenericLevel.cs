@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class GenericLevel : MonoBehaviour {
-	[SerializeField] public List<Transform> respawnPoints = new List<Transform> ();
+	[SerializeField] private List<Transform> respawnPoints = new List<Transform> ();
     [SerializeField] private GameObject levelBreakGroup;
     [SerializeField] private float lowestHeight = -15f, highestHeight = 9, fallSpeed = 10;
     private List<GameObject> levelObjects = new List<GameObject>();
