@@ -197,6 +197,7 @@ MonoBehaviour:
   damage: 2
   fireSound: {fileID: 11400000, guid: 762d2c4a47396ed40a4859474a1796a9, type: 2}
   impactAnimation: {fileID: 95406420477124078}
+  duration: 6
   explosionSound: {fileID: 11400000, guid: 5c30c262ba4fda44d84b8d93b0dfcee4, type: 2}
   explosionRadius: 2.55
   explosionForce: 3000

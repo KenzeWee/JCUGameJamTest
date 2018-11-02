@@ -20,6 +20,12 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
     /*----------------Animations--------------*/
     [SerializeField] protected Animator impactAnimation;
 
+    [Header ("Timer Cooldown Variables For PowerUps")]
+    [SerializeField] private float duration = 5f;
+    public float Duration { get { return duration; } }
+
+    private float timeRemaining;
+
     public abstract void Fire ();
     protected abstract void collisionBehaviour (Collision2D col);
 
@@ -35,9 +41,9 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
             fireSound = fireSound.Initialize (gameObject);
     }
 
-    protected virtual void Update() {
+    protected virtual void Update () {
         if (fireSound)
-            fireSound.Update();
+            fireSound.Update ();
     }
 
     protected virtual void OnCollisionEnter2D (Collision2D col) {

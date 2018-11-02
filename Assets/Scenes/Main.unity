@@ -10936,7 +10936,7 @@ Prefab:
         type: 2}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 114796263668192706, guid: ca2a9280278c86d46ad063d51540587b,
+      objectReference: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f6a3ffba853554ab6a3bc84f5ce200, type: 2}
@@ -15048,11 +15048,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.82
+      value: -7.7
       objectReference: {fileID: 0}
     - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.1649303
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
       propertyPath: m_LocalPosition.z

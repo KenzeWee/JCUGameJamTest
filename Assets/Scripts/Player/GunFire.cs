@@ -12,7 +12,13 @@ public class GunFire : MonoBehaviour {
 
     [SerializeField] private GenericProjectile projectile;
     private GenericProjectile defaultProjectile;
-    public GenericProjectile SetProjectile { set { projectile = value; } }
+    public GenericProjectile SetProjectile {
+        set 
+        {
+            projectile = value;
+            timeRemaining = projectile.Duration;
+        }
+    }
 
     [SerializeField] private GameObject player;
 
@@ -20,6 +26,8 @@ public class GunFire : MonoBehaviour {
     public event OnGunFired onGunFiredEvent;
 
     private IInput inputManager;
+
+    private float timeRemaining;
 
     // Use this for initialization
     void Start () {
@@ -33,12 +41,18 @@ public class GunFire : MonoBehaviour {
             FireProjectile ();
             StartCoroutine (FireCoolDown (projectile.Cooldown));
         }
+
+        if (timeRemaining > 0 && projectile != defaultProjectile) {
+            if (Timer()) {
+                projectile = defaultProjectile;
+            }
+        }
     }
 
     void FireProjectile () {
         GenericProjectile projFired = Instantiate (projectile.gameObject, firingPoint.position, firingPoint.rotation).GetComponent<GenericProjectile> ();
         projFired.Fire ();
-        projFired.FireSound.Play();
+        projFired.FireSound.Play ();
         onGunFiredEvent (projFired.FireForce);
     }
 
@@ -48,5 +62,10 @@ public class GunFire : MonoBehaviour {
         yield return new WaitForSeconds (cooldown);
         OnCooldown = false;
         animator.SetBool ("IsFiring", false);
+    }
+
+    bool Timer () {
+        timeRemaining -= Time.deltaTime;
+        return (timeRemaining <= 0);
     }
 }

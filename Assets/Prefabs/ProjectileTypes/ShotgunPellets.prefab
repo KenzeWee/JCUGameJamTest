@@ -567,6 +567,7 @@ MonoBehaviour:
   damage: 1
   fireSound: {fileID: 11400000, guid: 762d2c4a47396ed40a4859474a1796a9, type: 2}
   impactAnimation: {fileID: 95870702639993598}
+  duration: 5
   explosionSound: {fileID: 11400000, guid: 5c30c262ba4fda44d84b8d93b0dfcee4, type: 2}
   explosionRadius: 0.95
   explosionForce: 1500
@@ -588,6 +589,7 @@ MonoBehaviour:
   damage: 1
   fireSound: {fileID: 11400000, guid: 762d2c4a47396ed40a4859474a1796a9, type: 2}
   impactAnimation: {fileID: 0}
+  duration: 6
   pellets:
   - {fileID: 114682343383867084}
   - {fileID: 114981113061923358}
@@ -609,6 +611,7 @@ MonoBehaviour:
   damage: 1
   fireSound: {fileID: 11400000, guid: 762d2c4a47396ed40a4859474a1796a9, type: 2}
   impactAnimation: {fileID: 95102690104661282}
+  duration: 5
   explosionSound: {fileID: 11400000, guid: 5c30c262ba4fda44d84b8d93b0dfcee4, type: 2}
   explosionRadius: 0.95
   explosionForce: 1500
@@ -630,6 +633,7 @@ MonoBehaviour:
   damage: 1
   fireSound: {fileID: 11400000, guid: 762d2c4a47396ed40a4859474a1796a9, type: 2}
   impactAnimation: {fileID: 95900837982690326}
+  duration: 5
   explosionSound: {fileID: 11400000, guid: 5c30c262ba4fda44d84b8d93b0dfcee4, type: 2}
   explosionRadius: 0.95
   explosionForce: 1500
