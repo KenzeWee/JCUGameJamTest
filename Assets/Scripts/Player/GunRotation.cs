@@ -62,12 +62,13 @@ public class GunRotation : MonoBehaviour
     private void FollowMouse()
     {
         //Get Distance between mouse and player
-        float distance = Vector2.Distance(inputManager.CursorPos, pivotingObj.position); 
+        float distance = Vector2.Distance(inputManager.CursorPos, pivotingObj.position);
         //Debug.Log(distance + " " + (distance > minDistance && distance < maxDistance));
 
         //if distance is within bounds
-        //move gun towards mouse with the max distance move clamped
-        if ((distance > minDistance && distance < maxDistance) || (distance > maxDistance && Vector2.Distance(pivotingObj.position, rotatingObj.position) < maxDistance))
+        //move gun towards mouse with the max distance move clamped 
+        //|| (distance > maxDistance && Vector2.Distance(pivotingObj.position, rotatingObj.position) < maxDistance)
+        if ((distance > minDistance && distance < maxDistance))
         {
             rotatingObj.transform.position = Vector2.MoveTowards(rotatingObj.transform.position, inputManager.CursorPos, Time.deltaTime * 2);
         }

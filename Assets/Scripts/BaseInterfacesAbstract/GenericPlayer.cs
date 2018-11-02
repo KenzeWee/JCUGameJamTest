@@ -19,6 +19,9 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
     private Rigidbody2D rb;
     [SerializeField] private float knockbackFactor = 25f;
 
+    /*----------Animations--------------*/
+    [SerializeField] private Animator impactAnimation;
+
     protected virtual void Start()
     {
         HP = GetComponent<IDamagable>();
@@ -31,6 +34,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
 
         //Set layer to player
         gameObject.layer = 10;
+        Physics2D.IgnoreLayerCollision(8, 10);
         GameManager.Instance.AddPlayersToList(this);
 
         HP.onDieEvent += UnsuscribeToEvents;
@@ -55,17 +59,41 @@ public abstract class GenericPlayer<T> : Entity where T : IInput
         GameManager.Instance.KnockOut(this);
     }
 
-    protected virtual void OnTriggerEnter2D (Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         IPickUp pickUp = other.gameObject.GetComponent<IPickUp>();
         if (pickUp != null)
         {
             pickUp.PickUpBehaviour(this);
         }
+
     }
 
-    protected virtual void Knockback (float fireForce)
+    protected virtual void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.DrawRay(transform.position, Vector2.down, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
+        Vector3 hitPoint = other.gameObject.transform.position;
+        Collider2D col = other.contacts[0].otherCollider;
+        if (hit.collider)
+        {
+            if (other.gameObject.tag == "platform" && col.gameObject == this.gameObject)
+            {
+                Debug.Log(other.gameObject.name);
+                StartCoroutine(ImpactCoolDown(0.05f));
+            }
+        }
+    }
+
+    protected virtual void Knockback(float fireForce)
     {
         rb.AddForce(-GunFire.FiringPoint.right * (fireForce) * knockbackFactor, ForceMode2D.Impulse);
+    }
+
+    IEnumerator ImpactCoolDown(float cooldown)
+    {
+        impactAnimation.SetBool("Impact", true);
+        yield return new WaitForSeconds(cooldown);
+        impactAnimation.SetBool("Impact", false);
     }
 }
