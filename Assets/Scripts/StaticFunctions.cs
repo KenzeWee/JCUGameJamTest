@@ -24,6 +24,19 @@ public static class StaticFunctions
         body.AddForce(upliftForce);
     }
 
+    public static void Explode (this GameObject source, float explosionForce, Vector3 explosionPosition, float explosionRadius)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(source.transform.position, explosionRadius);
+
+        foreach (Collider2D col in colliders)
+        {
+            Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
+
+            if (rb != null)
+                rb.AddExplosionForce(explosionForce, source.transform.position, explosionRadius);
+        }
+    }
+
     /*--------------------- Find Game Objects By Layer ------------------------------*/
     public static List<GameObject> FindGameObjectsByLayer(int layerToSearch)
     {

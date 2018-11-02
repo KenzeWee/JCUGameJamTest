@@ -24,16 +24,7 @@ public class Pellets : GenericProjectile
 
     protected override void collisionBehaviour()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-
-        foreach (Collider2D col in colliders)
-        {
-            Rigidbody2D rb = col.gameObject.GetComponent<Rigidbody2D>();
-
-            if (rb != null)
-                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
-        }
-
+        gameObject.Explode(explosionForce, transform.position, explosionRadius);
         Destroy(gameObject);
     }
 
