@@ -146,6 +146,7 @@ MonoBehaviour:
   cooldown: 0.1
   lifeTime: 2
   damage: 1
+  fireSound: {fileID: 11400000, guid: 762d2c4a47396ed40a4859474a1796a9, type: 2}
   impactAnimation: {fileID: 0}
   explosionRadius: 2.5
   explosionForce: 2000
