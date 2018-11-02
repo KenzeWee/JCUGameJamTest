@@ -23,7 +23,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
     /*----------Animations--------------*/
     [SerializeField] private Animator impactAnimation;
 
-    protected virtual void Awake() {
+    protected virtual void Start() {
         HealthScript = GetComponent<IDamagable> ();
         inputManager = GetComponent<T> ();
 
