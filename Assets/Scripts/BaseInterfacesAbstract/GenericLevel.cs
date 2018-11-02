@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class GenericLevel : MonoBehaviour {
 	[SerializeField] private List<Transform> respawnPoints = new List<Transform> ();
-	[SerializeField] private List<GameObject> levelObjects = new list<GameObject>();
+	[SerializeField] private List<GameObject> levelObjects = new List<GameObject>();
 
-	private virtual void Awake() {
+	protected virtual void Awake() {
 		foreach (Transform child in transform) {
 			levelObjects.Add(child.gameObject);
 		}
