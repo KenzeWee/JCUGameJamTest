@@ -18,11 +18,44 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject winScreen;
     public bool IsGameRunning { get; private set; }
 
+    // LevelManager
+    [SerializeField] private List<GameObject> gameLevels = new List<GameObject>();
+    private float roundTimer = 30;
+    private int currentLevelID = 0;
+
     private void Awake()
     {
         Instance = this;
         winScreen.SetActive(false);
         IsGameRunning = true;
+    }
+
+    private void Update()
+    {
+        if (!IsGameRunning)
+        {
+            roundTimer -= Time.deltaTime;
+            if (roundTimer <= 0)
+            {
+                IsGameRunning = false;
+                StartCoroutine(TransistionToNextLevel());
+            }
+        }
+    }
+
+    private IEnumerator TransistionToNextLevel()
+    {
+        // Disable former level and enable next level
+        gameLevels[currentLevelID].SetActive(false);
+        ++currentLevelID;
+        gameLevels[currentLevelID].SetActive(true);
+
+        // Transistion animation and stuff goes here
+        yield return new WaitForSeconds(3);
+
+        // Start the level again
+        IsGameRunning = true;
+        roundTimer = 30;
     }
 
     private void CheckWin()
@@ -55,7 +88,7 @@ public class GameManager : MonoBehaviour {
             if (onPlayerKnockedOutEvent != null)
                 onPlayerKnockedOutEvent();
 
-            CheckWin();
+            // CheckWin();
         }
     }
 
