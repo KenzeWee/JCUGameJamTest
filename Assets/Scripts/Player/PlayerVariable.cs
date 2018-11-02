@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "PlayerHealth")]
-public class HealthVariable : ScriptableObject {
+public class PlayerVariable : ScriptableObject {
     public int CurrentHP { get; set; }
+    public int CurrentScore { get; set; }
 }

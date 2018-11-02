@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamagable {
     [SerializeField] private int maxHP = 10;
     public int HP { get { return maxHP; } }
-    [SerializeField] private HealthVariable hpContainer;
+    [SerializeField] private PlayerVariable hpContainer;
 
     public event OnDie onDieEvent;
 
