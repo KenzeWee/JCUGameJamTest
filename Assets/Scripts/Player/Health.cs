@@ -7,6 +7,8 @@ public class Health : MonoBehaviour, IDamagable {
     [SerializeField] private PlayerVariable hpContainer;
     public int HP { get { return hpContainer.CurrentHP; } private set { hpContainer.CurrentHP = value; } }
 
+    public GameObject deathExplosionPrefab;
+
     public event OnDie onDieEvent;
 
     private void OnEnable () {
@@ -26,6 +28,9 @@ public class Health : MonoBehaviour, IDamagable {
         if (onDieEvent != null)
             onDieEvent ();
         gameObject.SetActive (false);
+
+        GameObject explosion = Instantiate (deathExplosionPrefab,transform.position,Quaternion.identity);
+        Destroy(explosion,6);
 
         Respawn ();
     }
