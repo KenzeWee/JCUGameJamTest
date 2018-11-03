@@ -552,6 +552,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &76505447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76505448}
+  m_Layer: 0
+  m_Name: AsteroidSpawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76505448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76505447}
+  m_LocalRotation: {x: -0, y: -0, z: 0.97253954, w: 0.23273799}
+  m_LocalPosition: {x: 23.5, y: -9.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2115914224}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 153.08301}
 --- !u!1 &106208110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1233,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &250763160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 250763161}
+  m_Layer: 0
+  m_Name: AsteroidSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &250763161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250763160}
+  m_LocalRotation: {x: -0, y: -0, z: -0.09537356, w: 0.99544156}
+  m_LocalPosition: {x: -30.83, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2115914224}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.946}
 --- !u!1 &255188061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,15 +3856,18 @@ MonoBehaviour:
   - {fileID: 2140999229}
   - {fileID: 1863200871}
   levelBreakGroup: {fileID: 641304918}
-  lowestHeight: -15
-  highestHeight: 9
-  fallSpeed: 10
-  minX: -20
-  maxX: 20
-  infiniteScrolling: 0
+  lowestHeight: -18
+  highestHeight: 18
+  fallSpeed: 1
+  minX: -32
+  maxX: 32
+  infiniteScrolling: 1
   blackHole: {fileID: 0}
-  asteroidSpawnAreas: []
-  asteroidsToSpawn: []
+  asteroidSpawnAreas:
+  - {fileID: 250763161}
+  - {fileID: 76505448}
+  asteroidsToSpawn:
+  - {fileID: 114620954764460106, guid: fb0ab9f302c03ee4488f882f0f480f14, type: 2}
 --- !u!1 &645736474
 GameObject:
   m_ObjectHideFlags: 0
@@ -19703,6 +19762,8 @@ Transform:
   - {fileID: 1802278263}
   - {fileID: 2140999229}
   - {fileID: 1863200871}
+  - {fileID: 250763161}
+  - {fileID: 76505448}
   m_Father: {fileID: 641304919}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
