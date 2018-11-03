@@ -99,9 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnable: 1
   cooldownTimer: 4.5
-  pickUpItem: {fileID: 114898336150270494, guid: 5cd04276e69df484094b1753af82881f,
+  pickUpItem: {fileID: 114796263668192706, guid: ca2a9280278c86d46ad063d51540587b,
     type: 2}
-  visuals: {fileID: 0}
+  visuals: {fileID: 1933723178072458}
 --- !u!212 &212546239626224452
 SpriteRenderer:
   m_ObjectHideFlags: 1
