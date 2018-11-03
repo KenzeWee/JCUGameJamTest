@@ -19,6 +19,8 @@ public class MarioFireball : GenericProjectile {
 		rb = GetComponent<Rigidbody2D> ();
 		velocity = transform.right * FireForce;
 
+		transform.rotation = Quaternion.Euler(Vector3.zero);
+		
 		if (explosionSound)
 			explosionSound = explosionSound.Initialize (gameObject);
 	}
