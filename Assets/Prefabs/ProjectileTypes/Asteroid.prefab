@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114620954764460106}
   - component: {fileID: 58342713649341496}
   - component: {fileID: 50787234956455764}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fc3bb8e25c7fd43bf4bdd3c6c9f575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireForce: 40
+  fireForce: 30
   cooldown: 0
   lifeTime: 0
   damage: 10000

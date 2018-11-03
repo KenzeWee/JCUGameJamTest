@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 55220954}
   - component: {fileID: 55220956}
   - component: {fileID: 55220955}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4181,7 +4181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 576432323}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Spawn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4209,7 +4209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 607756307}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Design
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4754,6 +4754,7 @@ Transform:
   m_Children:
   - {fileID: 1447396836}
   - {fileID: 743221136}
+  - {fileID: 1777847895}
   - {fileID: 2115914224}
   m_Father: {fileID: 1170220789}
   m_RootOrder: 3
@@ -7027,7 +7028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 910235852}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Spawn (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8561,7 +8562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1145408215}
   - component: {fileID: 1145408216}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8665,7 +8666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1157928188}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Spawn (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9221,7 +9222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326830894}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Spawn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10768,8 +10769,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1777847895}
+  m_Children: []
   m_Father: {fileID: 641304919}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12085,7 +12085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578763125}
   - component: {fileID: 1578763127}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14332,7 +14332,7 @@ GameObject:
   - component: {fileID: 1771283074}
   - component: {fileID: 1771283076}
   - component: {fileID: 1771283075}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14750,12 +14750,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1777847894}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1447396836}
-  m_RootOrder: 0
+  m_Father: {fileID: 641304919}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1777847896
 CircleCollider2D:
@@ -14826,8 +14826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityPull: 1.5
-  killDistance: 0.5
-  drawDebugCircle: 0
+  killDistance: 2.5
+  drawDebugCircle: 1
 --- !u!1 &1790066327
 GameObject:
   m_ObjectHideFlags: 0
@@ -16245,7 +16245,7 @@ Prefab:
       objectReference: {fileID: 1873672925}
     - target: {fileID: 1610649640658372, guid: 8b6bdee4f91d03c49a4726cab172ee48, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6bdee4f91d03c49a4726cab172ee48, type: 2}
@@ -17489,7 +17489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067618769}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17673,7 +17673,7 @@ GameObject:
   - component: {fileID: 2082402710}
   - component: {fileID: 2082402712}
   - component: {fileID: 2082402711}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18151,7 +18151,7 @@ Transform:
   - {fileID: 250763161}
   - {fileID: 76505448}
   m_Father: {fileID: 641304919}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2132009458
 Prefab:

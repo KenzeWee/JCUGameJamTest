@@ -13,9 +13,16 @@ public class AsteroidProjectile : GenericProjectile {
 
 	}
 
+	protected override void Awake () {
+		base.Awake ();
+
+		gameObject.layer = 12;
+		Physics2D.IgnoreLayerCollision(12, 13);
+	}
+
 	protected override void Update () {
 		base.Update ();
-		CheckIfAstroidOutOfScreen();
+		CheckIfAstroidOutOfScreen ();
 	}
 
 	void CheckIfAstroidOutOfScreen () {

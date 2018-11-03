@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
             if (roundTimer <= 0) {
                 if (currentLevelID == levels.Count) {
                     CheckWin ();
+                    return;
                     //Debug.Log ("Game End");
                 } else if (gameState == GameState.InLevel && IsGameRunning) {
                     gameState = GameState.PlaneArriving;
