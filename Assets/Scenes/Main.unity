@@ -701,10 +701,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1814254309384088, guid: 12e281941a474e84a8c7ba582b59514e, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12e281941a474e84a8c7ba582b59514e, type: 2}
   m_IsPrefabAsset: 0
@@ -2775,6 +2771,8 @@ MonoBehaviour:
   lowestHeight: -15
   highestHeight: 9
   fallSpeed: 10
+  minX: -20
+  maxX: 20
   infiniteScrolling: 0
 --- !u!1 &570402968
 GameObject:
@@ -3857,7 +3855,12 @@ MonoBehaviour:
   lowestHeight: -15
   highestHeight: 9
   fallSpeed: 10
+  minX: -20
+  maxX: 20
   infiniteScrolling: 0
+  blackHole: {fileID: 0}
+  asteroidSpawnAreas: []
+  asteroidsToSpawn: []
 --- !u!1 &645736474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,10 +5673,6 @@ Prefab:
     - target: {fileID: 4429808033463898, guid: 48b448f64e2990b4b8eb43afed3860a4, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471383676696666, guid: 48b448f64e2990b4b8eb43afed3860a4, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b448f64e2990b4b8eb43afed3860a4, type: 2}
@@ -11961,6 +11960,8 @@ MonoBehaviour:
   lowestHeight: -15
   highestHeight: 9
   fallSpeed: 10
+  minX: -20
+  maxX: 20
   infiniteScrolling: 0
 --- !u!1 &1157177530
 GameObject:
@@ -14228,6 +14229,8 @@ MonoBehaviour:
   lowestHeight: -15
   highestHeight: 9
   fallSpeed: 10
+  minX: -20
+  maxX: 20
   infiniteScrolling: 0
 --- !u!1 &1479898951
 GameObject:
@@ -16070,10 +16073,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4270118772261228, guid: 75fbbf5cc9fc11f48912a88cd5c2d041, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1963679144968120, guid: 75fbbf5cc9fc11f48912a88cd5c2d041, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
