@@ -5,6 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour, IInput {
     public enum ControllerType { KEYBOARD, CONTROLLER01, CONTROLLER02, CONTROLLER03, CONTROLLER04 };
 
+    public PlayerVariable player;
+
     [SerializeField]
     public ControllerType ControlType;
     public ControllerType SetControlType { set { ControlType = value; } }

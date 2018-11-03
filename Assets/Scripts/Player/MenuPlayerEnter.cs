@@ -7,6 +7,7 @@ public class MenuPlayerEnter : MonoBehaviour {
 
     public GameObject playerObj;
     public PlayerVariable player;
+    
 
     private void Start()
     {
@@ -36,6 +37,9 @@ public class MenuPlayerEnter : MonoBehaviour {
                 case InputManager.ControllerType.CONTROLLER04:
                     player.controlType = PlayerVariable.CONTROLLERTYPE.CONTROLLER04;
 
+                    break;
+                case InputManager.ControllerType.KEYBOARD:
+                    player.controlType = PlayerVariable.CONTROLLERTYPE.KEYBOARD;
                     break;
             }
 
