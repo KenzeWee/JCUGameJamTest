@@ -20,30 +20,30 @@ public class MainMenuManager : MonoBehaviour {
     private void Awake () {
         instance = this;
         mainMenuMusic = mainMenuMusic.Initialize (gameObject);
-        mainMenuMusic.Play();
+        mainMenuMusic.Play ();
 
-        buttonPress = buttonPress.Initialize(gameObject);
+        buttonPress = buttonPress.Initialize (gameObject);
 
-        beeping = beeping.Initialize(gameObject);
+        beeping = beeping.Initialize (gameObject);
         //timer.gameObject.SetActive(false);
     }
 
     public void StartGame () {
         timer.gameObject.SetActive (true);
-        mainMenuMusic.Stop();
         isCountdown = true;
     }
 
     private void Update () {
-        mainMenuMusic.Update();
-        buttonPress.Update();
-        beeping.Update();
+        mainMenuMusic.Update ();
+        buttonPress.Update ();
+        beeping.Update ();
 
         if (isCountdown) {
             timeLeft -= Time.deltaTime;
             timer.text = "Starting in " + timeLeft.ToString ("f0");
 
             if (timeLeft <= 0) {
+                mainMenuMusic.Stop ();
                 SceneManager.LoadScene (1);
             }
         }
@@ -58,6 +58,6 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void PlayButtonPressSound () {
-        buttonPress.Play();
+        buttonPress.Play ();
     }
 }

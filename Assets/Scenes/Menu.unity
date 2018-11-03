@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 191585268}
   - component: {fileID: 191585267}
   - component: {fileID: 191585266}
+  - component: {fileID: 191585271}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -479,6 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e8fa05339d4924c9311e10b4b6d36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuMusic: {fileID: 11400000, guid: 7f62a108bcae5ba41b9275bbfb2b93cb, type: 2}
+  buttonPress: {fileID: 11400000, guid: c8dc7459da4ed894bb8efdd6bcb3afd4, type: 2}
+  beeping: {fileID: 11400000, guid: 31db718e10ec37849bbad9534c9d0778, type: 2}
   HelpScreen: {fileID: 185514127}
   timer: {fileID: 800629401}
 --- !u!114 &191585267
@@ -568,6 +572,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &191585271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 191585265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4a4569cd9b0ef459d9a7a7e893b913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &260804481
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   ControlType: 2
 --- !u!114 &260804486
 MonoBehaviour:
@@ -752,7 +768,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 650196131}
   player: {fileID: 11400000, guid: c4808d782b3c4bc468f84c3eadcd4f0f, type: 2}
-  inputmanager: {fileID: 0}
 --- !u!1 &601278284
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   ControlType: 4
 --- !u!114 &601278289
 MonoBehaviour:
@@ -937,7 +953,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 2029769193}
   player: {fileID: 11400000, guid: 08ec0087339e1ee4ab98830186393a7e, type: 2}
-  inputmanager: {fileID: 0}
 --- !u!1 &650196131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1342,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 191585266}
+        m_MethodName: PlayButtonPressSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &806384449
@@ -1441,6 +1467,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 191585266}
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 191585266}
+        m_MethodName: PlayButtonPressSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1656,6 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   ControlType: 3
 --- !u!114 &830235430
 MonoBehaviour:
@@ -1670,7 +1708,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 155762219}
   player: {fileID: 11400000, guid: 2a0baba9bec1b524ea6b13a32ffcd326, type: 2}
-  inputmanager: {fileID: 0}
 --- !u!1 &991854200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +2012,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 191585266}
+        m_MethodName: PlayButtonPressSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1303615624
@@ -2218,7 +2266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1808131362}
   player: {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
-  inputmanager: {fileID: 0}
 --- !u!114 &1634483275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2230,6 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   ControlType: 0
 --- !u!114 &1634483276
 MonoBehaviour:
@@ -2522,6 +2570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945008c2a0cedf4e908d29b8c087f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   ControlType: 1
 --- !u!114 &1638915660
 MonoBehaviour:
@@ -2536,7 +2585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1125487476}
   player: {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
-  inputmanager: {fileID: 0}
 --- !u!1 &1639876504
 GameObject:
   m_ObjectHideFlags: 0

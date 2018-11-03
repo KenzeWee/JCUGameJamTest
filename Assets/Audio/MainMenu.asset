@@ -20,5 +20,5 @@ MonoBehaviour:
   Spartial: 0
   audioMixer: {fileID: 243594467526290140, guid: b5faf823ed3bebb4d9bc129354653d6f,
     type: 2}
-  fadeOut: 1
-  fadeTime: 1
+  fadeOut: 0
+  fadeTime: 0.2
