@@ -22,7 +22,7 @@ public class BlackHole : MonoBehaviour {
 	void CheckIfInBlackHoleVicinity (Collider2D other) {
 		if (Vector3.Distance (transform.position, other.transform.position) <= killDistance) {
 			IDamagable HP = other.GetComponent<IDamagable> ();
-			Debug.Log ("Code Reached");
+			
 			if (HP != null)
 				HP.ChangeHealth (-10000);
 		}

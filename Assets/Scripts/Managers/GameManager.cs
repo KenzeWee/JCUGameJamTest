@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
     private int currentLevelID = 0;
 
     private GameState gameState = GameState.InLevel;
-    public GameState GetGameState { get {return gameState;}}
+    public GameState GetGameState { get { return gameState; } }
     public enum GameState { InLevel, PlaneArriving, PlaneIdle, PlaneLeaving, ReachedDestination };
  [SerializeField] private List<GenericLevel> levels = new List<GenericLevel> ();
     public GenericLevel GetCurrentLevel { get { return levels[currentLevelID]; } }
@@ -43,11 +43,18 @@ public class GameManager : MonoBehaviour {
             if (roundTimer <= 0) {
                 if (currentLevelID == levels.Count) {
                     CheckWin ();
-                    return;
                     //Debug.Log ("Game End");
                 } else if (gameState == GameState.InLevel && IsGameRunning) {
                     gameState = GameState.PlaneArriving;
-                    StartCoroutine (ExecutePlaneEvent ());
+                    ++currentLevelID;
+                    
+                    if (currentLevelID == levels.Count){
+                        CheckWin();
+                    }
+                    else 
+                    {
+                        StartCoroutine (ExecutePlaneEvent ());
+                    }
                 }
             }
         }
@@ -69,7 +76,7 @@ public class GameManager : MonoBehaviour {
         // Plane is now stopping at level
         gameState = GameState.PlaneIdle;
         yield return new WaitForSeconds (PlaneIdleTime);
-        //levels[currentLevelID].StartCoroutine(levels[currentLevelID].LevelBreak());
+        levels[currentLevelID-1].StartCoroutine(levels[currentLevelID-1].LevelBreak());
         // Plane is now moving to next level
         gameState = GameState.PlaneLeaving;
 
@@ -79,14 +86,13 @@ public class GameManager : MonoBehaviour {
         distanceDelta = 100 / planeTravelTime;
         do {
             timer -= Time.deltaTime;
-            levels[currentLevelID].transform.position -= new Vector3 (distanceDelta * Time.deltaTime, 0, 0);
+            levels[currentLevelID - 1].transform.position -= new Vector3 (distanceDelta * Time.deltaTime, 0, 0);
             yield return null;
         }
         while (timer >= 0);
 
         // Disable former level and enable next level
-        levels[currentLevelID].gameObject.SetActive (false);
-        ++currentLevelID;
+        levels[currentLevelID-1].gameObject.SetActive (false);
         levels[currentLevelID].gameObject.SetActive (true);
         levels[currentLevelID].transform.position = new Vector3 (50, 0, 0);
 
@@ -118,13 +124,12 @@ public class GameManager : MonoBehaviour {
         roundTimer = levelFightTime;
     }
 
-    private void CheckWin()
-    {
+    private void CheckWin () {
         if (onGameEndEvent != null)
-            onGameEndEvent();
+            onGameEndEvent ();
 
         //show game end ui
-        scoreBoard.GetComponent<GUI_Scoreboard>().ShowScoreBoard();
+        scoreBoard.GetComponent<GUI_Scoreboard> ().ShowScoreBoard ();
 
         //print("win");
         IsGameRunning = false;
@@ -161,12 +166,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SpawnAllPlayer () {
-        if (IsGameRunning)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                ListOfPlayers[i].gameObject.SetActive(true);
-                ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID].GetListOfRespawnPoints()[i].position;
+        if (IsGameRunning) {
+            for (int i = 0; i < 4; i++) {
+                ListOfPlayers[i].gameObject.SetActive (true);
+                ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID].GetListOfRespawnPoints () [i].position;
             }
         }
     }
@@ -176,11 +179,10 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator SpawnPlayerRandom (GameObject playerObj) {
-        if (IsGameRunning)
-        {
-            yield return new WaitForSeconds(2);
-            playerObj.SetActive(true);
-            playerObj.transform.position = levels[currentLevelID].GetListOfRespawnPoints()[Random.Range(0, 4)].position;
+        if (IsGameRunning) {
+            yield return new WaitForSeconds (2);
+            playerObj.SetActive (true);
+            playerObj.transform.position = levels[currentLevelID].GetListOfRespawnPoints () [Random.Range (0, 4)].position;
         }
     }
 }

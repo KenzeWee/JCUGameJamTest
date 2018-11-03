@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Plane : GenericLevel {
-   protected override void Awake() {
-       base.Awake();
+   protected void Awake() {
        gameObject.layer = 13;
    }
 }
