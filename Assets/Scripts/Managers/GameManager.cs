@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour {
         if (IsGameRunning) {
             for (int i = 0; i < 4; i++) {
                 ListOfPlayers[i].gameObject.SetActive (true);
-                ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID].GetListOfRespawnPoints () [i].position;
+                ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID - 1].GetListOfRespawnPoints () [i].position;
             }
         }
     }
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour {
         if (IsGameRunning) {
             yield return new WaitForSeconds (2);
             playerObj.SetActive (true);
-            playerObj.transform.position = levels[currentLevelID].GetListOfRespawnPoints () [Random.Range (0, 4)].position;
+            playerObj.transform.position = levels[currentLevelID - 1].GetListOfRespawnPoints () [Random.Range (0, 4)].position;
         }
     }
 }
