@@ -13,20 +13,23 @@ public class MainMenuManager : MonoBehaviour {
 
     private float timeLeft = 10;
 
+    private bool isCountdown = false;
+
     private void Awake()
     {
         instance = this;
-        timer.gameObject.SetActive(false);
+        //timer.gameObject.SetActive(false);
     }
 
     public void StartGame()
     {
         timer.gameObject.SetActive(true);
+        isCountdown = true;
     }
 
     private void Update()
     {
-        if (timer.gameObject.activeInHierarchy)
+        if (isCountdown)
         {
             timeLeft -= Time.deltaTime;
             timer.text = "Starting in " + timeLeft.ToString("f0");

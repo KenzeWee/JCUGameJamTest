@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Player2
   m_EditorClassIdentifier: 
   m_name: Blue
+  controlType: 0

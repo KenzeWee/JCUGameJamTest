@@ -578,7 +578,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1814254309384088, guid: 12e281941a474e84a8c7ba582b59514e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12e281941a474e84a8c7ba582b59514e, type: 2}
@@ -2542,6 +2542,14 @@ Prefab:
     - target: {fileID: 1019463410570338, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
       propertyPath: m_Name
       value: HealthPickUp (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
@@ -5111,6 +5119,14 @@ Prefab:
       propertyPath: m_Name
       value: HealthPickUp (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
   m_IsPrefabAsset: 0
@@ -5949,6 +5965,14 @@ Prefab:
     - target: {fileID: 1019463410570338, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
       propertyPath: m_Name
       value: HealthPickUp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
@@ -9393,6 +9417,14 @@ Prefab:
       propertyPath: cooldownTimer
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a56440236951524c810acb345b29176, type: 2}
   m_IsPrefabAsset: 0
@@ -10636,7 +10668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1963679144968120, guid: 75fbbf5cc9fc11f48912a88cd5c2d041, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114148278548188792, guid: 75fbbf5cc9fc11f48912a88cd5c2d041,
         type: 2}
@@ -11986,6 +12018,14 @@ Prefab:
       propertyPath: cooldownTimer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465281523059472, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef9e715bbc3f7c749a5e712cf7c49bc3, type: 2}
   m_IsPrefabAsset: 0
@@ -12730,6 +12770,14 @@ Prefab:
         type: 2}
       propertyPath: cooldownTimer
       value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a56440236951524c810acb345b29176, type: 2}
@@ -14094,6 +14142,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a56440236951524c810acb345b29176, type: 2}
   m_IsPrefabAsset: 0
@@ -14855,7 +14911,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1471383676696666, guid: 48b448f64e2990b4b8eb43afed3860a4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114735982356293736, guid: 48b448f64e2990b4b8eb43afed3860a4,
         type: 2}
@@ -17499,6 +17555,14 @@ Prefab:
         type: 2}
       propertyPath: cooldownTimer
       value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368200673153076, guid: 9a56440236951524c810acb345b29176, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a56440236951524c810acb345b29176, type: 2}

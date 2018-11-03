@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Player3
   m_EditorClassIdentifier: 
   m_name: Purple
+  controlType: 0
