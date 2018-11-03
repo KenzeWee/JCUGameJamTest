@@ -18,8 +18,8 @@ TagManager:
   - ProjectileLayer
   - Player
   - PickupLayer
-  - 
-  - 
+  - AsteroidLayer
+  - PlaneLayer
   - 
   - 
   - 

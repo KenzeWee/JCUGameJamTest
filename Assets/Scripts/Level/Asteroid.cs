@@ -10,12 +10,12 @@ public class Asteroid : GenericLevel {
 	private float cooldownTimer = 0f;
 
 	void Start () {
-		List<Entity> players = GameManager.Instance.GetListOfAllPlayers();
+		List<Entity> players = GameManager.Instance.GetListOfAllPlayers ();
 		foreach (Entity player in players) {
 			player.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
 		}
 
-		FindObjectOfType<DynamicCamera>().SetStaticCamera = true;
+		FindObjectOfType<DynamicCamera> ().SetStaticCamera = true;
 	}
 
 	void FixedUpdate () {
@@ -26,11 +26,11 @@ public class Asteroid : GenericLevel {
 	}
 
 	void SpawnAsteroid () {
-		Transform randomSpawnArea = asteroidSpawnAreas.RandomObject();
-		GameObject asteroidSpawn = asteroidsToSpawn.RandomObject().gameObject;
+		Transform randomSpawnArea = asteroidSpawnAreas.RandomObject ();
+		GameObject asteroidSpawn = asteroidsToSpawn.RandomObject ().gameObject;
 
-		GenericProjectile spawnedAsteroid = Instantiate (asteroidSpawn, randomSpawnArea.position, randomSpawnArea.rotation).GetComponent<GenericProjectile>();
-		spawnedAsteroid.Fire();
+		GenericProjectile spawnedAsteroid = Instantiate (asteroidSpawn, randomSpawnArea.position, Quaternion.Euler (new Vector3 (0, 0, Random.Range (-5, 5)) + randomSpawnArea.transform.right)).GetComponent<GenericProjectile> ();
+		spawnedAsteroid.Fire ();
 	}
 
 	void StartNewTimer () {
