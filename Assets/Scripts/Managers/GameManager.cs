@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
+    [SerializeField] private AudioSO BGM;
     public delegate void OnListOfPlayerChange ();
     public event OnListOfPlayerChange onListOfPlayerChangeEvent;
 
@@ -33,12 +34,15 @@ public class GameManager : MonoBehaviour {
         Instance = this;
         IsGameRunning = true;
         roundTimer = levelFightTime;
+        BGM = BGM.Initialize (gameObject);
+        BGM.Play();
         //levels = levels.RandomizeList();
     }
 
     private void Update () {
         if (IsGameRunning) {
             roundTimer -= Time.deltaTime;
+            BGM.Update();
 
             if (roundTimer <= 0) {
                 if (currentLevelID == levels.Count) {

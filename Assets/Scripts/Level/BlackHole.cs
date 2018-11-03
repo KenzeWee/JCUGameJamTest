@@ -14,7 +14,7 @@ public class BlackHole : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D other) {
 		if (other.attachedRigidbody) {
 			float gravityIntensity = Vector3.Distance (transform.position, other.transform.position) / gravityRadius;
-			other.attachedRigidbody.AddForce ((transform.position - other.transform.position) * gravityIntensity * other.attachedRigidbody.mass * gravityPull * Time.smoothDeltaTime, ForceMode2D.Impulse);
+			other.attachedRigidbody.AddForce ((transform.position - other.transform.position) * (1 - gravityIntensity) * other.attachedRigidbody.mass * gravityPull * Time.smoothDeltaTime, ForceMode2D.Impulse);
 			CheckIfInBlackHoleVicinity (other);
 		}
 	}
