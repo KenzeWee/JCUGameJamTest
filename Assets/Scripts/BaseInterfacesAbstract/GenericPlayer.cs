@@ -27,6 +27,8 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         //Set layer to player
         gameObject.layer = 10;
         Physics2D.IgnoreLayerCollision (8, 10);
+       
+        playerVariable.CurrentScore = 0;
     }
 
     void OnEnable () {
