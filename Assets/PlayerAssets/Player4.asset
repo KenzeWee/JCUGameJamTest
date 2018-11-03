@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Player4
   m_EditorClassIdentifier: 
   m_name: Orange
+  controlType: 5

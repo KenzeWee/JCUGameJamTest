@@ -29,12 +29,12 @@ public class Asteroid : GenericLevel {
 		Transform randomSpawnArea = asteroidSpawnAreas.RandomObject ();
 		GameObject asteroidSpawn = asteroidsToSpawn.RandomObject ().gameObject;
 
-		GenericProjectile spawnedAsteroid = Instantiate (asteroidSpawn, randomSpawnArea.position, Quaternion.Euler (new Vector3 (0, 0, Random.Range (-5, 5)) + randomSpawnArea.transform.right)).GetComponent<GenericProjectile> ();
+		GenericProjectile spawnedAsteroid = Instantiate (asteroidSpawn, randomSpawnArea.position, randomSpawnArea.rotation).GetComponent<GenericProjectile> ();
 		spawnedAsteroid.Fire ();
 	}
 
 	void StartNewTimer () {
-		cooldownTimer = Random.Range (2.0f, 10.0f);
+		cooldownTimer = Random.Range (1.0f, 3.0f);
 	}
 
 	bool Timer () {

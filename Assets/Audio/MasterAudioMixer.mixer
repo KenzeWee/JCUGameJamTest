@@ -17,16 +17,15 @@ AudioMixerController:
   m_ExposedParameters: []
   m_AudioMixerGroupViews:
   - guids:
-    - c920952c9344c59428c4a9493c6db77d
     - b16a2d45a1efa9f43bda3053da4f1284
     - e12ba82a8037dcd48a9015e55c2b800d
     - d46ce0b9e5081f54d823c7369689aa88
     - 7a357bfce7b92574bbd234b8e8805675
+    - 2f49d33cf54ee164e8995281f93e70b0
+    - 02a7ac758d033c145b8c2c9bed04ac01
     - e62b094b0a8021841bf8445e83927a73
     - bcf5e630fbca7e043871f78503064b38
     - 9703c035083014741b15da3d1e5e5e6e
-    - 2f49d33cf54ee164e8995281f93e70b0
-    - 02a7ac758d033c145b8c2c9bed04ac01
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}

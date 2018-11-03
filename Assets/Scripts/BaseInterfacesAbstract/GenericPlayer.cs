@@ -22,6 +22,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
 
     /*----------Animations--------------*/
     [SerializeField] private Animator impactAnimation;
+    [SerializeField] private AudioSO pickUpSound;
 
     protected virtual void Start () {
         //Set layer to player
@@ -29,6 +30,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         Physics2D.IgnoreLayerCollision (8, 10);
 
         playerVariable.CurrentScore = 0;
+        pickUpSound = pickUpSound.Initialize (gameObject);
     }
 
     void OnEnable () {
@@ -77,6 +79,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         IPickUp pickUp = other.gameObject.GetComponent<IPickUp> ();
         if (pickUp != null) {
             pickUp.PickUpBehaviour (this);
+            pickUpSound.Play();
         }
     }
 
@@ -103,6 +106,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
     }
 
     protected virtual void Update () {
+        pickUpSound.Update ();
         CheckPlayerPosition ();
     }
 

@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour, IInput {
-    public enum ControllerType { KEYBOARD, CONTROLLER01, CONTROLLER02, CONTROLLER03, CONTROLLER04 };
 
     public PlayerVariable player;
-
-    [SerializeField]
-    public ControllerType ControlType;
-    public ControllerType SetControlType { set { ControlType = value; } }
+    public StaticFunctions.CONTROLLERTYPE controlType;
 
     public bool IsFire { get; private set; }
     public Vector2 CursorPos { get; private set; }
 
     private Camera mainCam;
-    
+
     private void Start () {
         mainCam = Camera.main;
+        if (controlType == StaticFunctions.CONTROLLERTYPE.NULL){
+            controlType = player.controlType;
+        }
     }
 
     // Update is called once per frame
@@ -29,14 +28,14 @@ public class InputManager : MonoBehaviour, IInput {
     void UpdateInput () {
         Vector2 worldPos = Vector2.zero;
 
-        switch (ControlType) {
-            case ControllerType.KEYBOARD:
+        switch (controlType) {
+            case StaticFunctions.CONTROLLERTYPE.KEYBOARD:
                 IsFire = Input.GetMouseButtonDown (0);
                 CursorPos = mainCam.ScreenToWorldPoint (Input.mousePosition);
                 //print(IsFire);
                 break;
 
-            case ControllerType.CONTROLLER01:
+            case StaticFunctions.CONTROLLERTYPE.CONTROLLER01:
                 IsFire = Input.GetButtonDown ("JoyStick_1_Fire");
 
                 worldPos = new Vector2 (transform.position.x + Input.GetAxis ("JoyStick_1_Horizontal"),
@@ -45,7 +44,7 @@ public class InputManager : MonoBehaviour, IInput {
                 CursorPos = worldPos;
                 break;
 
-            case ControllerType.CONTROLLER02:
+            case StaticFunctions.CONTROLLERTYPE.CONTROLLER02:
                 IsFire = Input.GetButtonDown ("JoyStick_2_Fire");
 
                 worldPos = new Vector2 (transform.position.x + Input.GetAxis ("JoyStick_2_Horizontal"),
@@ -54,7 +53,7 @@ public class InputManager : MonoBehaviour, IInput {
                 CursorPos = worldPos;
                 break;
 
-            case ControllerType.CONTROLLER03:
+            case StaticFunctions.CONTROLLERTYPE.CONTROLLER03:
                 IsFire = Input.GetButtonDown ("JoyStick_3_Fire");
 
                 worldPos = new Vector2 (transform.position.x + Input.GetAxis ("JoyStick_3_Horizontal"),
@@ -63,7 +62,7 @@ public class InputManager : MonoBehaviour, IInput {
                 CursorPos = worldPos;
                 break;
 
-            case ControllerType.CONTROLLER04:
+            case StaticFunctions.CONTROLLERTYPE.CONTROLLER04:
                 IsFire = Input.GetButtonDown ("JoyStick_4_Fire");
 
                 worldPos = new Vector2 (transform.position.x + Input.GetAxis ("JoyStick_4_Horizontal"),

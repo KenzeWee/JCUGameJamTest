@@ -15,32 +15,25 @@ public class PlayerInfoGUI : MonoBehaviour {
     [SerializeField]
     private TMPro.TextMeshProUGUI m_ScoreCountText;
 
-    private void Start()
-    {
-        if(m_player.controlType == PlayerVariable.CONTROLLERTYPE.NULL)
-        {
-            gameObject.SetActive(false);
-            m_playerObject.SetActive(false);
-        }
-        else
-        {
-            m_playerObject.SetActive(true);
+    private void Start () {
+        if (m_player.controlType == StaticFunctions.CONTROLLERTYPE.NULL) {
+            gameObject.SetActive (false);
+            m_playerObject.SetActive (false);
+        } else {
+            m_playerObject.SetActive (true);
         }
     }
 
-    private void Update()
-    {
-        UpdateHealth();
-        UpdateDeath();
+    private void Update () {
+        UpdateHealth ();
+        UpdateDeath ();
     }
 
-    void UpdateHealth()
-    {
-        GUI_PlayerHealth.fillAmount = ((float)m_player.CurrentHP / 10f) ;
+    void UpdateHealth () {
+        GUI_PlayerHealth.fillAmount = ((float) m_player.CurrentHP / 10f);
     }
 
-    void UpdateDeath()
-    {
+    void UpdateDeath () {
         m_ScoreCountText.text = "Death - " + m_player.CurrentScore;
     }
 }
