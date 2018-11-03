@@ -9,12 +9,13 @@ public class Health : MonoBehaviour, IDamagable {
 
     public event OnDie onDieEvent;
 
-    private void Start () {
+    private void OnEnable () {
         HP = maxHP;
     }
 
     public void ChangeHealth (int amount) {
         HP += amount;
+        //Debug.Log(HP);
 
         if (HP <= 0) {
             Die ();

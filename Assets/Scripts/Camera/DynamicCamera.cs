@@ -33,6 +33,8 @@ public class DynamicCamera : MonoBehaviour {
     private float diff;
     private float orthDiff;
     [SerializeField] private GameObject movingPlatform;
+    private bool isStaticCamera = false;
+    public bool SetStaticCamera { set { isStaticCamera = value; } }
 
     private void Start () {
         cam = GetComponent<Camera> ();
@@ -50,9 +52,16 @@ public class DynamicCamera : MonoBehaviour {
             UpdateListOfPlayers ();
 
         CheckForMovingPlatform ();
-
-        CalcPos ();
-        CalcZoom ();
+        
+        if (!isStaticCamera){
+            CalcPos ();
+            CalcZoom ();
+        }
+        else {
+            movementAxis.position = Vector3.zero.With(z: -10);
+            cam.orthographicSize = 18;
+        }
+        
     }
 
     /*-------------------------- Camera Pan and Zoom Calculations ------------------------------*/

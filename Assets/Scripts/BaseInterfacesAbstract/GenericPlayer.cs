@@ -101,8 +101,27 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
     }
 
     protected virtual void Update () {
-        if (transform.position.y < -15 || transform.position.y > 13) {
-            HealthScript.ChangeHealth(-10000);
+        if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight || transform.position.y > GameManager.Instance.GetCurrentLevel.HighestHeight || transform.position.x < GameManager.Instance.GetCurrentLevel.MinimumX || transform.position.x > GameManager.Instance.GetCurrentLevel.MaxmiumX) {
+            if (GameManager.Instance.GetCurrentLevel.InfiniteScrolling) {
+                Debug.Log ("Need to reset position");
+                if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight) {
+                    transform.position = transform.position.With (y: GameManager.Instance.GetCurrentLevel.HighestHeight);
+                }
+
+                if (transform.position.y > GameManager.Instance.GetCurrentLevel.HighestHeight) {
+                    transform.position = transform.position.With (y: GameManager.Instance.GetCurrentLevel.LowestHeight);
+                }
+
+                if (transform.position.x < GameManager.Instance.GetCurrentLevel.MinimumX) {
+                    transform.position = transform.position.With (x: GameManager.Instance.GetCurrentLevel.MaxmiumX);
+                }
+
+                if (transform.position.x > GameManager.Instance.GetCurrentLevel.MaxmiumX) {
+                    transform.position = transform.position.With (x: GameManager.Instance.GetCurrentLevel.MinimumX);
+                }
+            } else {
+                HealthScript.ChangeHealth (-10000);
+            }
         }
     }
 }

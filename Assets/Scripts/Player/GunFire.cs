@@ -35,6 +35,12 @@ public class GunFire : MonoBehaviour {
         defaultProjectile = projectile;
     }
 
+    void OnEnable()
+    {
+        StopAllCoroutines();
+        OnCooldown = false;        
+    }
+
     // Update is called once per frame
     void Update () {
         if (inputManager.IsFire && !OnCooldown) {

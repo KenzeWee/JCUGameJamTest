@@ -28,32 +28,27 @@ public class GameManager : MonoBehaviour {
     private GameState gameState = GameState.InLevel;
     enum GameState { InLevel, PlaneArriving, PlaneIdle, PlaneLeaving, ReachedDestination };
  [SerializeField] private List<GenericLevel> levels = new List<GenericLevel> ();
+    public GenericLevel GetCurrentLevel { get { return levels[currentLevelID]; } }
+    private void Awake () {
+        Instance = this;
 
- private void Awake () {
- Instance = this;
-
- winScreen.SetActive (false);
- IsGameRunning = true;
- roundTimer = levelFightTime;
- //levels = levels.RandomizeList();
+        winScreen.SetActive (false);
+        IsGameRunning = true;
+        roundTimer = levelFightTime;
+        //levels = levels.RandomizeList();
     }
 
     private void Update () {
         if (IsGameRunning) {
             roundTimer -= Time.deltaTime;
 
-            if (roundTimer <= 0)
-            {
-                if (currentLevelID == levels.Count - 1)
-                {
-                    IsGameRunning = false;
-                    CheckWin();
-                    Debug.Log("Game End");
-                }
-                else if (gameState == GameState.InLevel)
-                {
+            if (roundTimer <= 0) {
+                if (currentLevelID == levels.Count - 1) {
+                    //CheckWin ();
+                    //Debug.Log ("Game End");
+                } else if (gameState == GameState.InLevel) {
                     gameState = GameState.PlaneArriving;
-                    StartCoroutine(ExecutePlaneEvent());
+                    StartCoroutine (ExecutePlaneEvent ());
                 }
             }
         }
@@ -61,8 +56,8 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator ExecutePlaneEvent () {
         // Spawn plane
-        plane.transform.position = new Vector3(-50, 5, 0);
-        plane.gameObject.SetActive(true);
+        plane.transform.position = new Vector3 (-50, 5, 0);
+        plane.gameObject.SetActive (true);
         float timer = PlaneArrivingTime;
         float distanceDelta = 50 / PlaneArrivingTime;
         do {
@@ -117,7 +112,7 @@ public class GameManager : MonoBehaviour {
             yield return null;
         }
         while (plane.transform.position.x < 50);
-        plane.gameObject.SetActive(false);
+        plane.gameObject.SetActive (false);
 
         // At the next level
         gameState = GameState.InLevel;
@@ -159,13 +154,17 @@ public class GameManager : MonoBehaviour {
 
         if (!ListOfActivePlayers.Contains (Player))
             ListOfActivePlayers.Add (Player);
-        
+
         if (onListOfPlayerChangeEvent != null)
-            onListOfPlayerChangeEvent();
+            onListOfPlayerChangeEvent ();
     }
 
     public List<Entity> GetListOfActivePlayers () {
         return ListOfActivePlayers;
+    }
+
+    public List<Entity> GetListOfAllPlayers () {
+        return ListOfPlayers;
     }
 
     public void SpawnAllPlayer () {
