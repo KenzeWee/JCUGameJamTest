@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour, IInput {
     public enum ControllerType { KEYBOARD, CONTROLLER01, CONTROLLER02, CONTROLLER03, CONTROLLER04 };
- private ControllerType ControlType;
-    public ControllerType SetContrlType { set { ControlType = value; } }
+
+    [SerializeField]
+    private ControllerType ControlType;
+    public ControllerType SetControlType { set { ControlType = value; } }
 
     public bool IsFire { get; private set; }
     public Vector2 CursorPos { get; private set; }
