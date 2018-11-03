@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
         Instance = this;
         IsGameRunning = true;
         roundTimer = levelFightTime;
+
         BGM = BGM.Initialize (gameObject);
         BGM.Play();
         //levels = levels.RandomizeList();
@@ -43,7 +44,6 @@ public class GameManager : MonoBehaviour {
         if (IsGameRunning) {
             roundTimer -= Time.deltaTime;
             BGM.Update();
-
             if (roundTimer <= 0) {
                 if (currentLevelID == levels.Count) {
                     CheckWin ();
@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour {
 
         //print("win");
         IsGameRunning = false;
+        BGM.Stop();
     }
 
     public void KnockOut<T> (GenericPlayer<T> Player) where T : IInput {

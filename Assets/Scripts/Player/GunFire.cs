@@ -44,7 +44,6 @@ public class GunFire : MonoBehaviour {
 
     void OnDisable()
     {
-        Debug.Log("Canged");
         animator.GetComponent<SpriteRenderer>().sprite = defaultSprite;
     }
 
