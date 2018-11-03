@@ -13,7 +13,7 @@ public class MainMenuManager : MonoBehaviour {
 
     public TextMeshProUGUI timer;
 
-    private float timeLeft = 10;
+    private float timeLeft = 5;
 
     private bool isCountdown = false;
 

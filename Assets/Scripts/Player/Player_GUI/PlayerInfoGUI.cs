@@ -15,6 +15,9 @@ public class PlayerInfoGUI : MonoBehaviour {
     [SerializeField]
     private TMPro.TextMeshProUGUI m_ScoreCountText;
 
+    [SerializeField]
+    private CanvasGroup CG;
+
     private void Start () {
         if (m_player.controlType == StaticFunctions.CONTROLLERTYPE.NULL) {
             gameObject.SetActive (false);
@@ -22,6 +25,8 @@ public class PlayerInfoGUI : MonoBehaviour {
         } else {
             m_playerObject.SetActive (true);
         }
+
+        CG = gameObject.AddComponent(typeof(CanvasGroup)) as CanvasGroup;
     }
 
     private void Update () {
@@ -31,6 +36,14 @@ public class PlayerInfoGUI : MonoBehaviour {
 
     void UpdateHealth () {
         GUI_PlayerHealth.fillAmount = ((float) m_player.CurrentHP / 10f);
+        if (m_player.CurrentHP <= 0)
+        {
+            CG.alpha = 0.2f;
+        }
+        else
+        {
+            CG.alpha = 1f;
+        }
     }
 
     void UpdateDeath () {
