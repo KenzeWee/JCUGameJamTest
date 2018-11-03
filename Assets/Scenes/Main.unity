@@ -1919,7 +1919,9 @@ MonoBehaviour:
   - {fileID: 437880917}
   - {fileID: 112224002}
   asteroidsToSpawn:
-  - {fileID: 114620954764460106, guid: fb0ab9f302c03ee4488f882f0f480f14, type: 2}
+  - {fileID: 114868185393364122, guid: 37d0990a121daad41aeb602b4c3487dd, type: 2}
+  - {fileID: 114570178596650764, guid: 8d3f8741e2ccb7d4283e90ec2e91d4b8, type: 2}
+  - {fileID: 114783930679209620, guid: f2b968e113398d2489ead796a7b956eb, type: 2}
 --- !u!4 &133270553
 Transform:
   m_ObjectHideFlags: 0
@@ -27643,8 +27645,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623323546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 21.3, z: 0}
-  m_LocalScale: {x: 10.92703, y: 1, z: 1}
+  m_LocalPosition: {x: 0.01, y: 35.41, z: 0}
+  m_LocalScale: {x: 10.92703, y: 7.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1123900358}
   m_RootOrder: 18
@@ -30993,8 +30995,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1814928484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -11.73, z: 0}
-  m_LocalScale: {x: 10.927026, y: 1, z: 1}
+  m_LocalPosition: {x: 0.01, y: -27.05, z: 0}
+  m_LocalScale: {x: 10.927026, y: 7.95, z: 1}
   m_Children: []
   m_Father: {fileID: 1123900358}
   m_RootOrder: 0
