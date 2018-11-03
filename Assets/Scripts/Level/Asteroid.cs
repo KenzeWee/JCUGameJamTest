@@ -34,7 +34,7 @@ public class Asteroid : GenericLevel {
 	}
 
 	void StartNewTimer () {
-		cooldownTimer = Random.Range (2.0f, 10.0f);
+		cooldownTimer = Random.Range (1.0f, 3.0f);
 	}
 
 	bool Timer () {
