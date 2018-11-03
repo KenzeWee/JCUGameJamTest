@@ -785,6 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GUI_PlayerHealth: {fileID: 114088542394078940}
+  m_playerObject: {fileID: 0}
   m_player: {fileID: 11400000, guid: 08ec0087339e1ee4ab98830186393a7e, type: 2}
   m_ScoreCountText: {fileID: 114335078049471888}
 --- !u!114 &114106113604503018
@@ -1066,6 +1067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GUI_PlayerHealth: {fileID: 114669260858415524}
+  m_playerObject: {fileID: 0}
   m_player: {fileID: 11400000, guid: 2a0baba9bec1b524ea6b13a32ffcd326, type: 2}
   m_ScoreCountText: {fileID: 114190971415772270}
 --- !u!114 &114265588919657996
@@ -1107,6 +1109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GUI_PlayerHealth: {fileID: 114385032289460982}
+  m_playerObject: {fileID: 0}
   m_player: {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
   m_ScoreCountText: {fileID: 114732504607093974}
 --- !u!114 &114312274571209046
@@ -1484,6 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GUI_PlayerHealth: {fileID: 114312274571209046}
+  m_playerObject: {fileID: 0}
   m_player: {fileID: 11400000, guid: c4808d782b3c4bc468f84c3eadcd4f0f, type: 2}
   m_ScoreCountText: {fileID: 114400968340569064}
 --- !u!114 &114585280703087526

@@ -7,10 +7,26 @@ public class PlayerInfoGUI : MonoBehaviour {
     public Image GUI_PlayerHealth;
 
     [SerializeField]
+    private GameObject m_playerObject;
+
+    [SerializeField]
     private PlayerVariable m_player;
 
     [SerializeField]
     private TMPro.TextMeshProUGUI m_ScoreCountText;
+
+    private void Start()
+    {
+        if(m_player.controlType == PlayerVariable.CONTROLLERTYPE.NULL)
+        {
+            gameObject.SetActive(false);
+            m_playerObject.SetActive(false);
+        }
+        else
+        {
+            m_playerObject.SetActive(true);
+        }
+    }
 
     private void Update()
     {

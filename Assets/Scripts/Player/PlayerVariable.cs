@@ -9,4 +9,7 @@ public class PlayerVariable : ScriptableObject {
 
     public int CurrentHP { get; set; }
     public int CurrentScore { get; set; }
+    
+    public enum CONTROLLERTYPE {NULL, KEYBOARD, CONTROLLER01, CONTROLLER02, CONTROLLER03, CONTROLLER04 };
+    public CONTROLLERTYPE controlType = CONTROLLERTYPE.NULL;
 }
