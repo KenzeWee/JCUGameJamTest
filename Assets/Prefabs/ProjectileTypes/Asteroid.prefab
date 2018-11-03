@@ -135,7 +135,7 @@ MonoBehaviour:
   fireForce: 40
   cooldown: 0
   lifeTime: 0
-  damage: -100000
+  damage: 10000
   fireSound: {fileID: 11400000, guid: 5c30c262ba4fda44d84b8d93b0dfcee4, type: 2}
   impactAnimation: {fileID: 0}
   duration: 5
