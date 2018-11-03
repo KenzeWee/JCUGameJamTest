@@ -27,9 +27,11 @@ public abstract class GenericLevel : MonoBehaviour {
         //add level break stuff here
         for (float i = lowestHeight; lowestHeight <= highestHeight; i += Time.deltaTime * fallSpeed) {
             for (int j = levelObjects.Count; j > 0; --j) {
-                if (levelObjects[j - 1].transform.position.y <= i) {
-                    levelObjects[j - 1].bodyType = RigidbodyType2D.Dynamic;
-                    levelObjects.Remove (levelObjects[j - 1]);
+                if (levelObjects[j - 1] != null) {
+                    if (levelObjects[j - 1].transform.position.y <= i) {
+                        levelObjects[j - 1].bodyType = RigidbodyType2D.Dynamic;
+                        levelObjects.Remove (levelObjects[j - 1]);
+                    }
                 }
             }
             yield return null;

@@ -103,7 +103,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
     }
 
     protected virtual void Update () {
-        CheckPlayerPosition();
+        CheckPlayerPosition ();
     }
 
     void CheckPlayerPosition () {

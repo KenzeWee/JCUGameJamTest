@@ -47,12 +47,10 @@ public class GameManager : MonoBehaviour {
                 } else if (gameState == GameState.InLevel && IsGameRunning) {
                     gameState = GameState.PlaneArriving;
                     ++currentLevelID;
-                    
-                    if (currentLevelID == levels.Count){
-                        CheckWin();
-                    }
-                    else 
-                    {
+
+                    if (currentLevelID == levels.Count) {
+                        CheckWin ();
+                    } else {
                         StartCoroutine (ExecutePlaneEvent ());
                     }
                 }
@@ -75,8 +73,8 @@ public class GameManager : MonoBehaviour {
 
         // Plane is now stopping at level
         gameState = GameState.PlaneIdle;
+        levels[currentLevelID - 1].StartCoroutine (levels[currentLevelID - 1].LevelBreak ());
         yield return new WaitForSeconds (PlaneIdleTime);
-        levels[currentLevelID-1].StartCoroutine(levels[currentLevelID-1].LevelBreak());
         // Plane is now moving to next level
         gameState = GameState.PlaneLeaving;
 
@@ -92,7 +90,7 @@ public class GameManager : MonoBehaviour {
         while (timer >= 0);
 
         // Disable former level and enable next level
-        levels[currentLevelID-1].gameObject.SetActive (false);
+        levels[currentLevelID - 1].gameObject.SetActive (false);
         levels[currentLevelID].gameObject.SetActive (true);
         levels[currentLevelID].transform.position = new Vector3 (50, 0, 0);
 
@@ -179,10 +177,21 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator SpawnPlayerRandom (GameObject playerObj) {
+        //InLevel, PlaneArriving, PlaneIdle, PlaneLeaving, ReachedDestination 
         if (IsGameRunning) {
             yield return new WaitForSeconds (2);
             playerObj.SetActive (true);
-            playerObj.transform.position = levels[currentLevelID - 1].GetListOfRespawnPoints () [Random.Range (0, 4)].position;
+            if (gameState == GameState.PlaneLeaving || gameState == GameState.PlaneIdle) {
+                playerObj.transform.position = plane.GetListOfRespawnPoints () [Random.Range (0, plane.GetListOfRespawnPoints ().Count)].position;
+
+            } else {
+                if (currentLevelID == 0) {
+                    playerObj.transform.position = levels[currentLevelID].GetListOfRespawnPoints () [Random.Range (0, levels[currentLevelID].GetListOfRespawnPoints ().Count)].position;
+                } else {
+                    playerObj.transform.position = levels[currentLevelID - 1].GetListOfRespawnPoints () [Random.Range (0, levels[currentLevelID - 1].GetListOfRespawnPoints ().Count)].position;
+                }
+
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GunFire : MonoBehaviour {
     [SerializeField] private Animator animator;
+    [SerializeField] private Sprite defaultSprite;
     private bool OnCooldown = false;
 
     [SerializeField] private Transform firingPoint;
@@ -38,7 +39,13 @@ public class GunFire : MonoBehaviour {
     void OnEnable()
     {
         StopAllCoroutines();
-        OnCooldown = false;        
+        OnCooldown = false; 
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("Canged");
+        animator.GetComponent<SpriteRenderer>().sprite = defaultSprite;
     }
 
     // Update is called once per frame
