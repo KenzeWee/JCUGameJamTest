@@ -496,6 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: 2a0baba9bec1b524ea6b13a32ffcd326, type: 2}
+  deathExplosionPrefab: {fileID: 0}
 --- !u!114 &42156046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3774,6 +3775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
+  deathExplosionPrefab: {fileID: 0}
 --- !u!114 &234342053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15257,6 +15259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
+  deathExplosionPrefab: {fileID: 1562118240387292, guid: b7f2434b23df53042b7cd0eeb34966ca,
+    type: 2}
 --- !u!114 &858119449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15939,6 +15943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: c4808d782b3c4bc468f84c3eadcd4f0f, type: 2}
+  deathExplosionPrefab: {fileID: 0}
 --- !u!114 &915744945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16567,6 +16572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: 2a0baba9bec1b524ea6b13a32ffcd326, type: 2}
+  deathExplosionPrefab: {fileID: 1562118240387292, guid: b7f2434b23df53042b7cd0eeb34966ca,
+    type: 2}
 --- !u!114 &936051029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33434,7 +33441,7 @@ MonoBehaviour:
 --- !u!114 &1933775622
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1933775619}
   m_Enabled: 1
@@ -33724,6 +33731,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: 08ec0087339e1ee4ab98830186393a7e, type: 2}
+  deathExplosionPrefab: {fileID: 1562118240387292, guid: b7f2434b23df53042b7cd0eeb34966ca,
+    type: 2}
 --- !u!114 &1940132882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34758,6 +34767,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: c4808d782b3c4bc468f84c3eadcd4f0f, type: 2}
+  deathExplosionPrefab: {fileID: 1562118240387292, guid: b7f2434b23df53042b7cd0eeb34966ca,
+    type: 2}
 --- !u!114 &2001235486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35822,6 +35833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   hpContainer: {fileID: 11400000, guid: 08ec0087339e1ee4ab98830186393a7e, type: 2}
+  deathExplosionPrefab: {fileID: 0}
 --- !u!114 &2055048317
 MonoBehaviour:
   m_ObjectHideFlags: 0

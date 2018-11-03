@@ -30,7 +30,7 @@ public class Health : MonoBehaviour, IDamagable {
         gameObject.SetActive (false);
 
         GameObject explosion = Instantiate (deathExplosionPrefab,transform.position,Quaternion.identity);
-        Destroy(explosion,6);
+        Destroy(explosion,0.5f);
 
         Respawn ();
     }
