@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour {
     private int currentLevelID = 0;
 
     private GameState gameState = GameState.InLevel;
-    enum GameState { InLevel, PlaneArriving, PlaneIdle, PlaneLeaving, ReachedDestination };
+    public GameState GetGameState { get {return gameState;}}
+    public enum GameState { InLevel, PlaneArriving, PlaneIdle, PlaneLeaving, ReachedDestination };
  [SerializeField] private List<GenericLevel> levels = new List<GenericLevel> ();
     public GenericLevel GetCurrentLevel { get { return levels[currentLevelID]; } }
     private void Awake () {

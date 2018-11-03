@@ -21,7 +21,6 @@ public class DynamicCamera : MonoBehaviour {
 
     [SerializeField] private float maxOrth = 12;
     [SerializeField] private float minOrth = 6;
-
     [SerializeField] private float orthBuffer = 0.0f;
 
     private float largestDistance;
@@ -35,6 +34,7 @@ public class DynamicCamera : MonoBehaviour {
     [SerializeField] private GameObject movingPlatform;
     private bool isStaticCamera = false;
     public bool SetStaticCamera { set { isStaticCamera = value; } }
+    private bool TrackCloud = false;
 
     private void Start () {
         cam = GetComponent<Camera> ();
@@ -51,17 +51,24 @@ public class DynamicCamera : MonoBehaviour {
         if (objectsToTrack == null)
             UpdateListOfPlayers ();
 
-        CheckForMovingPlatform ();
+        switch (GameManager.Instance.GetGameState) {
+            case GameManager.GameState.PlaneArriving: case GameManager.GameState.PlaneIdle: case GameManager.GameState.PlaneLeaving:
+                TrackCloud = true;
+                break;
+            case GameManager.GameState.InLevel: case GameManager.GameState.ReachedDestination:
+                TrackCloud = false;
+                break;
+        }
         
-        if (!isStaticCamera){
+        CheckForMovingPlatform ();
+
+        if (!isStaticCamera) {
             CalcPos ();
             CalcZoom ();
+        } else {
+            movementAxis.position = Vector3.Lerp (movementAxis.position, Vector3.zero.With (z: -10), panSpeed * Time.deltaTime);
+            cam.orthographicSize = Mathf.Lerp (cam.orthographicSize, 18, zoomSpeed * Time.deltaTime);
         }
-        else {
-            movementAxis.position = Vector3.zero.With(z: -10);
-            cam.orthographicSize = 18;
-        }
-        
     }
 
     /*-------------------------- Camera Pan and Zoom Calculations ------------------------------*/
@@ -113,11 +120,15 @@ public class DynamicCamera : MonoBehaviour {
 
     void CheckForMovingPlatform () {
         if (objectsToTrack != null) {
-            if (movingPlatform.activeSelf && !objectsToTrack.Contains (movingPlatform)) {
-                objectsToTrack.Add (movingPlatform);
-            }
+            if (TrackCloud) {
+                if (movingPlatform.activeSelf && !objectsToTrack.Contains (movingPlatform)) {
+                    objectsToTrack.Add (movingPlatform);
+                }
 
-            if (!movingPlatform.activeSelf && objectsToTrack.Contains (movingPlatform)) {
+                if (!movingPlatform.activeSelf && objectsToTrack.Contains (movingPlatform)) {
+                    objectsToTrack.Remove (movingPlatform);
+                }
+            } else if (objectsToTrack.Contains (movingPlatform)) {
                 objectsToTrack.Remove (movingPlatform);
             }
         }
