@@ -1881,6 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 715174530}
+  defaultSprite: {fileID: 0}
   firingPoint: {fileID: 425073275}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
     type: 2}
@@ -3182,6 +3183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 960917405}
+  defaultSprite: {fileID: 0}
   firingPoint: {fileID: 1374931393}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
     type: 2}
@@ -3989,6 +3991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1056528548}
+  defaultSprite: {fileID: 0}
   firingPoint: {fileID: 1410479139}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
     type: 2}
@@ -15952,6 +15955,10 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1608917320527990, guid: 8b6bdee4f91d03c49a4726cab172ee48, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6bdee4f91d03c49a4726cab172ee48, type: 2}
   m_IsPrefabAsset: 0
@@ -16996,6 +17003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1228775736}
+  defaultSprite: {fileID: 0}
   firingPoint: {fileID: 1032185849}
   projectile: {fileID: 114605802650429792, guid: a4c250803b7345844997e7fd27d9b104,
     type: 2}

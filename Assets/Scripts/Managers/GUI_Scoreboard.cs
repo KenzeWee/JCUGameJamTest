@@ -21,27 +21,30 @@ public class GUI_Scoreboard : MonoBehaviour {
 
         foreach(PlayerVariable player in allPlayers)
         {
-            //POS
-            switch (pos)
+            if (player.controlType != PlayerVariable.CONTROLLERTYPE.NULL)
             {
-                case 0:
-                    scoreText.text +=  "1st" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n" ;
-                    break;
-                case 1:
+                //POS
+                switch (pos)
+                {
+                    case 0:
+                        scoreText.text += (pos + 1) +"st" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n" ;
+                        break;
+                    case 1:
 
-                    scoreText.text += "2nd" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
-                    break;
-                case 2:
+                        scoreText.text += (pos + 1) + "nd" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
+                        break;
+                    case 2:
 
-                    scoreText.text += "3rd" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
-                    break;
-                case 3:
+                        scoreText.text += (pos + 1) + "rd" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
+                        break;
+                    case 3:
 
-                    scoreText.text += "4th" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
-                    break;
+                        scoreText.text += (pos + 1) + "th" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
+                        break;
+                }
+            pos++;
             }
 
-            pos++;
         }
     }
 }
