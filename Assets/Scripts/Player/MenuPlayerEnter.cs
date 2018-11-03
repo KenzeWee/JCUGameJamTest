@@ -8,6 +8,11 @@ public class MenuPlayerEnter : MonoBehaviour {
     public GameObject playerObj;
     public PlayerVariable player;
 
+    private void Start()
+    {
+        player.controlType = PlayerVariable.CONTROLLERTYPE.NULL;
+    }
+
     // Update is called once per frame
     void Update () {
         if (GetComponent<InputManager>().IsFire)
