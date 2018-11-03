@@ -9,20 +9,20 @@ public class Asteroid : GenericLevel {
 	[SerializeField] private List<GenericProjectile> asteroidsToSpawn;
 	private float cooldownTimer = 0f;
 
-	void Awake () {
+	void Start () {
 		List<Entity> players = GameManager.Instance.GetListOfAllPlayers ();
 		foreach (Entity player in players) {
 			player.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
 		}
 
 		FindObjectOfType<DynamicCamera> ().SetStaticCamera = true;
-        StartNewTimer();
-    }
+		StartNewTimer ();
+	}
 
 	void FixedUpdate () {
 		if (Timer ()) {
-			StartNewTimer ();
 			SpawnAsteroid ();
+			StartNewTimer ();
 		}
 	}
 

@@ -1830,11 +1830,11 @@ MonoBehaviour:
   - {fileID: 1326284193}
   - {fileID: 419438077}
   - {fileID: 470677780}
-  lowestHeight: -12
-  highestHeight: 12
+  lowestHeight: -18
+  highestHeight: 18
   fallSpeed: 1
-  minX: -40
-  maxX: 40
+  minX: -32
+  maxX: 32
   levelObjects: []
   infiniteScrolling: 1
   blackHole: {fileID: 1906920224}
@@ -25215,7 +25215,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 18
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
