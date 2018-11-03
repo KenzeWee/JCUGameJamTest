@@ -1844,9 +1844,12 @@ MonoBehaviour:
   - {fileID: 436595408}
   - {fileID: 1605585645}
   asteroidsToSpawn:
-  - {fileID: 114868185393364122, guid: 37d0990a121daad41aeb602b4c3487dd, type: 2}
-  - {fileID: 114570178596650764, guid: 8d3f8741e2ccb7d4283e90ec2e91d4b8, type: 2}
-  - {fileID: 114783930679209620, guid: f2b968e113398d2489ead796a7b956eb, type: 2}
+  - {fileID: 114615707870076052, guid: f2b968e113398d2489ead796a7b956eb, type: 2}
+  - {fileID: 114067766025901438, guid: 37d0990a121daad41aeb602b4c3487dd, type: 2}
+  - {fileID: 114997902180951528, guid: db3d9b06c2439054d8660b15d46e9b16, type: 2}
+  - {fileID: 114620114743416334, guid: dc96f5563d66d24459530f0cdd6a4b3d, type: 2}
+  - {fileID: 114602860377414494, guid: 0a166cabf17ea7549a0d439df23734bf, type: 2}
+  - {fileID: 114718463598513486, guid: 6dc98ba984536aa4a8c724cc238de521, type: 2}
 --- !u!4 &133270553
 Transform:
   m_ObjectHideFlags: 0
