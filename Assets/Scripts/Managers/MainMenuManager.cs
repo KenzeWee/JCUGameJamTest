@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour {
     public static MainMenuManager instance;
     [SerializeField] private AudioSO mainMenuMusic;
+    [SerializeField] private AudioSO buttonPress;
+    [SerializeField] private AudioSO beeping;
     [SerializeField] private GameObject HelpScreen;
 
     public TextMeshProUGUI timer;
@@ -19,6 +21,10 @@ public class MainMenuManager : MonoBehaviour {
         instance = this;
         mainMenuMusic = mainMenuMusic.Initialize (gameObject);
         mainMenuMusic.Play();
+
+        buttonPress = buttonPress.Initialize(gameObject);
+
+        beeping = beeping.Initialize(gameObject);
         //timer.gameObject.SetActive(false);
     }
 
@@ -30,9 +36,13 @@ public class MainMenuManager : MonoBehaviour {
 
     private void Update () {
         mainMenuMusic.Update();
+        buttonPress.Update();
+        beeping.Update();
+
         if (isCountdown) {
             timeLeft -= Time.deltaTime;
             timer.text = "Starting in " + timeLeft.ToString ("f0");
+
             if (timeLeft <= 0) {
                 SceneManager.LoadScene (1);
             }
@@ -45,5 +55,9 @@ public class MainMenuManager : MonoBehaviour {
 
     public void Exit () {
         Application.Quit ();
+    }
+
+    public void PlayButtonPressSound () {
+        buttonPress.Play();
     }
 }
