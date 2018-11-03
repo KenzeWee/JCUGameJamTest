@@ -18,6 +18,7 @@ public class AsteroidProjectile : GenericProjectile {
 
 		gameObject.layer = 12;
 		Physics2D.IgnoreLayerCollision(12, 13);
+        Destroy(gameObject, 10f);
 	}
 
 	protected override void Update () {
