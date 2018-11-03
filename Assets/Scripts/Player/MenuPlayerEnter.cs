@@ -7,43 +7,39 @@ public class MenuPlayerEnter : MonoBehaviour {
 
     public GameObject playerObj;
     public PlayerVariable player;
-    
 
-    private void Start()
-    {
-        player.controlType = PlayerVariable.CONTROLLERTYPE.NULL;
+    private void Start () {
+        player.controlType = StaticFunctions.CONTROLLERTYPE.NULL;
     }
 
     // Update is called once per frame
     void Update () {
-        if (GetComponent<InputManager>().IsFire)
-        {
+        if (GetComponent<InputManager> ().IsFire) {
             isReady = true;
-            playerObj.SetActive(true);
+            playerObj.SetActive (true);
 
-            switch (GetComponent<InputManager>().ControlType)
-            {
-                case InputManager.ControllerType.CONTROLLER01:
-                    player.controlType = PlayerVariable.CONTROLLERTYPE.CONTROLLER01;
+            switch (GetComponent<InputManager> ().controlType) {
+                case StaticFunctions.CONTROLLERTYPE.CONTROLLER01:
+                    player.controlType = StaticFunctions.CONTROLLERTYPE.CONTROLLER01;
                     break;
-                case InputManager.ControllerType.CONTROLLER02:
-                    player.controlType = PlayerVariable.CONTROLLERTYPE.CONTROLLER02;
-
-                    break;
-                case InputManager.ControllerType.CONTROLLER03:
-                    player.controlType = PlayerVariable.CONTROLLERTYPE.CONTROLLER03;
+                case StaticFunctions.CONTROLLERTYPE.CONTROLLER02:
+                    player.controlType = StaticFunctions.CONTROLLERTYPE.CONTROLLER02;
 
                     break;
-                case InputManager.ControllerType.CONTROLLER04:
-                    player.controlType = PlayerVariable.CONTROLLERTYPE.CONTROLLER04;
+                case StaticFunctions.CONTROLLERTYPE.CONTROLLER03:
+                    player.controlType = StaticFunctions.CONTROLLERTYPE.CONTROLLER03;
 
                     break;
-                case InputManager.ControllerType.KEYBOARD:
-                    player.controlType = PlayerVariable.CONTROLLERTYPE.KEYBOARD;
+                case StaticFunctions.CONTROLLERTYPE.CONTROLLER04:
+                    player.controlType = StaticFunctions.CONTROLLERTYPE.CONTROLLER04;
+
+                    break;
+                case StaticFunctions.CONTROLLERTYPE.KEYBOARD:
+                    player.controlType = StaticFunctions.CONTROLLERTYPE.KEYBOARD;
                     break;
             }
 
-            MainMenuManager.instance.StartGame();
+            MainMenuManager.instance.StartGame ();
         }
-	}
+    }
 }

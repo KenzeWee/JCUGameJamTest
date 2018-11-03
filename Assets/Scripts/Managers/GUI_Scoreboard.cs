@@ -4,30 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GUI_Scoreboard : MonoBehaviour {
-    public List<PlayerVariable> allPlayers = new List<PlayerVariable>();
+    public List<PlayerVariable> allPlayers = new List<PlayerVariable> ();
 
     public GameObject scoreboard;
     public TMPro.TextMeshProUGUI scoreText;
 
-    public void ShowScoreBoard()
-    {
-        scoreboard.SetActive(true);
+    public void ShowScoreBoard () {
+        scoreboard.SetActive (true);
 
-        allPlayers = allPlayers.QuickSortList();
+        allPlayers = allPlayers.QuickSortList ();
 
         scoreText.text = "GAME SET\n";
 
         int pos = 0;
 
-        foreach(PlayerVariable player in allPlayers)
-        {
-            if (player.controlType != PlayerVariable.CONTROLLERTYPE.NULL)
-            {
+        foreach (PlayerVariable player in allPlayers) {
+            if (player.controlType != StaticFunctions.CONTROLLERTYPE.NULL) {
                 //POS
-                switch (pos)
-                {
+                switch (pos) {
                     case 0:
-                        scoreText.text += (pos + 1) +"st" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n" ;
+                        scoreText.text += (pos + 1) + "st" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
                         break;
                     case 1:
 
@@ -42,7 +38,7 @@ public class GUI_Scoreboard : MonoBehaviour {
                         scoreText.text += (pos + 1) + "th" + " - " + player.currentName + " (" + player.CurrentScore + " Death)\n";
                         break;
                 }
-            pos++;
+                pos++;
             }
 
         }
