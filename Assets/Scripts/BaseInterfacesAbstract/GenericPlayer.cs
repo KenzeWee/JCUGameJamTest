@@ -102,27 +102,39 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         impactAnimation.SetBool ("Impact", false);
     }
 
-    protected virtual void Update () {
-        if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight || transform.position.y > GameManager.Instance.GetCurrentLevel.HighestHeight || transform.position.x < GameManager.Instance.GetCurrentLevel.MinimumX || transform.position.x > GameManager.Instance.GetCurrentLevel.MaxmiumX) {
-            if (GameManager.Instance.GetCurrentLevel.InfiniteScrolling) {
-                Debug.Log ("Need to reset position");
-                if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight) {
-                    transform.position = transform.position.With (y: GameManager.Instance.GetCurrentLevel.HighestHeight);
-                }
+    protected virtual void Update()
+    {
+        if (GameManager.Instance.IsGameRunning)
+        {
+            if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight || transform.position.y > GameManager.Instance.GetCurrentLevel.HighestHeight || transform.position.x < GameManager.Instance.GetCurrentLevel.MinimumX || transform.position.x > GameManager.Instance.GetCurrentLevel.MaxmiumX)
+            {
+                if (GameManager.Instance.GetCurrentLevel.InfiniteScrolling)
+                {
+                    Debug.Log("Need to reset position");
+                    if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight)
+                    {
+                        transform.position = transform.position.With(y: GameManager.Instance.GetCurrentLevel.HighestHeight);
+                    }
 
-                if (transform.position.y > GameManager.Instance.GetCurrentLevel.HighestHeight) {
-                    transform.position = transform.position.With (y: GameManager.Instance.GetCurrentLevel.LowestHeight);
-                }
+                    if (transform.position.y > GameManager.Instance.GetCurrentLevel.HighestHeight)
+                    {
+                        transform.position = transform.position.With(y: GameManager.Instance.GetCurrentLevel.LowestHeight);
+                    }
 
-                if (transform.position.x < GameManager.Instance.GetCurrentLevel.MinimumX) {
-                    transform.position = transform.position.With (x: GameManager.Instance.GetCurrentLevel.MaxmiumX);
-                }
+                    if (transform.position.x < GameManager.Instance.GetCurrentLevel.MinimumX)
+                    {
+                        transform.position = transform.position.With(x: GameManager.Instance.GetCurrentLevel.MaxmiumX);
+                    }
 
-                if (transform.position.x > GameManager.Instance.GetCurrentLevel.MaxmiumX) {
-                    transform.position = transform.position.With (x: GameManager.Instance.GetCurrentLevel.MinimumX);
+                    if (transform.position.x > GameManager.Instance.GetCurrentLevel.MaxmiumX)
+                    {
+                        transform.position = transform.position.With(x: GameManager.Instance.GetCurrentLevel.MinimumX);
+                    }
                 }
-            } else {
-                HealthScript.ChangeHealth (-10000);
+                else
+                {
+                    HealthScript.ChangeHealth(-10000);
+                }
             }
         }
     }

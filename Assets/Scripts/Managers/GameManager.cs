@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour {
     private List<Entity> ListOfPlayers = new List<Entity> ();
     private List<Entity> ListOfActivePlayers = new List<Entity> ();
 
-    [SerializeField] private ParticleSystem fireworks;
-    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject scoreBoard;
     public bool IsGameRunning { get; private set; }
 
     // LevelManager
@@ -32,8 +31,6 @@ public class GameManager : MonoBehaviour {
     public GenericLevel GetCurrentLevel { get { return levels[currentLevelID]; } }
     private void Awake () {
         Instance = this;
-
-        winScreen.SetActive (false);
         IsGameRunning = true;
         roundTimer = levelFightTime;
         //levels = levels.RandomizeList();
@@ -44,10 +41,10 @@ public class GameManager : MonoBehaviour {
             roundTimer -= Time.deltaTime;
 
             if (roundTimer <= 0) {
-                if (currentLevelID == levels.Count - 1) {
-                    //CheckWin ();
+                if (currentLevelID == levels.Count) {
+                    CheckWin ();
                     //Debug.Log ("Game End");
-                } else if (gameState == GameState.InLevel) {
+                } else if (gameState == GameState.InLevel && IsGameRunning) {
                     gameState = GameState.PlaneArriving;
                     StartCoroutine (ExecutePlaneEvent ());
                 }
@@ -120,22 +117,16 @@ public class GameManager : MonoBehaviour {
         roundTimer = levelFightTime;
     }
 
-    private void CheckWin () {
-        if (ListOfPlayers.Count <= 1) {
-            if (onGameEndEvent != null)
-                onGameEndEvent ();
+    private void CheckWin()
+    {
+        if (onGameEndEvent != null)
+            onGameEndEvent();
 
-            if (winScreen != null)
-                winScreen.SetActive (true);
+        //show game end ui
+        scoreBoard.GetComponent<GUI_Scoreboard>().ShowScoreBoard();
 
-            if (ListOfPlayers.Count == 1) {
-                fireworks.gameObject.transform.parent = ListOfPlayers[0].transform;
-                fireworks.gameObject.transform.position = ListOfPlayers[0].transform.position;
-                fireworks.Play ();
-            }
-            //print("win");
-            IsGameRunning = false;
-        }
+        //print("win");
+        IsGameRunning = false;
     }
 
     public void KnockOut<T> (GenericPlayer<T> Player) where T : IInput {
@@ -169,9 +160,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SpawnAllPlayer () {
-        for (int i = 0; i < 4; i++) {
-            ListOfPlayers[i].gameObject.SetActive (true);
-            ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID].GetListOfRespawnPoints () [i].position;
+        if (IsGameRunning)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                ListOfPlayers[i].gameObject.SetActive(true);
+                ListOfPlayers[i].gameObject.transform.position = levels[currentLevelID].GetListOfRespawnPoints()[i].position;
+            }
         }
     }
 
@@ -180,9 +175,11 @@ public class GameManager : MonoBehaviour {
     }
 
     private IEnumerator SpawnPlayerRandom (GameObject playerObj) {
-        yield return new WaitForSeconds (2);
-        playerObj.SetActive (true);
-        playerObj.transform.position = levels[currentLevelID].GetListOfRespawnPoints () [Random.Range (0, 4)].position;
-
+        if (IsGameRunning)
+        {
+            yield return new WaitForSeconds(2);
+            playerObj.SetActive(true);
+            playerObj.transform.position = levels[currentLevelID].GetListOfRespawnPoints()[Random.Range(0, 4)].position;
+        }
     }
 }

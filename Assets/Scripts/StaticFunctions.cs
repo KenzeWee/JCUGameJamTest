@@ -67,30 +67,30 @@ public static class StaticFunctions {
         return list;
     }
 
-    public static List<int> QuickSortList (this List<int> list) {
+    public static List<PlayerVariable> QuickSortList (this List<PlayerVariable> list) {
         System.Random r = new System.Random ();
-        List<int> less = new List<int> ();
-        List<int> greater = new List<int> ();
+        List<PlayerVariable> less = new List<PlayerVariable> ();
+        List<PlayerVariable> greater = new List<PlayerVariable> ();
         if (list.Count <= 1)
             return list;
         int pos = r.Next (list.Count);
 
-        int pivot = list[pos];
+        PlayerVariable pivot = list[pos];
         list.RemoveAt (pos);
-        foreach (int x in list) {
-            if (x <= pivot) {
-                less.Add (x);
+        foreach (PlayerVariable player in list) {
+            if (player.CurrentScore <= pivot.CurrentScore) {
+                less.Add (player);
             } else {
-                greater.Add (x);
+                greater.Add (player);
             }
         }
         return concat (QuickSortList (less), pivot, QuickSortList (greater));
     }
 
-    public static List<int> concat (List<int> less, int pivot, List<int> greater) {
-        List<int> sorted = new List<int> (less);
+    public static List<PlayerVariable> concat (List<PlayerVariable> less, PlayerVariable pivot, List<PlayerVariable> greater) {
+        List<PlayerVariable> sorted = new List<PlayerVariable> (less);
         sorted.Add (pivot);
-        foreach (int i in greater) {
+        foreach (PlayerVariable i in greater) {
 
             sorted.Add (i);
         }
