@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fc3bb8e25c7fd43bf4bdd3c6c9f575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireForce: 30
+  fireForce: 250
   cooldown: 0
-  lifeTime: 0
+  lifeTime: 10
   damage: 10000
   fireSound: {fileID: 11400000, guid: 5c30c262ba4fda44d84b8d93b0dfcee4, type: 2}
   impactAnimation: {fileID: 0}

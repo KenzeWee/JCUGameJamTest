@@ -99,6 +99,9 @@ public class DynamicCamera : MonoBehaviour {
             diff = largestDistance - lowerBoundary;
             orthDiff = diff * orthRatio;
             orthSize = minOrth + orthDiff + orthBuffer;
+            if (orthSize > maxOrth) {
+                orthSize = maxOrth;
+            }
         }
 
         cam.orthographicSize = Mathf.Lerp (cam.orthographicSize, orthSize, zoomSpeed * Time.deltaTime);

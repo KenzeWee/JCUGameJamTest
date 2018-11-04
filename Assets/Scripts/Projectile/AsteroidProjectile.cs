@@ -7,6 +7,7 @@ public class AsteroidProjectile : GenericProjectile {
 	public override void Fire () {
 		rb = GetComponent<Rigidbody2D> ();
 		rb.AddForce (transform.right * FireForce, ForceMode2D.Impulse);
+		Destroy (gameObject, Lifetime);
 	}
 
 	protected override void collisionBehaviour (Collision2D col) {
@@ -18,7 +19,7 @@ public class AsteroidProjectile : GenericProjectile {
 
 		gameObject.layer = 12;
 		Physics2D.IgnoreLayerCollision(12, 13);
-        Destroy(gameObject, 10f);
+        //Destroy(gameObject, 10f);
 	}
 
 	protected override void Update () {
