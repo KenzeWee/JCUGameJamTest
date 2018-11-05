@@ -35,7 +35,6 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
         //so bullet doesnt blow up on gun
         gameObject.layer = 9;
         Physics2D.IgnoreLayerCollision (8, 9);
-        Physics2D.IgnoreLayerCollision (9, 11);
 
         if (fireSound)
             fireSound = fireSound.Initialize (gameObject);

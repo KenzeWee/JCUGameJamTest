@@ -10,6 +10,7 @@ public class ProjectilePickUp : GenericPickUpType<GenericProjectile> {
             player.GunFire.SetProjectile = PickUpItem;
             timeTillRespawn = CoolDownTime;
             visuals.SetActive (false);
+            mcollider.enabled = false;
             isActive = false;
         }
     }

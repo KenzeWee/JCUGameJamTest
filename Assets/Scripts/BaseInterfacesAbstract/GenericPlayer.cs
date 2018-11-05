@@ -79,7 +79,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         IPickUp pickUp = other.gameObject.GetComponent<IPickUp> ();
         if (pickUp != null) {
             pickUp.PickUpBehaviour (this);
-            pickUpSound.Play();
+            pickUpSound.Play ();
         }
     }
 
@@ -113,7 +113,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
     void CheckPlayerPosition () {
         if (GameManager.Instance.IsGameRunning) {
             if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight || transform.position.y > GameManager.Instance.GetCurrentLevel.HighestHeight || transform.position.x < GameManager.Instance.GetCurrentLevel.MinimumX || transform.position.x > GameManager.Instance.GetCurrentLevel.MaxmiumX) {
-                if (GameManager.Instance.GetCurrentLevel.InfiniteScrolling) {
+                if (GameManager.Instance.GetCurrentLevel.InfiniteScrolling && (GameManager.Instance.CurrentGameState == GameManager.GameState.InLevel || GameManager.Instance.CurrentGameState == GameManager.GameState.ReachedDestination)) {
                     if (transform.position.y < GameManager.Instance.GetCurrentLevel.LowestHeight) {
                         transform.position = transform.position.With (y: GameManager.Instance.GetCurrentLevel.HighestHeight);
                     }

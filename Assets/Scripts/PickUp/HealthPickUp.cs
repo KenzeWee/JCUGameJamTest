@@ -9,6 +9,7 @@ public class HealthPickUp : GenericPickUpType<int> {
             player.HealthScript.ChangeHealth (PickUpItem);
             timeTillRespawn = CoolDownTime;
             visuals.SetActive (false);
+            mcollider.enabled = false;
             isActive = false;
         }
     }

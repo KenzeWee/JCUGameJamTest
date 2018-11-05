@@ -34,7 +34,7 @@ public class DynamicCamera : MonoBehaviour {
     [SerializeField] private GameObject movingPlatform;
     private bool isStaticCamera = false;
     public bool SetStaticCamera { set { isStaticCamera = value; } }
-    private bool TrackCloud = false;
+    private bool trackTransport = false;
 
     private void Start () {
         cam = GetComponent<Camera> ();
@@ -53,12 +53,12 @@ public class DynamicCamera : MonoBehaviour {
 
         UpdateObjectsToCheck();
 
-        switch (GameManager.Instance.GetGameState) {
+        switch (GameManager.Instance.CurrentGameState) {
             case GameManager.GameState.PlaneArriving: case GameManager.GameState.PlaneIdle: case GameManager.GameState.PlaneLeaving:
-                TrackCloud = true;
+                trackTransport = true;
                 break;
             case GameManager.GameState.InLevel: case GameManager.GameState.ReachedDestination:
-                TrackCloud = false;
+                trackTransport = false;
                 break;
         }
         
@@ -125,7 +125,7 @@ public class DynamicCamera : MonoBehaviour {
 
     void CheckForMovingPlatform () {
         if (objectsToTrack != null) {
-            if (TrackCloud) {
+            if (trackTransport) {
                 if (movingPlatform.activeSelf && !objectsToTrack.Contains (movingPlatform)) {
                     objectsToTrack.Add (movingPlatform);
                 }

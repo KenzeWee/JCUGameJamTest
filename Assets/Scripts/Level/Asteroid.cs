@@ -20,7 +20,7 @@ public class Asteroid : GenericLevel {
 	}
 
 	void FixedUpdate () {
-		if (Timer ()) {
+		if (Timer () && GameManager.Instance.IsGameRunning) {
 			SpawnAsteroid ();
 			StartNewTimer ();
 		}

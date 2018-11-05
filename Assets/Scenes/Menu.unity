@@ -2907,7 +2907,7 @@ MonoBehaviour:
   buttonPress: {fileID: 11400000, guid: c8dc7459da4ed894bb8efdd6bcb3afd4, type: 2}
   beeping: {fileID: 11400000, guid: 31db718e10ec37849bbad9534c9d0778, type: 2}
   HelpScreen: {fileID: 185514127}
-  timeLeft: 5
+  timeLeft: 10
   timer: {fileID: 800629401}
 --- !u!114 &191585267
 MonoBehaviour:

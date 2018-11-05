@@ -17,10 +17,10 @@ TagManager:
   - GunColliderLayer
   - ProjectileLayer
   - Player
-  - PickupLayer
+  - 
   - AsteroidLayer
   - PlaneLayer
-  - 
+  - FallingLevel
   - 
   - 
   - 

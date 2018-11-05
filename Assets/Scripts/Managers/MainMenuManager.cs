@@ -8,7 +8,6 @@ public class MainMenuManager : MonoBehaviour {
     public static MainMenuManager instance;
     [SerializeField] private AudioSO mainMenuMusic;
     [SerializeField] private AudioSO buttonPress;
-    [SerializeField] private AudioSO beeping;
     [SerializeField] private GameObject HelpScreen;
     [SerializeField] private float timeLeft = 5;
 
@@ -21,9 +20,6 @@ public class MainMenuManager : MonoBehaviour {
         mainMenuMusic.Play ();
 
         buttonPress = buttonPress.Initialize (gameObject);
-
-        beeping = beeping.Initialize (gameObject);
-        //timer.gameObject.SetActive(false);
     }
 
     public void StartGame () {
@@ -34,7 +30,6 @@ public class MainMenuManager : MonoBehaviour {
     private void Update () {
         mainMenuMusic.Update ();
         buttonPress.Update ();
-        beeping.Update ();
 
         if (isCountdown) {
             timeLeft -= Time.deltaTime;

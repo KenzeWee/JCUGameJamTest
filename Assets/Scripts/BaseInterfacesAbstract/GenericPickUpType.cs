@@ -17,18 +17,20 @@ public abstract class GenericPickUpType<T> : MonoBehaviour, IPickUp {
     public T PickUpItem { get { return pickUpItem; } }
 
     [SerializeField] protected GameObject visuals;
+    protected Collider2D mcollider;
 
     //What this pickup does when its picked up
     //e.g. replenish health
     public abstract void PickUpBehaviour<TPlayerType> (GenericPlayer<TPlayerType> player) where TPlayerType : IInput;
 
     protected virtual void Awake() {
-        gameObject.layer = 11;
+        mcollider = GetComponent<Collider2D>();
     }
     protected virtual void Respawn () {
         timeTillRespawn -= Time.deltaTime;
         if (timeTillRespawn <= 0) {
             visuals.SetActive (true);
+            mcollider.enabled = true;
             isActive = true;
         }
     }
