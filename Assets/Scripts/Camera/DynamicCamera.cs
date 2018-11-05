@@ -51,6 +51,8 @@ public class DynamicCamera : MonoBehaviour {
         if (objectsToTrack == null)
             UpdateListOfPlayers ();
 
+        UpdateObjectsToCheck();
+
         switch (GameManager.Instance.GetGameState) {
             case GameManager.GameState.PlaneArriving: case GameManager.GameState.PlaneIdle: case GameManager.GameState.PlaneLeaving:
                 TrackCloud = true;
@@ -148,5 +150,19 @@ public class DynamicCamera : MonoBehaviour {
         foreach (Entity player in temp) {
             objectsToTrack.Add (player.gameObject);
         }
+    }
+
+    void UpdateObjectsToCheck()
+    {
+        List<GameObject> temp = new List<GameObject>();
+
+        foreach (GameObject objectTracking in objectsToTrack) {
+            if (objectTracking.activeSelf)
+            {
+                temp.Add(objectTracking);
+            }
+        }
+
+        objectsToTrack = temp;
     }
 }

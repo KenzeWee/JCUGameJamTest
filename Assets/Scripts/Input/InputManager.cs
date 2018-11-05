@@ -32,7 +32,6 @@ public class InputManager : MonoBehaviour, IInput {
             case StaticFunctions.CONTROLLERTYPE.KEYBOARD:
                 IsFire = Input.GetMouseButtonDown (0);
                 CursorPos = mainCam.ScreenToWorldPoint (Input.mousePosition);
-                //print(IsFire);
                 break;
 
             case StaticFunctions.CONTROLLERTYPE.CONTROLLER01:

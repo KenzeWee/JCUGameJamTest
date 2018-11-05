@@ -55,7 +55,7 @@ public class GunRotation : MonoBehaviour
         //|| (distance > maxDistance && Vector2.Distance(pivotingObj.position, rotatingObj.position) < maxDistance)
         if ((distance > minDistance && distance < maxDistance))
         {
-            rotatingObj.transform.position = Vector2.MoveTowards(rotatingObj.transform.position, inputManager.CursorPos, Time.deltaTime * 2);
+            rotatingObj.transform.position = Vector2.MoveTowards(rotatingObj.transform.position, inputManager.CursorPos, Time.deltaTime * 4);
         }
     }
 }

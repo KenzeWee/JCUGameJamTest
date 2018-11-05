@@ -2154,7 +2154,7 @@ GameObject:
   - component: {fileID: 155762222}
   - component: {fileID: 155762221}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Character3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3008,10 +3008,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj:
-  - {fileID: 1638915655}
-  - {fileID: 260804481}
-  - {fileID: 830235425}
-  - {fileID: 601278284}
+  - {fileID: 1125487476}
+  - {fileID: 650196131}
+  - {fileID: 155762219}
+  - {fileID: 2029769193}
   playerData:
   - {fileID: 11400000, guid: 86bf4f0c803f4734eb8700982713bfe3, type: 2}
   - {fileID: 11400000, guid: c4808d782b3c4bc468f84c3eadcd4f0f, type: 2}
@@ -8881,7 +8881,7 @@ GameObject:
   - component: {fileID: 650196134}
   - component: {fileID: 650196133}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Character2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16479,7 +16479,7 @@ GameObject:
   - component: {fileID: 1125487479}
   - component: {fileID: 1125487478}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Character1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27125,7 +27125,7 @@ GameObject:
   - component: {fileID: 2029769196}
   - component: {fileID: 2029769195}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Character4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
