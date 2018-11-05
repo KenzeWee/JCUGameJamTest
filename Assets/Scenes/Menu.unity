@@ -1908,9 +1908,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 191585266}
-        m_MethodName: Help
+      - m_Target: {fileID: 185514127}
+        m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 191585272}
+        m_MethodName: ToggleAcceptControllerInput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2742,7 +2753,7 @@ RectTransform:
   - {fileID: 148705153}
   - {fileID: 1767678324}
   m_Father: {fileID: 191585270}
-  m_RootOrder: 4
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2761,7 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8039216}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2969,7 +2980,6 @@ RectTransform:
   - {fileID: 811334798}
   - {fileID: 1303615622}
   - {fileID: 806384447}
-  - {fileID: 185514128}
   - {fileID: 1638915656}
   - {fileID: 260804482}
   - {fileID: 830235426}
@@ -2977,6 +2987,7 @@ RectTransform:
   - {fileID: 800629400}
   - {fileID: 1835035925}
   - {fileID: 1569077543}
+  - {fileID: 185514128}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3824,7 +3835,7 @@ RectTransform:
   m_Children:
   - {fileID: 650196132}
   m_Father: {fileID: 191585270}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6052,7 +6063,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 461341504}
-  - component: {fileID: 461341503}
   m_Layer: 0
   m_Name: Level 2
   m_TagString: Untagged
@@ -6060,78 +6070,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &461341503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114665515128910032, guid: c4523b4106e10eb488e79db6d0429de0,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 461341502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ae6e4bb2de18142942806a7d0a6cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  lowestHeight: -15
-  highestHeight: 25
-  fallSpeed: 4
-  minX: -40
-  maxX: 40
-  levelObjects:
-  - {fileID: 1153780967}
-  - {fileID: 1414112623}
-  - {fileID: 767994140}
-  - {fileID: 1822317713}
-  - {fileID: 161691644}
-  - {fileID: 42954549}
-  - {fileID: 1465047416}
-  - {fileID: 1007364708}
-  - {fileID: 1830606696}
-  - {fileID: 846003356}
-  - {fileID: 1774214742}
-  - {fileID: 1622556180}
-  - {fileID: 200972982}
-  - {fileID: 1269958829}
-  - {fileID: 2178010}
-  - {fileID: 1148578386}
-  - {fileID: 2132272111}
-  - {fileID: 1820650373}
-  - {fileID: 824091091}
-  - {fileID: 849428241}
-  - {fileID: 1844436478}
-  - {fileID: 953987960}
-  - {fileID: 1784491058}
-  - {fileID: 656301854}
-  - {fileID: 458830162}
-  - {fileID: 151941471}
-  - {fileID: 602001591}
-  - {fileID: 628312648}
-  - {fileID: 218716634}
-  - {fileID: 1191526652}
-  - {fileID: 386015960}
-  - {fileID: 647092342}
-  - {fileID: 515547036}
-  - {fileID: 925695854}
-  - {fileID: 767790139}
-  - {fileID: 2091423613}
-  - {fileID: 544291297}
-  - {fileID: 1214923755}
-  - {fileID: 1041098492}
-  - {fileID: 884807448}
-  - {fileID: 2050115630}
-  - {fileID: 130952166}
-  - {fileID: 357825849}
-  - {fileID: 403360124}
-  - {fileID: 1121446598}
-  - {fileID: 634841911}
-  - {fileID: 1636670272}
-  - {fileID: 1885690973}
-  infiniteScrolling: 0
 --- !u!4 &461341504
 Transform:
   m_ObjectHideFlags: 0
@@ -7638,7 +7576,7 @@ RectTransform:
   m_Children:
   - {fileID: 2029769194}
   m_Father: {fileID: 191585270}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11229,7 +11167,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191585270}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11981,7 +11919,7 @@ RectTransform:
   m_Children:
   - {fileID: 155762220}
   m_Father: {fileID: 191585270}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16112,7 +16050,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1110963959}
-  - component: {fileID: 1110963958}
   m_Layer: 0
   m_Name: Level 3
   m_TagString: Untagged
@@ -16120,40 +16057,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1110963958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114121994859735858, guid: 30d8846bfc05a66469ffdbd92dc0170c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1110963957}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22f63a5959ccd240ad15d7467de9ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  lowestHeight: -18
-  highestHeight: 18
-  fallSpeed: 1
-  minX: -32
-  maxX: 32
-  levelObjects: []
-  infiniteScrolling: 1
-  blackHole: {fileID: 1531726107}
-  asteroidSpawnAreas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  asteroidsToSpawn:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1110963959
 Transform:
   m_ObjectHideFlags: 0
@@ -18313,7 +18216,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214066621}
-  - component: {fileID: 1214066620}
   m_Layer: 0
   m_Name: Level 1
   m_TagString: Untagged
@@ -18321,203 +18223,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1214066620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114218519297945920, guid: bde5b39f9204df34b96f6179c2c17e6a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1214066619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e06a2f0c620bdfb41b7678174b19d4a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  lowestHeight: -15
-  highestHeight: 15
-  fallSpeed: 3
-  minX: -21
-  maxX: 43
-  levelObjects:
-  - {fileID: 0}
-  - {fileID: 1329322080}
-  - {fileID: 773373235}
-  - {fileID: 1898244487}
-  - {fileID: 2125437670}
-  - {fileID: 2010300943}
-  - {fileID: 753824172}
-  - {fileID: 986097741}
-  - {fileID: 631609914}
-  - {fileID: 531143148}
-  - {fileID: 1575506566}
-  - {fileID: 1150277407}
-  - {fileID: 1529246545}
-  - {fileID: 851644349}
-  - {fileID: 295771136}
-  - {fileID: 1153135042}
-  - {fileID: 473871949}
-  - {fileID: 1149040551}
-  - {fileID: 1377889787}
-  - {fileID: 1255297534}
-  - {fileID: 1653031861}
-  - {fileID: 1410878021}
-  - {fileID: 194146057}
-  - {fileID: 1038263277}
-  - {fileID: 1228927692}
-  - {fileID: 85678554}
-  - {fileID: 1911092688}
-  - {fileID: 1122421224}
-  - {fileID: 1366532977}
-  - {fileID: 699118981}
-  - {fileID: 70705536}
-  - {fileID: 342945494}
-  - {fileID: 156540048}
-  - {fileID: 1489568766}
-  - {fileID: 982625726}
-  - {fileID: 1579060073}
-  - {fileID: 978153514}
-  - {fileID: 1919032068}
-  - {fileID: 752424523}
-  - {fileID: 237851462}
-  - {fileID: 1248875259}
-  - {fileID: 449353154}
-  - {fileID: 557867727}
-  - {fileID: 1360179559}
-  - {fileID: 1024306341}
-  - {fileID: 603129870}
-  - {fileID: 524153844}
-  - {fileID: 348064161}
-  - {fileID: 1034184842}
-  - {fileID: 233190042}
-  - {fileID: 574962060}
-  - {fileID: 97885436}
-  - {fileID: 1618612504}
-  - {fileID: 441887576}
-  - {fileID: 153469515}
-  - {fileID: 2031323947}
-  - {fileID: 879347688}
-  - {fileID: 1063620772}
-  - {fileID: 1950388421}
-  - {fileID: 966694208}
-  - {fileID: 1853669234}
-  - {fileID: 506112158}
-  - {fileID: 47835472}
-  - {fileID: 1549888146}
-  - {fileID: 1098263046}
-  - {fileID: 1230677686}
-  - {fileID: 1628962355}
-  - {fileID: 1939722995}
-  - {fileID: 1193931197}
-  - {fileID: 1173201155}
-  - {fileID: 1367892508}
-  - {fileID: 1951931159}
-  - {fileID: 351454860}
-  - {fileID: 422688787}
-  - {fileID: 685879959}
-  - {fileID: 1902261513}
-  - {fileID: 533877647}
-  - {fileID: 51793641}
-  - {fileID: 1417788272}
-  - {fileID: 1774248910}
-  - {fileID: 699837904}
-  - {fileID: 1060966327}
-  - {fileID: 359993658}
-  - {fileID: 9962976}
-  - {fileID: 1918666793}
-  - {fileID: 760276566}
-  - {fileID: 1473791000}
-  - {fileID: 576331144}
-  - {fileID: 1599082618}
-  - {fileID: 1432744698}
-  - {fileID: 1348776548}
-  - {fileID: 943241708}
-  - {fileID: 171970558}
-  - {fileID: 309522135}
-  - {fileID: 1680965818}
-  - {fileID: 208127402}
-  - {fileID: 73636155}
-  - {fileID: 881350565}
-  - {fileID: 116247145}
-  - {fileID: 1514821846}
-  - {fileID: 180835227}
-  - {fileID: 415580742}
-  - {fileID: 619643537}
-  - {fileID: 1273194455}
-  - {fileID: 650549972}
-  - {fileID: 713212549}
-  - {fileID: 1029326636}
-  - {fileID: 1942212975}
-  - {fileID: 694465929}
-  - {fileID: 979744096}
-  - {fileID: 212361205}
-  - {fileID: 10181837}
-  - {fileID: 1203406085}
-  - {fileID: 1157517501}
-  - {fileID: 1419445402}
-  - {fileID: 282785675}
-  - {fileID: 282227392}
-  - {fileID: 1550418840}
-  - {fileID: 2007393379}
-  - {fileID: 687153075}
-  - {fileID: 975097131}
-  - {fileID: 1753775519}
-  - {fileID: 387515055}
-  - {fileID: 1121588346}
-  - {fileID: 638486863}
-  - {fileID: 1609827155}
-  - {fileID: 1196574859}
-  - {fileID: 825925958}
-  - {fileID: 1561629427}
-  - {fileID: 940836178}
-  - {fileID: 1188436256}
-  - {fileID: 1163211518}
-  - {fileID: 1011561931}
-  - {fileID: 872003763}
-  - {fileID: 1507548018}
-  - {fileID: 354262864}
-  - {fileID: 1321746100}
-  - {fileID: 1045069895}
-  - {fileID: 766256336}
-  - {fileID: 175779478}
-  - {fileID: 468546554}
-  - {fileID: 592843883}
-  - {fileID: 317104878}
-  - {fileID: 923058260}
-  - {fileID: 641980424}
-  - {fileID: 1714087277}
-  - {fileID: 1184660332}
-  - {fileID: 839154265}
-  - {fileID: 73963557}
-  - {fileID: 1310803}
-  - {fileID: 1454660359}
-  - {fileID: 2002264148}
-  - {fileID: 1140383763}
-  - {fileID: 714051368}
-  - {fileID: 1837734041}
-  - {fileID: 712232163}
-  - {fileID: 1004504013}
-  - {fileID: 1663756923}
-  - {fileID: 794143490}
-  - {fileID: 115084943}
-  - {fileID: 551192304}
-  - {fileID: 587808966}
-  - {fileID: 962489794}
-  - {fileID: 1826296606}
-  - {fileID: 840291983}
-  - {fileID: 1031071539}
-  - {fileID: 399004431}
-  - {fileID: 420012809}
-  - {fileID: 0}
-  - {fileID: 642881784}
-  - {fileID: 740580681}
-  - {fileID: 1234435248}
-  - {fileID: 1175517447}
-  infiniteScrolling: 0
 --- !u!4 &1214066621
 Transform:
   m_ObjectHideFlags: 0
@@ -19568,8 +19273,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 191585266}
-        m_MethodName: Help
+      - m_Target: {fileID: 185514127}
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19580,7 +19285,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 191585266}
-        m_MethodName: Exit
+        m_MethodName: PlayButtonPressSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19590,8 +19295,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 191585266}
-        m_MethodName: PlayButtonPressSound
+      - m_Target: {fileID: 191585272}
+        m_MethodName: ToggleAcceptControllerInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22290,7 +21995,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999998}
   m_Children: []
   m_Father: {fileID: 191585270}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23315,7 +23020,7 @@ RectTransform:
   m_Children:
   - {fileID: 1125487477}
   m_Father: {fileID: 191585270}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24039,8 +23744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.9, y: 15.3}
-  m_SizeDelta: {x: 805.8, y: 419.3}
+  m_AnchoredPosition: {x: 2.9, y: 34.5}
+  m_SizeDelta: {x: 805.8, y: 381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767678325
 MonoBehaviour:
@@ -24063,14 +23768,16 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Controls
 
-    Controllers only
 
     Use Joystick to aim, A to fire for xbox, Square for playstation controllers
 
 
-    The objective is to die the least while trying to kill the others!
+    Use Mouse to aim and LMB to fire for mouse
 
-    There are pickups like explosive ammo and heal that will spawn regularly!
+
+    The objective is to die the least!
+
+    There are pickups that will spawn regularly!
 
 
     Get on the plane to fly to the next level!'
@@ -24101,8 +23808,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28.1
-  m_fontSizeBase: 21
+  m_fontSize: 25.95
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
@@ -24142,10 +23849,10 @@ MonoBehaviour:
   m_margin: {x: 7.2886677, y: 0, z: 14.577282, w: 13.631873}
   m_textInfo:
     textComponent: {fileID: 1767678325}
-    characterCount: 287
+    characterCount: 254
     spriteCount: 0
-    spaceCount: 52
-    wordCount: 51
+    spaceCount: 51
+    wordCount: 48
     linkCount: 0
     lineCount: 11
     pageCount: 1
@@ -25078,7 +24785,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191585270}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25104,7 +24811,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Press X/Square to Join
+  m_text: 'Press Square/A to Join
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fbcd767b1857fdd47a52600666f62afd, type: 2}
   m_sharedMaterial: {fileID: 21605062095411226, guid: fbcd767b1857fdd47a52600666f62afd,
@@ -25173,9 +24882,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -283.09027, w: 0}
   m_textInfo:
     textComponent: {fileID: 1835035926}
-    characterCount: 22
+    characterCount: 23
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 4
     wordCount: 5
     linkCount: 0
     lineCount: 1

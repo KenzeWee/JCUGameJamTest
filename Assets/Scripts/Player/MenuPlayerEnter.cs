@@ -9,6 +9,10 @@ public class MenuPlayerEnter : MonoBehaviour
     [SerializeField] private List<GameObject> playerObj = new List<GameObject>();
     [SerializeField] private List<PlayerVariable> playerData = new List<PlayerVariable>();
 
+    List<StaticFunctions.CONTROLLERTYPE> assignedControllers = new List<StaticFunctions.CONTROLLERTYPE>();
+
+    private bool acceptControllerInputs = true;
+
     private void Start()
     {
         foreach (PlayerVariable player in playerData)
@@ -20,9 +24,12 @@ public class MenuPlayerEnter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputAssign())
+        if (acceptControllerInputs)
         {
-            MainMenuManager.instance.StartGame();
+            if (InputAssign())
+            {
+                MainMenuManager.instance.StartGame();
+            }
         }
     }
 
@@ -30,7 +37,7 @@ public class MenuPlayerEnter : MonoBehaviour
     {
         //loop through the 4 possible joystick configurations
         //and check for keyboard
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i < 6; i++)
         {
             if (Input.GetButtonDown("JoyStick_" + i + "_Fire"))
             {
@@ -38,31 +45,25 @@ public class MenuPlayerEnter : MonoBehaviour
                 {
                     //loop through each player one by one
                     //if not assigned, assign the player
-                    if (player.controlType == StaticFunctions.CONTROLLERTYPE.NULL)
+                    if (!assignedControllers.Contains((StaticFunctions.CONTROLLERTYPE)i))
                     {
-                        player.controlType = (StaticFunctions.CONTROLLERTYPE)i;
-                        playerObj[playerData.IndexOf(player)].SetActive(true);
-                        return true;
+                        if (player.controlType == StaticFunctions.CONTROLLERTYPE.NULL)
+                        {
+                            player.controlType = (StaticFunctions.CONTROLLERTYPE)i;
+                            assignedControllers.Add((StaticFunctions.CONTROLLERTYPE)i);
+                            playerObj[playerData.IndexOf(player)].SetActive(true);
+                            return true;
+                        }
                     }
                 }
                 return false;
             }
         }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            for (int j = 0; j < playerData.Count; j++)
-            {
-                if (playerData[j].controlType == StaticFunctions.CONTROLLERTYPE.NULL)
-                {
-                    playerData[j].controlType = StaticFunctions.CONTROLLERTYPE.KEYBOARD;
-                    playerObj[j].SetActive(true);
-                    return true;
-                }
-            }
-            return false;
-        }
-
         return false;
+    }
+
+    public void ToggleAcceptControllerInput()
+    {
+        acceptControllerInputs = !acceptControllerInputs;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class StaticFunctions
 {
-    public enum CONTROLLERTYPE { NULL, CONTROLLER01 = 1, CONTROLLER02 = 2, CONTROLLER03 = 3, CONTROLLER04 = 4, KEYBOARD };
+    public enum CONTROLLERTYPE { NULL, CONTROLLER01 = 1, CONTROLLER02 = 2, CONTROLLER03 = 3, CONTROLLER04 = 4, KEYBOARD = 5 };
 
     /*------------------------RIGIDBODY2D--------------------------*/
     public static void AddExplosionForce(this Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius)

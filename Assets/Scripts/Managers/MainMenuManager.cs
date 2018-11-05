@@ -47,10 +47,6 @@ public class MainMenuManager : MonoBehaviour {
         }
     }
 
-    public void Help (bool On) {
-        HelpScreen.SetActive (On);
-    }
-
     public void Exit () {
         Application.Quit ();
     }
