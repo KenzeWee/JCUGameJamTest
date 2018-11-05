@@ -10,11 +10,9 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private AudioSO buttonPress;
     [SerializeField] private AudioSO beeping;
     [SerializeField] private GameObject HelpScreen;
+    [SerializeField] private float timeLeft = 5;
 
     public TextMeshProUGUI timer;
-
-    private float timeLeft = 5;
-
     private bool isCountdown = false;
 
     private void Awake () {
