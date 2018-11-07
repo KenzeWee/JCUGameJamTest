@@ -5,7 +5,7 @@ using UnityEngine;
 public class TouchOfDeathPickUp : GenericPickUpType<TouchOfDeath> {
 	public override void PickUpBehaviour<TPlayerType> (GenericPlayer<TPlayerType> player) {
 		if (isActive) {
-			TouchOfDeath TODComponent = player.gameObject.AddComponent<TouchOfDeath> ();
+			player.gameObject.AddComponent<TouchOfDeath> ();
 			timeTillRespawn = CoolDownTime;
 			visuals.SetActive (false);
 			isActive = false;

@@ -15,7 +15,6 @@ public class GunRotation : MonoBehaviour
     [SerializeField] private float maxDistance;
 
     private IInput inputManager;
-    private bool isPivotingWithGun = false;
 
     // Use this for initialization
     void Start()
