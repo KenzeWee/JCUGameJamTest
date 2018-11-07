@@ -17,7 +17,11 @@ public class Health : MonoBehaviour, IDamagable {
 
     public void ChangeHealth (int amount) {
         HP += amount;
-        //Debug.Log(HP);
+        
+        if (HP > maxHP)
+        {
+            HP = maxHP;
+        }
 
         if (HP <= 0) {
             Die ();
