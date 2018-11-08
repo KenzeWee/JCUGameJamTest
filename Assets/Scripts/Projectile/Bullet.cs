@@ -33,7 +33,7 @@ public class Bullet : GenericProjectile {
 
     protected override void collisionBehaviour (Collision2D col) {
         gameObject.Explode (explosionForce, transform.position, explosionRadius);
-        shakeCam.Shake (10);
+        shakeCam.Shake (10, Vector3.zero);
 
         if (explosionSound)
             explosionSound.Play ();

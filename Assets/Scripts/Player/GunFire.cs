@@ -23,7 +23,7 @@ public class GunFire : MonoBehaviour {
 
     [SerializeField] private GameObject player;
 
-    public delegate void OnGunFired (float force);
+    public delegate void OnGunFired (float force, Vector3 pos);
     public event OnGunFired onGunFiredEvent;
 
     private IInput inputManager;
@@ -65,7 +65,7 @@ public class GunFire : MonoBehaviour {
         GenericProjectile projFired = Instantiate (projectile.gameObject, firingPoint.position, firingPoint.rotation).GetComponent<GenericProjectile> ();
         projFired.Fire ();
         projFired.FireSound.Play ();
-        onGunFiredEvent (projFired.FireForce);
+        onGunFiredEvent (projFired.FireForce, FiringPoint.position);
     }
 
     IEnumerator FireCoolDown (float cooldown) {

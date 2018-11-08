@@ -95,7 +95,7 @@ public abstract class GenericPlayer<T> : Entity where T : IInput {
         }
     }
 
-    protected virtual void Knockback (float fireForce) {
+    protected virtual void Knockback (float fireForce, Vector3 position) {
         rb.AddForce (-GunFire.FiringPoint.right * (fireForce) * knockbackFactor, ForceMode2D.Impulse);
     }
 
