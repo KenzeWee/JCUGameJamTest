@@ -25614,7 +25614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RippleMaterial: {fileID: 2100000, guid: 5e662edbd589c5c46913a35b1231eca1, type: 2}
   MaxAmount: 50
-  Friction: 0.6
+  Friction: 0.2
 --- !u!1 &1500799607
 GameObject:
   m_ObjectHideFlags: 0
