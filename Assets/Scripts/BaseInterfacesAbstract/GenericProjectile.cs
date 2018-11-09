@@ -26,7 +26,7 @@ public abstract class GenericProjectile : MonoBehaviour, IProjectile {
 
     private float timeRemaining;
 
-    public abstract void Fire ();
+    public abstract void Fire (GameObject playerWhoShot);
     protected abstract void collisionBehaviour (Collision2D col);
 
     protected virtual void Awake () {

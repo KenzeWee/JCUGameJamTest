@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IProjectile {
     float FireForce { get; }
-    void Fire();
+    void Fire(GameObject playerWhoShot);
 }

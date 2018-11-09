@@ -31,7 +31,7 @@ public class Asteroid : GenericLevel {
 		GameObject asteroidSpawn = asteroidsToSpawn.RandomObject ().gameObject;
 
 		GenericProjectile spawnedAsteroid = Instantiate (asteroidSpawn, randomSpawnArea.position, randomSpawnArea.rotation).GetComponent<GenericProjectile> ();
-		spawnedAsteroid.Fire ();
+		spawnedAsteroid.Fire (gameObject);
 	}
 
 	void StartNewTimer () {

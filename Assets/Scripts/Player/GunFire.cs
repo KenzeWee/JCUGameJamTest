@@ -63,7 +63,7 @@ public class GunFire : MonoBehaviour {
 
     void FireProjectile () {
         GenericProjectile projFired = Instantiate (projectile.gameObject, firingPoint.position, firingPoint.rotation).GetComponent<GenericProjectile> ();
-        projFired.Fire ();
+        projFired.Fire (gameObject.transform.parent.gameObject);
         projFired.FireSound.Play ();
         onGunFiredEvent (projFired.FireForce, FiringPoint.position);
     }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AsteroidProjectile : GenericProjectile {
 	private Rigidbody2D rb;
-	public override void Fire () {
+	public override void Fire(GameObject playerWhoShot)
+    {
 		rb = GetComponent<Rigidbody2D> ();
 		rb.AddForce (transform.right * FireForce, ForceMode2D.Impulse);
 		Destroy (gameObject, Lifetime);

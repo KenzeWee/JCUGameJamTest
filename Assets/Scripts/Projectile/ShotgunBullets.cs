@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ShotgunBullets : GenericProjectile {
     [SerializeField] private List<GenericProjectile> pellets = new List<GenericProjectile>();
-    public override void Fire()
+    public override void Fire (GameObject playerWhoShot)
     {
         foreach (GenericProjectile pellet in pellets)
         {
-            pellet.Fire();
+            pellet.Fire(playerWhoShot);
         }
     }
 

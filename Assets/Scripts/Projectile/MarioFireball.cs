@@ -41,7 +41,8 @@ public class MarioFireball : GenericProjectile {
 		}
 	}
 
-	public override void Fire () {
+	public override void Fire(GameObject playerWhoShot)
+    {
 		rb.velocity = velocity;
 		Destroy (gameObject, Lifetime);
 	}

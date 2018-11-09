@@ -26,7 +26,8 @@ public class Bullet : GenericProjectile {
             explosionSound.Update ();
     }
 
-    public override void Fire () {
+    public override void Fire(GameObject playerWhoShot)
+    {
         projRB.AddForce (transform.right * FireForce, ForceMode2D.Impulse);
         Destroy (gameObject, Lifetime);
     }
