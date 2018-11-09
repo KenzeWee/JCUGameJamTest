@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38fae08f24a9d24cb83706ba37c191b, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  m_name: 
-  controlType: 0
+  m_name: kl
+  controlType: 5
