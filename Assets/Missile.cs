@@ -6,34 +6,40 @@ public class Missile : GenericProjectile
 {
     [SerializeField] private GameObject target;
     private Rigidbody2D rb;
-    private bool OnCooldown = false;
-
+    private bool GoUp = true;
+    private float i = 0;
     [SerializeField] private float speed;
     [SerializeField] private float rotation;
-
     private IInput inputManager;
 
     // Use this for initialization
     void Start()
     {
-       
+        GoUp = true;
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 distance = (Vector2)target.transform.position - rb.position;
-        distance.Normalize();
-        float rotateAmount = Vector3.Cross(distance, transform.up).z;
-        rb.angularVelocity = -rotateAmount * rotation;
-        rb.velocity = transform.up * speed;
+
+        if (GoUp == true)
+        {
+            StartCoroutine(FloatUp());
+        }
+        if (GoUp == false)
+        {
+            Vector2 distance = (Vector2)target.transform.position - rb.position;
+            distance.Normalize();
+            float rotateAmount = Vector3.Cross(distance, transform.up).z;
+            rb.angularVelocity = -rotateAmount * rotation;
+            rb.velocity = transform.up * speed;
+        }
     }
 
     public override void Fire(GameObject playerWhoShot)
     {
         rb = GetComponent<Rigidbody2D>();
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 20, LayerMask.NameToLayer("player"));
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 30, LayerMask.NameToLayer("player"));
         if (colliders.Length > 0)
         {
             for (int i = 0; i < colliders.Length; i++)
@@ -60,12 +66,14 @@ public class Missile : GenericProjectile
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, 20);
+        Gizmos.DrawWireSphere(transform.position, 30);
     }
 
-    IEnumerator FireCoolDown(float cooldown)
+    IEnumerator FloatUp()
     {
-        yield return new WaitForSeconds(cooldown);
+        rb.velocity = transform.up * 5;
+        yield return new WaitForSeconds(0.5f);
+        GoUp = false;
     }
 
 }
